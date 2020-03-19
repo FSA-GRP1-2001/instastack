@@ -3,10 +3,22 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const User = db.define('user', {
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  },
+  displayName: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
+    validate: {
+      isEmail: true,
+    },
   },
   password: {
     type: Sequelize.STRING,
@@ -27,7 +39,15 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING,
   },
+  githubId: {
+    type: Sequelize.STRING,
+  },
 });
+
+// Check to see if this is legal (or a good idea)
+// User.addHook('beforeValidate', user => {
+//   if (!user.displayName) user.username = user.email;
+// });
 
 module.exports = User;
 
