@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Build Status](https://travis-ci.org/FSA-GRP1-2001/instastack.svg?branch=master)](https://travis-ci.org/FSA-GRP1-2001/instastack))
+
 # InstaStack
 
 _Good things come with React_

@@ -15,3 +15,18 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const singleUsers = await User.findByPk();
+    if (!singleUsers) {
+      const error = Error('Sorry we currently do not have that user listed');
+      error.status = 404;
+      return next(error);
+    } else {
+      res.json(singleUsers);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
