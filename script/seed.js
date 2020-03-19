@@ -3,6 +3,7 @@
 const db = require('../server/db');
 const { User } = require('../server/db/models');
 const { Project } = require('../server/db/models');
+const { Component } = require('../server/db/models');
 
 async function seed() {
   await db.sync({ force: true });
@@ -17,6 +18,11 @@ async function seed() {
     Project.create({ title: 'First Demo' }),
     Project.create({ title: 'Sales Ideas' }),
   ]);
+
+  // const components = await Promise.all([
+  //   Component.create({ title: 'Comp A' }),
+  //   Component.create({ title: 'Comp B' }),
+  // ]);
 
   await users[0].addProject(projects[0]);
   await users[1].addProject(projects[1]);

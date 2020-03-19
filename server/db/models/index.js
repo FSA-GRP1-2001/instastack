@@ -1,11 +1,13 @@
 const User = require('./user');
 const Project = require('./project');
+const Component = require('./component');
 
 User.hasMany(Project, { as: 'project' });
 
 module.exports = {
   User,
   Project,
+  Component,
 };
 
 /*
