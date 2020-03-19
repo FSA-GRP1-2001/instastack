@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "instastack",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Make your own stack code to get you started - get shakin'!",
   "engines": {
     "node": ">= 7.0.0"
   },
