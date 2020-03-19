@@ -59,7 +59,13 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/me', (req, res) => {
-  res.json(req.user);
+  try {
+    if (req.user) {
+      res.json(req.user);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 router.use('/google', require('./google'));
