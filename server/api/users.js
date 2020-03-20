@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../db/models');
+const { User, Project } = require('../db/models');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -26,6 +26,21 @@ router.get('/:id', async (req, res, next) => {
     } else {
       res.json(singleUsers);
     }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put('/:id/:projectName', async (req, res, next) => {
+  try {
+    let oneUser = await User.findByPk(req.params.id);
+    // find or create project by name
+    let { projectName } = req.body;
+    const [project, wasCreated] = await Project.findOrCreate({
+      where: { name: projectName },
+    });
+    await oneUser.add(project);
+    res.sendStatus(201).json(project); // send newly associated project to thunk
   } catch (error) {
     next(error);
   }
