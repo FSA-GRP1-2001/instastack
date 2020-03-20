@@ -10,8 +10,16 @@ async function seed() {
   console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ email: 'cody@email.com', password: '123' }),
-    User.create({ email: 'murphy@email.com', password: '123' }),
+    User.create({
+      email: 'cody@email.com',
+      displayName: 'Cody',
+      password: '123',
+    }),
+    User.create({
+      email: 'murphy@email.com',
+      displayName: 'Murphy',
+      password: '123',
+    }),
   ]);
 
   const projects = await Promise.all([
@@ -19,10 +27,19 @@ async function seed() {
     Project.create({ title: 'Sales Ideas' }),
   ]);
 
-  // const components = await Promise.all([
-  //   Component.create({ title: 'Comp A' }),
-  //   Component.create({ title: 'Comp B' }),
-  // ]);
+  const components = await Promise.all([
+    Component.create({ title: 'List Component', htmlTag: 'ul' }),
+    Component.create({
+      title: 'Para Component',
+      htmlTag: 'p',
+      textContent: 'hello world!!',
+    }),
+    Component.create({
+      title: 'Div Component',
+      htmlTag: 'div',
+      textContent: 'Good Morning World',
+    }),
+  ]);
 
   await users[0].addProject(projects[0]);
   await users[1].addProject(projects[1]);

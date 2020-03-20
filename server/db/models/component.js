@@ -1,6 +1,13 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
+const tagConstants = {
+  p: { open: '<p>', close: '</p>' },
+  ul: { open: '<ul>', close: '</ul>' },
+  li: { open: '<li>', close: '</li>' },
+  div: { open: '<div>', close: '</div>' },
+};
+
 const Component = db.define('component', {
   title: {
     type: Sequelize.STRING,
@@ -28,7 +35,7 @@ const Component = db.define('component', {
   },
 });
 
-Component.beforeSave(async component => {
+Component.afterCreate(async component => {
   const tag = component.htmlTag;
   if (component.openTag !== tagConstants[tag].open) {
     component.openTag = tagConstants[tag].open;
@@ -39,12 +46,5 @@ Component.beforeSave(async component => {
   await component.save();
   console.log('updated tags ', component);
 });
-
-const tagConstants = {
-  p: { open: '<p>', close: '</p>' },
-  ul: { open: '<ul>', close: '</ul>' },
-  li: { open: '<li>', close: '</li>' },
-  div: { open: '<div>', close: '</div>' },
-};
 
 module.exports = Component;
