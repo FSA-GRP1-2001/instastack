@@ -52,7 +52,7 @@ export const login = credientials => {
       const response = await axios.put('/auth/login', credientials);
       dispatch(getUser(response.data));
     } catch (error) {
-      next(error);
+      console.error(error);
     }
   };
 };
