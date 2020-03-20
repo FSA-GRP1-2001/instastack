@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../db/models');
+const { User, Project } = require('../db/models');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const singleUsers = await User.findByPk();
+    const singleUsers = await User.findByPk(req.params.id);
     if (!singleUsers) {
       const error = Error('Sorry we currently do not have that user listed');
       error.status = 404;
@@ -26,6 +26,39 @@ router.get('/:id', async (req, res, next) => {
     } else {
       res.json(singleUsers);
     }
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET api/users/projects
+router.get('/:id/projects', async (req, res, next) => {
+  try {
+    const singleUsers = await User.findByPk(req.params.id, {
+      include: { model: Project },
+    });
+    if (!singleUsers) {
+      const error = Error('Sorry we currently do not have that user listed');
+      error.status = 404;
+      return next(error);
+    } else {
+      res.json(singleUsers);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/:id/projects', async (req, res, next) => {
+  try {
+    let oneUser = await User.findByPk(req.params.id);
+    // find or create project by name
+    let { title } = req.body;
+    const [project, wasCreated] = await Project.findOrCreate({
+      where: { title },
+    });
+    await oneUser.addProject(project);
+    res.status(201).json(project); // send newly associated project to thunk
   } catch (error) {
     next(error);
   }
