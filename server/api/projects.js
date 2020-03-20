@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project } = require('../db/models');
+const { Project, User } = require('../db/models');
 
 module.exports = router;
 
@@ -28,13 +28,20 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// To make a new Project, start in the User route with the User ID route for adding a project
-// router.put('/:id TBD', async (req, res, next) => {
-
-//   try {
-
-//   } catch (err) {
-//     next(err)
-//   }
-
-// })
+// GET api/users/projects
+router.get('/:id/users', async (req, res, next) => {
+  try {
+    const singleProject = await Project.findByPk(req.params.id, {
+      include: { model: User },
+    });
+    if (!singleProject) {
+      const error = Error('Sorry we currently do not have that Project listed');
+      error.status = 404;
+      return next(error);
+    } else {
+      res.json(singleProject);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
