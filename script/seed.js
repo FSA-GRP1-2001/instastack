@@ -46,7 +46,7 @@ async function seed() {
 
   const userProjs = await users[0].getProject();
   console.log('user projects are ', userProjs);
-
+  console.log(`seeded ${components.length} components`);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
 }
