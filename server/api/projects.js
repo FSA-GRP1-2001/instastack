@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
     // will add attributes once i see whats in the models
     res.json(projects);
   } catch (error) {
-    next(err);
+    next(error);
   }
 });
 
