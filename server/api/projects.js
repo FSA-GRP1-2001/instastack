@@ -27,3 +27,14 @@ router.get('/:id', async (req, res, next) => {
     next(error);
   }
 });
+
+// To make a new Project, start in the User route with the User ID route for adding a project
+// router.put('/:id TBD', async (req, res, next) => {
+
+//   try {
+
+//   } catch (err) {
+//     next(err)
+//   }
+
+// })
