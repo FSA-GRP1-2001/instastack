@@ -21,7 +21,7 @@ describe('Project model', () => {
       });
 
       it('returns true if project exists in DB and has a title', () => {
-        expect(algoBeginner.title.to.be.equal(titleString));
+        expect(algoBeginner.title).to.equal(titleString);
       });
     }); // end describe('has a title')
   }); // end describe('simple properties')
