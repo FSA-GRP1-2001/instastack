@@ -40,7 +40,7 @@ router.post('/:id/projects', async (req, res, next) => {
       where: { title },
     });
     await oneUser.addProject(project);
-    res.sendStatus(201).json(project); // send newly associated project to thunk
+    res.status(201).json(project); // send newly associated project to thunk
   } catch (error) {
     next(error);
   }
