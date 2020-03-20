@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const singleUsers = await User.findByPk();
+    const singleUsers = await User.findByPk(req.params.id);
     if (!singleUsers) {
       const error = Error('Sorry we currently do not have that user listed');
       error.status = 404;
@@ -35,7 +35,7 @@ router.put('/:id/:projectName', async (req, res, next) => {
   try {
     let oneUser = await User.findByPk(req.params.id);
     // find or create project by name
-    let { projectName } = req.body;
+    let projectName = req.params.projectName;
     const [project, wasCreated] = await Project.findOrCreate({
       where: { name: projectName },
     });
