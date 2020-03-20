@@ -1,18 +1,24 @@
 const User = require('./user');
+const Project = require('./project');
+const Component = require('./component');
 
-/**
- * If we had any associations to make, this would be a great place to put them!
- * ex. if we had another model called BlogPost, we might say:
- *
- *    BlogPost.belongsTo(User)
- */
+User.hasMany(Project, { as: 'project' });
 
-/**
- * We'll export all of our models here, so that any time a module needs a model,
- * we can just require it from 'db/models'
- * for example, we can say: const {User} = require('../db/models')
- * instead of: const User = require('../db/models/user')
- */
 module.exports = {
   User,
+  Project,
+  Component,
 };
+
+/*
+__proto__ methods on User
+  _isAttribute: [Function (anonymous)],
+  correctPassword: [Function (anonymous)],
+  getProject: [Function (anonymous)],
+  countProject: [Function (anonymous)],
+  hasProject: [Function (anonymous)],
+  setProject: [Function (anonymous)],
+  addProject: [Function (anonymous)],
+  removeProject: [Function (anonymous)],
+  createProject: [Function (anonymous)]
+*/
