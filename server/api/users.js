@@ -31,6 +31,24 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+// GET api/users/projects
+router.get('/:id/projects', async (req, res, next) => {
+  try {
+    const singleUsers = await User.findByPk(req.params.id, {
+      include: { model: Project },
+    });
+    if (!singleUsers) {
+      const error = Error('Sorry we currently do not have that user listed');
+      error.status = 404;
+      return next(error);
+    } else {
+      res.json(singleUsers);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post('/:id/projects', async (req, res, next) => {
   try {
     let oneUser = await User.findByPk(req.params.id);
