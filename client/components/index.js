@@ -5,7 +5,9 @@
  */
 export { default as Navbar } from './navbar';
 export { default as UserHome } from './user-home';
-export {
-  default as ListOfComponents,
-} from './list of components/listOfComponents';
+export { default as MainPage } from './mainPage';
+export { default as ComponentSection } from './list/componentSection';
+export { default as PreviewSection } from './list/previewSection';
+export { default as CodeSection } from './list/codeSection';
+
 export { Login, Signup } from './auth-form';
