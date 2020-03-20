@@ -41,12 +41,17 @@ async function seed() {
     }),
   ]);
 
-  await users[0].addProject(projects[0]);
-  await users[1].addProject(projects[1]);
+  await users[0].addProjects(projects[0]);
+  await users[1].addProjects(projects[1]);
 
-  const userProjs = await users[0].getProject();
+  await projects[0].addComponents(components[0]);
+  await projects[1].addComponents(components[1]);
+
+  const userProjs = await users[0].getProjects();
+
   console.log('user projects are ', userProjs);
-
+  const projectComponents = await projects[0].getComponents();
+  console.log('This project has these components: ', projectComponents);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
 }
