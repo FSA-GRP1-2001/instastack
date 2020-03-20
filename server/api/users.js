@@ -31,15 +31,15 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.put('/:id/:projectName', async (req, res, next) => {
+router.post('/:id/projects', async (req, res, next) => {
   try {
     let oneUser = await User.findByPk(req.params.id);
     // find or create project by name
-    let projectName = req.params.projectName;
+    let { title } = req.body;
     const [project, wasCreated] = await Project.findOrCreate({
-      where: { name: projectName },
+      where: { title },
     });
-    await oneUser.add(project);
+    await oneUser.addProject(project);
     res.sendStatus(201).json(project); // send newly associated project to thunk
   } catch (error) {
     next(error);

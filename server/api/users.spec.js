@@ -34,10 +34,11 @@ describe('User routes', () => {
     });
 
     // new test
-    it('PUT /api/users/:id', async () => {
+    it('POST /api/users/:id/projects/', async () => {
       const res = await request(app)
-        .get(`/api/users/${murphy.id}/${projectName}`)
-        .expect(200);
+        .post(`/api/users/${murphy.id}/projects/`)
+        .send({ title: projectName })
+        .expect(201);
 
       // test res later
     });
