@@ -2,7 +2,11 @@ const User = require('./user');
 const Project = require('./project');
 const Component = require('./component');
 
-User.hasMany(Project, { as: 'project' });
+User.belongsToMany(Project, { through: 'user_project' });
+Project.belongsToMany(User, { through: 'user_project' });
+
+Project.belongsToMany(Component, { through: 'project_component' });
+Component.belongsToMany(Project, { through: 'project_component' });
 
 module.exports = {
   User,
