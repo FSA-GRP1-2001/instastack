@@ -9,17 +9,19 @@ class ListOfComponents extends Component {
   render() {
     console.log('in lof', this.props);
     const { components } = this.props;
+    const haveComponents = components.length > 0;
     return (
-      <div>
+      <div className="component-selection-sidebar">
         {/* supposed to import all the components available */}
         <p>List of currently available components:</p>
-        {components.map(component => {
-          return (
-            <div key={component.id}>
-              <p>{component.title}</p>
-            </div>
-          );
-        })}
+        {haveComponents &&
+          components.map(component => {
+            return (
+              <div key={component.id}>
+                <p>{component.title}</p>
+              </div>
+            );
+          })}
       </div>
     );
   }
