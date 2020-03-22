@@ -5,9 +5,9 @@
  */
 export { default as Navbar } from './navbar';
 export { default as UserHome } from './user-home';
-export { default as MainPage } from './mainPage';
+export { default as MainPage } from './MainPage';
 export { default as ComponentSection } from './list/componentSection';
-export { default as PreviewSection } from './list/previewSection';
-export { default as CodeSection } from './list/codeSection';
+export { default as Preview } from './preview/Preview';
+export { default as CodeMirror } from './CodeBox';
 
 export { Login, Signup } from './auth-form';

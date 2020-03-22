@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import ComponentSection from './list/componentSection';
-import PreviewSection from './list/previewSection';
-import CodeSection from './list/codeSection';
+import { connect } from 'react-redux';
+import Preview from './preview/Preview';
+import CodeBox from './CodeBox';
+import ListOfComponents from './list/componentSection';
 
-export default class mainPage extends Component {
+class MainPage extends Component {
   render() {
     return (
       <div
@@ -13,10 +14,19 @@ export default class mainPage extends Component {
           gridGap: 20,
         }}
       >
-        <ComponentSection />
-        <PreviewSection />
-        <CodeSection />
+        <ListOfComponents />
+        <Preview />
+        <CodeBox key={this.props.code.length} code={this.props.code} />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    components: state.component.allComponents,
+    code: '',
+  };
+};
+
+export default connect(mapStateToProps)(MainPage);
