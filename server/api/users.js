@@ -49,17 +49,44 @@ router.get('/:id/projects', async (req, res, next) => {
   }
 });
 
-// router.post('/:id/projects', async (req, res, next) => {
-//   try {
-//     let oneUser = await User.findByPk(req.params.id);
-//     // find or create project by name
-//     let { title } = req.body;
-//     const [project, wasCreated] = await Project.findOrCreate({
-//       where: { title },
-//     });
-//     await oneUser.addProject(project);
-//     res.status(201).json(project); // send newly associated project to thunk
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+router.post('/:id/projects', async (req, res, next) => {
+  try {
+    let oneUser = await User.findByPk(req.params.id);
+    // find or create project by name
+    let { title } = req.body;
+    const [project, wasCreated] = await Project.findOrCreate({
+      where: { title },
+    });
+    await oneUser.addProject(project);
+    res.status(201).json(project); // send newly associated project to thunk
+  } catch (error) {
+    next(error);
+  }
+});
+
+//api update
+router.put('/:id', async (req, res, next) => {
+  try {
+    const findUser = await User.findByPk(req.params.id);
+    const updateUser = await findUser.update(req.body);
+    res.json({
+      message: 'Updated successfully',
+      findUser: updateUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//api delete
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const findUser = await User.findByPk(req.params.id);
+    const deleteMe = await findUser.destroy();
+
+    res.status(200).send(`user ${deleteMe} has been delted`);
+  } catch (error) {
+    next(error);
+  }
+});
+
