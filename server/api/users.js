@@ -49,17 +49,17 @@ router.get('/:id/projects', async (req, res, next) => {
   }
 });
 
-router.post('/:id/projects', async (req, res, next) => {
-  try {
-    let oneUser = await User.findByPk(req.params.id);
-    // find or create project by name
-    let { title } = req.body;
-    const [project, wasCreated] = await Project.findOrCreate({
-      where: { title },
-    });
-    await oneUser.addProject(project);
-    res.status(201).json(project); // send newly associated project to thunk
-  } catch (error) {
-    next(error);
-  }
-});
+// router.post('/:id/projects', async (req, res, next) => {
+//   try {
+//     let oneUser = await User.findByPk(req.params.id);
+//     // find or create project by name
+//     let { title } = req.body;
+//     const [project, wasCreated] = await Project.findOrCreate({
+//       where: { title },
+//     });
+//     await oneUser.addProject(project);
+//     res.status(201).json(project); // send newly associated project to thunk
+//   } catch (error) {
+//     next(error);
+//   }
+// });

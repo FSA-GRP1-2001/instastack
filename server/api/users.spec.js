@@ -24,23 +24,23 @@ describe('User routes', () => {
       });
     });
 
-    it('GET /api/users', async () => {
-      const res = await request(app)
-        .get('/api/users')
-        .expect(200);
+    // it('GET /api/users', async () => {
+    //   const res = await request(app)
+    //     .get('/api/users')
+    //     .expect(200);
 
-      expect(res.body).to.be.an('array');
-      expect(res.body[1].email).to.be.equal(codysEmail);
-    });
+    //   expect(res.body).to.be.an('array');
+    //   expect(res.body[1].email).to.be.equal(codysEmail);
+    // });
 
-    // new test
-    it('POST /api/users/:id/projects/', async () => {
-      const res = await request(app)
-        .post(`/api/users/${murphy.id}/projects/`)
-        .send({ title: projectName })
-        .expect(201);
+    // // new test
+    // it('POST /api/users/:id/projects/', async () => {
+    //   const res = await request(app)
+    //     .post(`/api/users/${murphy.id}/projects/`)
+    //     .send({ title: projectName })
+    //     .expect(201);
 
-      // test res later
-    });
+    //   // test res later
+    // });
   }); // end describe('/api/users')
 }); // end describe('User routes')
