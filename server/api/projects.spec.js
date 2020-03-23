@@ -39,5 +39,13 @@ describe('Project routes', () => {
         .send({ title: title })
         .expect(201);
     });
+
+    //write PUT route test
+    // it('PUT /api/projects/:id', async () => {
+    //   const res = await request(app)
+    //     .put(`/api/projects/`)
+    //     .send({  })
+    //     .expect(201);
+    // });
   }); // end describe('/api/users')
 }); // end describe('User routes')
