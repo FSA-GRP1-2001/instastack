@@ -63,3 +63,29 @@ router.post('/:id/projects', async (req, res, next) => {
     next(error);
   }
 });
+
+//api update
+router.put('/:id', async (req, res, next) => {
+  try {
+    const findUser = await User.findByPk(req.params.id);
+    const updateUser = await findUser.update(req.body);
+    res.json({
+      message: 'Updated successfully',
+      findUser: updateUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//api delete
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const findUser = await User.findByPk(req.params.id);
+    const deleteMe = await findUser.destroy();
+
+    res.status(200).send(`user ${deleteMe} has been delted`);
+  } catch (error) {
+    next(error);
+  }
+});
