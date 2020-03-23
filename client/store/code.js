@@ -1,6 +1,3 @@
-import axios from 'axios';
-import { combineReducers } from 'redux';
-
 const openingCode = `const MyComponent = (props) => { \n return (`;
 const closingCode = `\n); \n }`;
 

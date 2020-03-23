@@ -15,10 +15,6 @@ const styles = {
 };
 
 class CodeBox extends Component {
-  constructor(props) {
-    super(props);
-    // this.updateCode = this.updateCode.bind(this);
-  }
   // updateCode(newCode) {
   //   this.setState({ code: newCode });
   // }

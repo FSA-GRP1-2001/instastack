@@ -5,7 +5,7 @@
  */
 export { default as Navbar } from './navbar';
 export { default as UserHome } from './user-home';
-export { default as MainPage } from './MainPage';
+export { default as MainPage } from './mainPage';
 export { default as ComponentSection } from './list/componentSection';
 export { default as Preview } from './preview/Preview';
 export { default as CodeMirror } from './CodeBox';
