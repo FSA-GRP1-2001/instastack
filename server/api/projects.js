@@ -45,3 +45,43 @@ router.get('/:id/users', async (req, res, next) => {
     next(error);
   }
 });
+
+//POST - Create a New Project
+router.post('/', async (req, res, next) => {
+  try {
+    // let findUser = await User.findByPk(req.params.id);
+
+    // find or create project by name
+    let { title } = req.body;
+    const project = await Project.create({ title });
+    //await findUser.addProject(project);
+    res.status(201).json(project); // send newly associated project to thunk
+  } catch (error) {
+    next(error);
+  }
+});
+
+//PUT - Update Project
+router.put('/:projectId', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.projectId);
+
+    const updatedProject = await project.update(req.body, {
+      where: { id: req.params.userId },
+    });
+    res.json(updatedProject);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete('/:projectId', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.projectId);
+    if (!project) return res.sendStatus(404);
+    await project.destroy();
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
