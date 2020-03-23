@@ -19,3 +19,40 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* USER HOME */
+.userhome-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.userhome-nav-selection {
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+/* COMPONENT SELECTION SIDEBAR */
+.component-selection-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid gray;
+  width: 120px;
+}
+
+/* PREVEW AREA */
+.drop-container {
+  width: 375px;
+  height: 550px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: 20% 40% 20%;
+  grid-row-gap: 2rem;
+  padding: 1rem;
+}
+
+.drop-area {
+  border: 1.5px dotted gray;
+}
