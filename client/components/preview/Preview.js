@@ -30,6 +30,13 @@ const styles = {
   },
 };
 
+const placeholderItem = {
+  x: 0,
+  y: 0,
+  w: 3,
+  h: 2,
+};
+
 class Preview extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +47,7 @@ class Preview extends Component {
         { i: '3', x: 3, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
         { i: '4', x: 1, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
       ],
-      items: [],
+      items: [placeholderItem],
       resizeplotly: false,
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
@@ -99,18 +106,6 @@ class Preview extends Component {
             draggableHandle=".MyDragHandleClassName"
             draggableCancel=".MyDragCancel"
           >
-            <div className="item" key={1}>
-              <div className="MyDragHandleClassName">
-                Drag from Here - <span className="text">1</span>
-              </div>
-              <div style={{ marginTop: '80px' }}>Grid - 1</div>
-            </div>
-            <div className="item" key={2}>
-              <div className="MyDragHandleClassName">
-                Drag from Here - <span className="text">2</span>
-              </div>
-              <div style={{ marginTop: '80px' }}>Grid - 2</div>
-            </div>
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
             {this.state.items.map((item, idx) => {
               return (
@@ -118,9 +113,7 @@ class Preview extends Component {
                   className="MyDragHandleClassName"
                   key={idx + 1}
                   data-grid={item}
-                >
-                  <h5>Sample Item</h5>
-                </div>
+                />
               );
             })}
           </ReactGridLayout>

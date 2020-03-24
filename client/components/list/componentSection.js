@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DragItem from './DragItem';
+import DragWrapper from './DragWrapper';
 import { getAllComponents } from '../../store';
 
 class ListOfComponents extends Component {
@@ -18,9 +18,13 @@ class ListOfComponents extends Component {
         {haveComponents &&
           components.map(component => {
             return (
-              <DragItem key={component.id} component={component}>
+              <DragWrapper
+                key={component.id}
+                component={component}
+                id={component.id}
+              >
                 {component.title}
-              </DragItem>
+              </DragWrapper>
             );
           })}
       </div>
