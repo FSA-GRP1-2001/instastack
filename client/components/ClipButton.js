@@ -1,20 +1,23 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
-const ClipButton = () => {
+const ClipButton = props => {
   //destructuring code off props
   // make a button that treats code as a string
   // copies string to clipboard on click
 
-  return <div>hi</div>;
+  return (
+    <>
+      <button type="button">Push Me</button>
+      <div>This is the Clip Button</div>
+    </>
+  );
 };
 
-export default ClipButton;
+const mapStateToProps = state => {
+  return {
+    code: state.code,
+  };
+};
 
-// const mapStateToProps = state => {
-//   return {
-//     code: state.code,
-//   };
-// };
-
-// export default connect(mapStateToProps)(ClipButton);
+export default connect(mapStateToProps)(ClipButton);
