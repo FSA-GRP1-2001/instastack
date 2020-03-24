@@ -32,12 +32,34 @@ async function seed() {
     Component.create({
       title: 'Para Component',
       htmlTag: 'p',
-      textContent: 'hello world!!',
+      textContent: 'Hello World!!',
     }),
     Component.create({
       title: 'Div Component',
       htmlTag: 'div',
       textContent: 'Good Morning World',
+    }),
+    Component.create({
+      title: 'Header Component',
+      htmlTag: 'header',
+      textContent: 'Welcome',
+    }),
+    Component.create({
+      title: 'Img Component',
+      htmlTag: 'img',
+      textContent:
+        'https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&w=1000&q=80',
+    }),
+    Component.create({
+      title: 'Button Component',
+      htmlTag: 'button',
+      textContent: 'Click Me!',
+    }),
+    Component.create({
+      title: 'Footer Component',
+      htmlTag: 'footer',
+      // textContent: 'Posted by: ',
+      textContent: `Posted by ${User.email}`,
     }),
   ]);
 
@@ -53,6 +75,9 @@ async function seed() {
   const projectComponents = await projects[0].getComponents();
   console.log('This project has these components: ', projectComponents);
   console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${projects.length} projects`);
+  console.log(`seeded ${components.length} components`);
+
   console.log(`seeded successfully`);
 }
 
