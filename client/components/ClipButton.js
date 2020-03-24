@@ -6,17 +6,16 @@ const ClipButton = ({ code }) => {
   // make a button that treats code as a string
   // copies string to clipboard on click
 
-  const [copySuccess, setCopySuccess] = useState('');
-
   function copyToClipboard() {
     var promise = navigator.clipboard.writeText(code);
   }
-
+  code = 'testing testing 123';
+  console.log('code in Clip Button: ', code);
   return (
     <>
       {document.queryCommandSupported('copy') && (
         <div>
-          <button onClick={copyToClipboard} type="button">
+          <button onClick={() => copyToClipboard} type="button">
             Copy Code to Clipboard
           </button>
         </div>
