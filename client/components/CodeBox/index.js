@@ -6,7 +6,6 @@ import 'codemirror/mode/css/css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
-import ClipButton from '../../components/ClipButton';
 
 const styles = {
   container: {
@@ -29,7 +28,6 @@ class CodeBox extends Component {
     return (
       <div style={styles.container}>
         <h4>Code Mirror</h4>
-        <ClipButton />
         <CodeMirror
           editorDidMount={editor => {
             this.instance = editor;
