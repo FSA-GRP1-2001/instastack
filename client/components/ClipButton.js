@@ -6,8 +6,11 @@ const ClipButton = ({ code }) => {
   // make a button that treats code as a string
   // copies string to clipboard on click
 
-  function copyToClipboard() {
-    var promise = navigator.clipboard.writeText(code);
+  async function copyToClipboard() {
+    var promise = await navigator.clipboard.writeText(code);
+    if (promise) {
+      // do fancy toast stuff
+    }
   }
   code = 'testing testing 123';
   console.log('code in Clip Button: ', code);
