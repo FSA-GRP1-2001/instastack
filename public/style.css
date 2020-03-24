@@ -56,3 +56,16 @@ form div {
 .drop-area {
   border: 1.5px dotted gray;
 }
+
+/* RGL Preview Items */
+.item,
+.MyDragHandleClassName {
+  border: 1px solid;
+}
+
+.MyDragHandleClassName {
+  cursor: move;
+  height: 40px;
+  line-height: 38px;
+  background: #61dafb;
+}
