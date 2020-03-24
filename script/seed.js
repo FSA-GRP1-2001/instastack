@@ -58,8 +58,12 @@ async function seed() {
     Component.create({
       title: 'Footer Component',
       htmlTag: 'footer',
-      // textContent: 'Posted by: ',
       textContent: `Posted by ${User.email}`,
+    }),
+    Component.create({
+      title: 'Navbar Component',
+      htmlTag: 'navbar',
+      textContent: `Contact`,
     }),
   ]);
 

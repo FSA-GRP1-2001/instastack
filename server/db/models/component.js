@@ -9,8 +9,12 @@ const tagConstants = {
   header: { open: '<header> <h1>', close: '</h1></header>' },
   img: { open: '<img src="', close: '">' },
   button: { open: '<button type="button">', close: '</button>' },
-  // navbar: { open: '<div>', close: '</div>' },
   footer: { open: '<footer><p>', close: '</p></footer>' },
+  navbar: {
+    open: '<div class="topnav"><a href="#contact"',
+    close: '</a></div>',
+  },
+
   // form: { open: '<div>', close: '</div>' },
   // twoColumnText: { open: '<div>', close: '</div>' },
 };
