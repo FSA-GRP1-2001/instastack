@@ -10,7 +10,7 @@ class MainPage extends Component {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: '1fr 2fr 1fr',
           gridGap: 20,
         }}
       >
