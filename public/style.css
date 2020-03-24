@@ -92,3 +92,12 @@ form div {
   background-color: rgba(111, 41, 97, 0.3);
   border: 2px solid rgba(111, 41, 97, 0.5);
 }
+
+/* BUTTON BAR */
+
+.button-bar-container {
+  display: flex;
+  padding: 7px;
+  border: 1px solid lightcyan;
+  border-radius: 4px;
+}

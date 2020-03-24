@@ -6,7 +6,11 @@ const ClipButton = () => {
   // make a button that treats code as a string
   // copies string to clipboard on click
 
-  return <div>hi</div>;
+  return (
+    <div>
+      <button type="button">Hello World</button>
+    </div>
+  );
 };
 
 export default ClipButton;

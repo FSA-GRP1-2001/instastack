@@ -5,12 +5,39 @@ import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
 import CreateContainer from './CreateContainer';
 
+const placeholderItem = {
+  x: 0,
+  y: 0,
+  w: 3,
+  h: 2,
+};
+
 class MainPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      containers: [placeholderItem],
+    };
+    this.addContainer = this.addContainer.bind(this);
+  }
+
+  addContainer() {
+    console.log('clicking add container button');
+    const newItem = {
+      x: 3,
+      y: 2,
+      w: 1,
+      h: 2,
+    };
+    this.setState(prevState => {
+      return { containers: [...prevState.containers, newItem] };
+    });
+  }
+
   render() {
     return (
       <div>
-        <CreateContainer />
-
+        <CreateContainer addContainer={this.addContainer} />
         <div
           style={{
             display: 'grid',
@@ -19,7 +46,7 @@ class MainPage extends Component {
           }}
         >
           <ListOfComponents />
-          <Preview />
+          <Preview containers={this.state.containers} />
           <CodeBox key={this.props.code.length} code={this.props.code} />
         </div>
       </div>
