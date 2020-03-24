@@ -46,6 +46,34 @@ router.get('/:id/users', async (req, res, next) => {
   }
 });
 
+router.put('/:id/users', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id);
+    const { userId } = req.body;
+    await project.addUser(userId);
+    const updatedProj = await Project.findByPk(req.params.id, {
+      include: { model: User },
+    });
+    res.json(updatedProj);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete('/:id/users', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.id);
+    const { userId } = req.body;
+    await project.removeUser(userId);
+    const updatedProj = await Project.findByPk(req.params.id, {
+      include: { model: User },
+    });
+    res.json(updatedProj);
+  } catch (error) {
+    next(error);
+  }
+});
+
 //POST - Create a New Project
 router.post('/', async (req, res, next) => {
   try {
