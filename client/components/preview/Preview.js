@@ -1,10 +1,14 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DropArea from './DropArea';
+import DropWrapper from './DropWrapper';
+import RGL, { WidthProvider } from 'react-grid-layout';
 import Generic from '../PreviewElements/Generic';
 import { updateCode } from '../../store';
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
 
+const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) return false;
@@ -12,15 +16,47 @@ const isEmpty = obj => {
   return true;
 };
 
-class DropZone extends Component {
+// item and MyDrageHandleClassName in css file
+const styles = {
+  gridContainer: {
+    border: '1px solid black',
+    minHeight: '800px',
+    maxHeight: '800px',
+  },
+  outerContainer: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 4fr',
+    border: '1px solid black',
+  },
+};
+
+class Preview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boxOneEl: {},
-      boxTwoEl: {},
-      boxThreeEl: {},
+      layout: [
+        { i: '1', x: 0, y: 0, w: 1, h: 2, minH: 1, maxH: 12 }, // *** -- minH & maxH doesnt effect the grid items
+        { i: '2', x: 1, y: 0, w: 1, h: 2, minH: 1, maxH: 12 },
+        { i: '3', x: 3, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
+        { i: '4', x: 1, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
+      ],
+      items: [],
+      resizeplotly: false,
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
+  }
+
+  addContainer() {
+    console.log('clicking add container button');
+    const newItem = {
+      x: 3,
+      y: 2,
+      w: 1,
+      h: 2,
+    };
+    this.setState({
+      items: [...this.state.items, newItem],
+    });
   }
 
   parseComponent(obj) {
@@ -50,21 +86,46 @@ class DropZone extends Component {
   }
 
   render() {
-    const { boxOneEl, boxTwoEl, boxThreeEl } = this.state;
     return (
-      <section>
-        <div className="drop-container">
-          <DropArea id="boxOneEl" setEl={this.setDroppedElement}>
-            {!isEmpty(boxOneEl) ? <Generic component={boxOneEl} /> : null}
-          </DropArea>
-          <DropArea id="boxTwoEl" setEl={this.setDroppedElement}>
-            {!isEmpty(boxTwoEl) ? <Generic component={boxTwoEl} /> : null}
-          </DropArea>
-          <DropArea id="boxThreeEl" setEl={this.setDroppedElement}>
-            {!isEmpty(boxThreeEl) ? <Generic component={boxThreeEl} /> : null}
-          </DropArea>
-        </div>
-      </section>
+      <div className="App" style={styles.gridContainer}>
+        <DropWrapper>
+          <ReactGridLayout
+            rowHeight={60}
+            width={1200}
+            cols={12}
+            onResize={this.onResize}
+            // layout={this.state.layout}
+            onLayoutChange={this.onLayoutChange}
+            draggableHandle=".MyDragHandleClassName"
+            draggableCancel=".MyDragCancel"
+          >
+            <div className="item" key={1}>
+              <div className="MyDragHandleClassName">
+                Drag from Here - <span className="text">1</span>
+              </div>
+              <div style={{ marginTop: '80px' }}>Grid - 1</div>
+            </div>
+            <div className="item" key={2}>
+              <div className="MyDragHandleClassName">
+                Drag from Here - <span className="text">2</span>
+              </div>
+              <div style={{ marginTop: '80px' }}>Grid - 2</div>
+            </div>
+            {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
+            {this.state.items.map((item, idx) => {
+              return (
+                <div
+                  className="MyDragHandleClassName"
+                  key={idx + 1}
+                  data-grid={item}
+                >
+                  <h5>Sample Item</h5>
+                </div>
+              );
+            })}
+          </ReactGridLayout>
+        </DropWrapper>
+      </div>
     );
   }
 }
@@ -75,4 +136,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(DropZone);
+export default connect(null, mapDispatchToProps)(Preview);
