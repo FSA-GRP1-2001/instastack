@@ -8,6 +8,11 @@ import App from './app';
 import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
 
+// Prime React imports
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 // establishes socket connection
 import './socket';
 
