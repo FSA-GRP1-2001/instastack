@@ -3,13 +3,34 @@ import { connect } from 'react-redux';
 import DragWrapper from './DragWrapper';
 import { getAllComponents } from '../../store';
 
+const para = {
+  id: 100,
+  title: 'Paragraph',
+  body: 'Enter text here',
+  openTag: '<p>',
+  closeTag: '</p>',
+  wholeTag: '<p>Enter text here</p>',
+};
+
+const image = {
+  id: 200,
+  title: 'Image',
+  body: 'Image url here',
+  openTag: '<img>',
+  closeTag: '',
+  src: 'https://source.unsplash.com/random/250x250',
+  wholeTag:
+    '<img src="https://source.unsplash.com/random/250x250" alt="random image" >',
+};
+
 class ListOfComponents extends Component {
   componentDidMount() {
     this.props.getAllComponents();
   }
   render() {
     console.log('in lof', this.props);
-    const { components } = this.props;
+    // const { components } = this.props;
+    const components = [para, image];
     const haveComponents = components.length > 0;
     return (
       <div className="component-selection-sidebar">

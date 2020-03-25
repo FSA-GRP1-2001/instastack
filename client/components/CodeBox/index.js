@@ -11,6 +11,7 @@ const styles = {
   container: {
     width: '80%',
     height: '80%',
+    overflow: 'scroll',
   },
 };
 
@@ -23,7 +24,7 @@ class CodeBox extends Component {
     const options = {
       lineNumbers: true,
       theme: 'material',
-      mode: 'javascript',
+      mode: 'htmlmixed',
     };
     return (
       <div style={styles.container}>

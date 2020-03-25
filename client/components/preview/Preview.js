@@ -41,6 +41,7 @@ class Preview extends Component {
         { i: '4', x: 1, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
       ],
       resizeplotly: false,
+      code: '',
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
   }
