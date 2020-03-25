@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'primereact/button';
 
 const ClipButton = ({ code }) => {
   // destructuring code off props
@@ -17,9 +18,11 @@ const ClipButton = ({ code }) => {
     <>
       {document.queryCommandSupported('copy') && (
         <div>
-          <button onClick={() => copyToClipboard} type="button">
-            Copy Code to Clipboard
-          </button>
+          <Button
+            onClick={() => copyToClipboard}
+            label="Copy Code to Clipboard"
+            className="p-button-raised"
+          />
         </div>
       )}
     </>

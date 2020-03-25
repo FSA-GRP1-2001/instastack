@@ -9,7 +9,6 @@ export { default as MainPage } from './MainPage';
 export { default as ComponentSection } from './list/componentSection';
 export { default as Preview } from './preview/Preview';
 export { default as CodeMirror } from './CodeBox';
-export { default as CreateContainer } from './CreateContainer';
 export { default as Profile } from './Profile';
 export { default as ProfileSecurity } from './ProfileSecurity';
 export { default as ProfileProjects } from './ProfileProjects';

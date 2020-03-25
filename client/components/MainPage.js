@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Preview from './preview/Preview';
 import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
-import CreateContainer from './CreateContainer';
 
 const placeholderItem = {
   x: 0,
@@ -39,9 +38,7 @@ class MainPage extends Component {
   render() {
     return (
       <div>
-        <CreateContainer addContainer={this.addContainer} />
-        <ButtonBar />
-
+        <ButtonBar addContainer={this.addContainer} />
         <div
           style={{
             display: 'grid',
