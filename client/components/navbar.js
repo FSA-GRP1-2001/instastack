@@ -23,6 +23,7 @@ const Navbar = ({ handleLogout, isLoggedIn }) => (
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           {/* temp name for this, remove before deploying */}
+          <Link to="/createContainer">createContainer</Link>
           <Link to="/mainPage">Main Page</Link>
         </div>
       )}

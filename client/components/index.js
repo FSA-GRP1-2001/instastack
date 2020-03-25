@@ -9,4 +9,5 @@ export { default as MainPage } from './MainPage';
 export { default as ComponentSection } from './list/componentSection';
 export { default as Preview } from './preview/Preview';
 export { default as CodeMirror } from './CodeBox';
+export { default as CreateContainer } from './CreateContainer';
 export { Login, Signup } from './auth-form';

@@ -69,3 +69,35 @@ form div {
   line-height: 38px;
   background: #61dafb;
 }
+
+/* testing purposes remove before commiting */
+
+.container {
+  border: 5px solid rgb(111, 41, 97);
+  border-radius: 0.5em;
+  padding: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+
+  padding: 20px;
+  font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin: 0 0 1em 0;
+  box-sizing: border-box;
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background-color: rgba(111, 41, 97, 0.3);
+  border: 2px solid rgba(111, 41, 97, 0.5);
+}
+
+/* BUTTON BAR */
+
+.button-bar-container {
+  display: flex;
+  padding: 7px;
+  border: 1px solid lightcyan;
+  border-radius: 4px;
+}
