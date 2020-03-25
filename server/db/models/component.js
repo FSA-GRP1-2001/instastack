@@ -6,7 +6,7 @@ const tagConstants = {
   ul: { open: '<ul>', close: '</ul>' },
   li: { open: '<li>', close: '</li>' },
   div: { open: '<div>', close: '</div>' },
-  header: { open: '<header> <h1>', close: '</h1></header>' },
+  h1: { open: '<h1>', close: '</h1>' },
   img: { open: '<img src="', close: '" />' },
   button: { open: '<button type="button">', close: '</button>' },
   // navbar: { open: '<div>', close: '</div>' },
