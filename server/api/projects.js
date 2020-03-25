@@ -13,20 +13,38 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+//test for profile
+
 router.get('/:id', async (req, res, next) => {
   try {
-    const singleProject = await Project.findByPk(req.params.id);
-    if (!singleProject) {
-      const error = Error('Sorry we currently do not have that project listed');
-      error.status = 404;
-      return next(error);
-    } else {
-      res.json(singleProject);
-    }
+    console.log('in projects/:id');
+
+    const singleProject = await Project.findOne({
+      where: {
+        id: +req.params.id,
+      },
+      include: [{ model: User }],
+    });
+    res.json(singleProject);
   } catch (error) {
     next(error);
   }
 });
+
+// router.get('/:id', async (req, res, next) => {
+//   try {
+//     const singleProject = await Project.findByPk(req.params.id);
+//     if (!singleProject) {
+//       const error = Error('Sorry we currently do not have that project listed');
+//       error.status = 404;
+//       return next(error);
+//     } else {
+//       res.json(singleProject);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // GET api/users/projects
 router.get('/:id/users', async (req, res, next) => {
