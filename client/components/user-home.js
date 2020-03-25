@@ -17,7 +17,7 @@ export const UserHome = props => {
           <Link to="/mainpage">Start a New Project</Link>
         </div>
         <div className="userhome-nav-selection">
-          <Link to="/mainpage">View Saved Projects</Link>
+          <Link to="/projects">View Saved Projects</Link>
         </div>
       </section>
     </div>

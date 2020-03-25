@@ -18,14 +18,13 @@ const Navbar = ({ handleLogout, isLoggedIn }) => (
             Logout
           </a>
           <Link to="/home">Home</Link>
+          <Link to="/profile">Profile</Link>
         </div>
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
-          {/* temp name for this, remove before deploying */}
-          <Link to="/createContainer">createContainer</Link>
           <Link to="/mainPage">Main Page</Link>
         </div>
       )}

@@ -8,6 +8,9 @@ import {
   UserHome,
   MainPage,
   CreateContainer,
+  Profile,
+  ProfileProjects,
+  ProfileSecurity,
 } from './components';
 import { me } from './store';
 
@@ -35,6 +38,9 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/projects" component={ProfileProjects} />
+            <Route path="/security" component={ProfileSecurity} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
