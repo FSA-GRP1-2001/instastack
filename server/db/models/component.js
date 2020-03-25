@@ -34,7 +34,7 @@ const Component = db.define('component', {
     },
   },
   htmlTag: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false,
     defaultValue: 'div',
     validate: {
@@ -42,13 +42,13 @@ const Component = db.define('component', {
     },
   },
   openTag: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   closeTag: {
     type: Sequelize.STRING,
   },
   textContent: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   contentTag: {
     type: Sequelize.TEXT,
