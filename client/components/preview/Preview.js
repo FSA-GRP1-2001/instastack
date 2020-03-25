@@ -30,13 +30,6 @@ const styles = {
   },
 };
 
-const placeholderItem = {
-  x: 0,
-  y: 0,
-  w: 3,
-  h: 2,
-};
-
 class Preview extends Component {
   constructor(props) {
     super(props);
@@ -47,23 +40,9 @@ class Preview extends Component {
         { i: '3', x: 3, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
         { i: '4', x: 1, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
       ],
-      items: [placeholderItem],
       resizeplotly: false,
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
-  }
-
-  addContainer() {
-    console.log('clicking add container button');
-    const newItem = {
-      x: 3,
-      y: 2,
-      w: 1,
-      h: 2,
-    };
-    this.setState({
-      items: [...this.state.items, newItem],
-    });
   }
 
   parseComponent(obj) {
@@ -107,7 +86,7 @@ class Preview extends Component {
             draggableCancel=".MyDragCancel"
           >
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
-            {this.state.items.map((item, idx) => {
+            {this.props.containers.map((item, idx) => {
               return (
                 <div
                   className="MyDragHandleClassName"

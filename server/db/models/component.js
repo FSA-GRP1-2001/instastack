@@ -16,6 +16,11 @@ const tagConstants = {
     close: '</body></html>',
   },
   // navbar: { open: '<div>', close: '</div>' },
+  navbar: {
+    open: '<div class="topnav"><a href="#contact"',
+    close: '</a></div>',
+  },
+
   // form: { open: '<div>', close: '</div>' },
   // twoColumnText: { open: '<div>', close: '</div>' },
 };

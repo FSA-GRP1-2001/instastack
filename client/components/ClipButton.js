@@ -5,7 +5,6 @@ const ClipButton = ({ code }) => {
   // destructuring code off props
   // make a button that treats code as a string
   // copies string to clipboard on click
-
   async function copyToClipboard() {
     var promise = await navigator.clipboard.writeText(code);
     if (promise) {
