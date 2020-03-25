@@ -18,8 +18,9 @@ const image = {
   body: 'Image url here',
   openTag: '<img>',
   closeTag: '',
+  src: 'https://source.unsplash.com/random/250x250',
   wholeTag:
-    '<img src="https://source.unsplash.com/random/400x400" alt="random image" >',
+    '<img src="https://source.unsplash.com/random/250x250" alt="random image" >',
 };
 
 class ListOfComponents extends Component {

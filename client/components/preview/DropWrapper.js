@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateCode } from '../../store';
 
 class DropWrapper extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+  }
+
+  getPreviewHtml() {
+    const grid = document.querySelector('.react-grid-layout');
+    const html = grid.innerHTML;
+    return html;
+  }
 
   drop = e => {
     e.preventDefault();
@@ -9,6 +19,7 @@ class DropWrapper extends Component {
     console.log('got data ', data);
     if (data && !e.target.classList.contains('react-grid-layout')) {
       e.target.appendChild(document.getElementById(data));
+      this.props.updateCode(this.getPreviewHtml());
     }
   };
 
@@ -30,4 +41,10 @@ class DropWrapper extends Component {
   }
 }
 
-export default DropWrapper;
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCode: code => dispatch(updateCode(code)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(DropWrapper);

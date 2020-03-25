@@ -1,5 +1,4 @@
-const openingCode = `const MyComponent = (props) => { \n return (`;
-const closingCode = `\n); \n }`;
+import beautify from 'js-beautify';
 
 /**
  * ACTION TYPES
@@ -19,11 +18,11 @@ const updatedCode = code => ({
  */
 
 export const updateCode = code => {
-  return async dispatch => {
+  return dispatch => {
+    const prettyCode = beautify.html(code);
     try {
-      const newCode = openingCode + code + closingCode;
-      dispatch(updatedCode(newCode));
-      console.log('new code is ', newCode);
+      dispatch(updatedCode(prettyCode));
+      console.log('new code is ', prettyCode);
     } catch (error) {
       console.error(error);
     }
@@ -40,3 +39,13 @@ export const updateCode = code => {
       return code;
   }
 }
+
+// const openHtml = '<!DOCTYPE html>
+// <html>
+//   <head>
+//     <meta charset='utf-8'>
+//     <meta name='viewport' content='width=device-width initial-scale=1.0'>
+//     <title>Your Code</title>
+//   </head><body>'
+
+// const closeHtml = '</body></html>'
