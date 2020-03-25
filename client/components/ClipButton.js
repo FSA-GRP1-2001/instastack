@@ -1,24 +1,40 @@
-import React from 'react';
-// import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-const ClipButton = () => {
-  //destructuring code off props
+const ClipButton = ({ code }) => {
+  // destructuring code off props
   // make a button that treats code as a string
   // copies string to clipboard on click
-
   return (
     <div>
       <button type="button">Hello World</button>
     </div>
+
+  async function copyToClipboard() {
+    var promise = await navigator.clipboard.writeText(code);
+    if (promise) {
+      // do fancy toast stuff
+    }
+  }
+  code = 'testing testing 123';
+  console.log('code in Clip Button: ', code);
+  return (
+    <>
+      {document.queryCommandSupported('copy') && (
+        <div>
+          <button onClick={() => copyToClipboard} type="button">
+            Copy Code to Clipboard
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
-export default ClipButton;
+const mapStateToProps = state => {
+  return {
+    code: state.code,
+  };
+};
 
-// const mapStateToProps = state => {
-//   return {
-//     code: state.code,
-//   };
-// };
-
-// export default connect(mapStateToProps)(ClipButton);
+export default connect(mapStateToProps)(ClipButton);

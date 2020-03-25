@@ -12,6 +12,8 @@ const placeholderItem = {
   h: 2,
 };
 
+import ButtonBar from './ButtonBar';
+
 class MainPage extends Component {
   constructor() {
     super();
@@ -38,6 +40,8 @@ class MainPage extends Component {
     return (
       <div>
         <CreateContainer addContainer={this.addContainer} />
+        <ButtonBar />
+
         <div
           style={{
             display: 'grid',
