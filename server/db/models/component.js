@@ -3,14 +3,19 @@ const db = require('../db');
 
 const tagConstants = {
   p: { open: '<p>', close: '</p>' },
-  ul: { open: '<ul>', close: '</ul>' },
-  li: { open: '<li>', close: '</li>' },
+  ul: { open: '<ul><li>', close: '</li></ul>' },
+  //li: { open: '<li>', close: '</li>' },
   div: { open: '<div>', close: '</div>' },
   h1: { open: '<h1>', close: '</h1>' },
   img: { open: '<img src="', close: '" />' },
   button: { open: '<button type="button">', close: '</button>' },
-  // navbar: { open: '<div>', close: '</div>' },
   footer: { open: '<footer><p>', close: '</p></footer>' },
+  html: {
+    open:
+      '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Project</title></head><body>',
+    close: '</body></html>',
+  },
+  // navbar: { open: '<div>', close: '</div>' },
   // form: { open: '<div>', close: '</div>' },
   // twoColumnText: { open: '<div>', close: '</div>' },
 };
