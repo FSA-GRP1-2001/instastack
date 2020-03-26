@@ -6,28 +6,29 @@ import { getAllUsers, getSingleUser } from '../store/users';
 
 class ProfileProjects extends Component {
   componentDidMount() {
-    this.props.getAllProjects(this.props.match.params.id);
+    // this.props.getAllProjects(this.props.match.params.id);
     // this.props.getSingleProject(this.props.match.params.id);
     // this.props.getAllUsers(this.props.match.params.id);
-    this.props.getSingleUser(this.props.match.params.id);
-    console.log('test', this.props.match.params.id);
+    this.props.getSingleUser(this.props.match.params);
+    // console.log('test', this.props.match.params.id);
   }
   render() {
-    const { projects } = this.props;
-    // console.log('state1', this.props.projects.users.user_project);
+    const { users } = this.props;
+    // console.log('state1', users.singleUser.projects);
+    console.log('state1', this.props);
 
     return (
       <div>
         <h2> Your Projects </h2>
 
-        {/* {this.props.users.projects.map(user => {
+        {/* {this.props.user.projects.map(user1 => {
           return (
-            <ul key={user.id}>
-              <p></p>
+            <ul key={user1.id}>
+              <p>{user1.title}</p>
             </ul>
           );
         })} */}
-        <div>
+        {/* <div>
           {projects.map(project => {
             return (
               <ul key={project.id}>
@@ -37,7 +38,7 @@ class ProfileProjects extends Component {
                   type="button"
                   size="small"
                   color="primary"
-                  // onClick={}
+                // onClick={}
                 >
                   Edit
                 </button>
@@ -45,7 +46,7 @@ class ProfileProjects extends Component {
                   type="button"
                   size="small"
                   color="primary"
-                  // onClick={}
+                // onClick={}
                 >
                   Delete
                 </button>
@@ -54,21 +55,21 @@ class ProfileProjects extends Component {
                   type="button"
                   size="small"
                   color="primary"
-                  // onClick={}
+                // onClick={}
                 >
                   Save
                 </button>
               </ul>
             );
-          })}
-          <Link to="/users/:id/profile">
-            <h2>Back to your profile</h2>
-          </Link>
+          })} */}
+        <Link to="/users/:id/profile">
+          <h2>Back to your profile</h2>
+        </Link>
 
-          <Link to="/mainPage">
-            <h2>Start a new project</h2>
-          </Link>
-        </div>
+        <Link to="/mainPage">
+          <h2>Start a new project</h2>
+        </Link>
+        {/* </div> */}
       </div>
     );
   }
@@ -76,7 +77,7 @@ class ProfileProjects extends Component {
 
 const mapStateToProps = state => {
   return {
-    projects: state.projects.allProjects,
+    // projects: state.projects.allProjects,
     // project: state.projects.singleProject,
     // users: state.users.allUsers,
     user: state.user,
@@ -85,7 +86,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllProjects: () => dispatch(getAllProjects()),
+    // getAllProjects: () => dispatch(getAllProjects()),
     // getSingleProject: id => dispatch(getSingleProject(id)),
     // getAllUsers: () => dispatch(getAllUsers()),
     getSingleUser: id => dispatch(getSingleUser(id)),

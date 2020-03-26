@@ -38,10 +38,10 @@ export const getAllUsers = () => {
 export const getSingleUser = id => {
   return async dispatch => {
     try {
-      console.log('in singleuser thunk', id);
+      console.log('in s u', id);
       const { data } = await axios.get(`/api/users/${id}`);
-      console.log('i am below singluser route');
       dispatch(gotSingleUser(data));
+      console.log('out s u');
     } catch (error) {
       console.error(error);
     }
