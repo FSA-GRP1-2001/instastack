@@ -23,12 +23,18 @@ const ClipButton = ({ code }) => {
         detail: 'Copied code to clipboard',
       });
     } catch (error) {
-      console.error('Failed to copy from clipboard ', err);
+      growl.show({
+        severity: 'error',
+        summary: 'Error Message',
+        detail: 'Code not copied to clipboard',
+      });
+      console.error('Failed to copy from clipboard ', error);
     }
   }
 
   return (
     <>
+      {/* eslint-disable-next-line no-return-assign */}
       <Growl ref={el => (growl = el)}></Growl>
       {document.queryCommandSupported('copy') && (
         <div>
