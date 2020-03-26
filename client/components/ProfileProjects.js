@@ -7,66 +7,38 @@ import { getAllUsers, getSingleUser } from '../store/users';
 class ProfileProjects extends Component {
   componentDidMount() {
     // this.props.getAllProjects(this.props.match.params.id);
-    // this.props.getSingleProject(this.props.match.params.id);
+    // this.props.getSingleProject(this.props.match.params);
     // this.props.getAllUsers(this.props.match.params.id);
-    this.props.getSingleUser(this.props.match.params.id);
+    this.props.getSingleUser(this.props.match.params);
+    // console.log('test', this.props.match.params.id);
   }
   render() {
-    const { users } = this.props;
-    console.log('state', this.props);
+    const { user } = this.props;
+    console.log('state1', this.props);
+    // if (!projects)
+    //   return (
+    //     <div>
+    //       <h1>Project Not Found!</h1>
+    //     </div>
+    //   );
+    // if (!projects.title)
+    //   return (
+    //     <div>
+    //       <h1>Loading Project...</h1>
+    //     </div>
+    //   );
+    // return project && project.title ? (
     return (
       <div>
         <h2> Your Projects </h2>
-
-        {users.map(user => {
+        <p>{user.singleUsers.projects.title}</p>
+        {/* {projects.map(p => {
           return (
-            <ul key={user.id}>
-              <p>{user.projects.title}</p>
+            <ul key={p.id}>
+              <p> {p.title}</p>
             </ul>
           );
-        })}
-        {/* <div> */}
-        {/* {projects.map(project => {
-            return (
-              <ul key={project.id}>
-                <h3>Projects:</h3>
-                <h4>{project.title}</h4>
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  // onClick={}
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  // onClick={}
-                >
-                  Delete
-                </button>
-
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  // onClick={}
-                >
-                  Save
-                </button>
-              </ul>
-            );
-          })}
-          <Link to="/profile">
-            <h2>Back to your profile</h2>
-          </Link>
-
-          <Link to="/mainPage">
-            <h2>Start a new project</h2>
-          </Link>
-        </div> */}
+        })} */}
       </div>
     );
   }
@@ -75,9 +47,10 @@ class ProfileProjects extends Component {
 const mapStateToProps = state => {
   return {
     // projects: state.projects.allProjects,
-    // project: state.project,
+    // project: state.projects.singleProject,
     // users: state.users.allUsers,
-    user: state.user,
+    user: state.user.singleUser,
+    // user: state.singleUserReducer
   };
 };
 

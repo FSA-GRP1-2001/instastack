@@ -17,7 +17,7 @@ const gotAllUsers = users => ({
 
 const gotSingleUser = user => ({
   type: GET_SINGLE_USER,
-  user: user,
+  user,
 });
 
 /**
@@ -35,13 +35,14 @@ export const getAllUsers = () => {
   };
 };
 
-export const getSingleUser = id => {
+export const getSingleUser = user => {
   return async dispatch => {
     try {
-      console.log('in singleuser thunk');
-      const { data } = await axios.get(`/api/users/${id}`);
-      console.log('i am below singluser route');
+      // console.log('in s u', id);
+
+      const { data } = await axios.get(`/api/users/${user.id}`);
       dispatch(gotSingleUser(data));
+      console.log('out s u');
     } catch (error) {
       console.error(error);
     }

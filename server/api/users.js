@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
       // explicitly select only the id and email fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['id', 'email', 'displayName', 'projects'],
+      attributes: ['id', 'email', 'displayName'],
     });
     res.json(users);
   } catch (err) {
@@ -20,7 +20,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     console.log('in users/:id');
-
     const singleUser = await User.findOne({
       where: {
         id: +req.params.id,
@@ -52,9 +51,17 @@ router.get('/:id', async (req, res, next) => {
 // GET api/users/projects
 router.get('/:id/projects', async (req, res, next) => {
   try {
-    const singleUsers = await User.findByPk(req.params.id, {
-      include: { model: Project },
+    // const singleUsers = await User.findByPk(req.params.id, {
+    //   include: { model: Project },
+    // });
+
+    const singleUsers = await User.findOne({
+      where: {
+        id: +req.params.id,
+      },
+      include: [{ model: Project }],
     });
+
     if (!singleUsers) {
       const error = Error('Sorry we currently do not have that user listed');
       error.status = 404;

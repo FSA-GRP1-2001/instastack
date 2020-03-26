@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { getSingleUser } from '../store/users';
+import { connect } from 'react-redux';
 
-export default class Profile extends Component {
+class Profile extends Component {
+  componentDidMount() {
+    this.props.getSingleUser(this.props.match.params);
+  }
   render() {
+    const { user } = this.props;
+    // console.log('user', user);
     return (
       <div>
-        <Link to="/projects">
+        <Link to={`/users/${user.id}/projects`}>
           <h2>Your Projects</h2>
         </Link>
         <h3>Edit, update saved projects</h3>
 
-        <Link to="/security">
+        <Link to={`/users/${user.id}/security`}>
           <h2>Login and Security</h2>
         </Link>
         <h3>Edit login, name, GitHub account</h3>
@@ -18,3 +25,17 @@ export default class Profile extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getSingleUser: id => dispatch(getSingleUser(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
