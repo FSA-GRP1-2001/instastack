@@ -35,18 +35,14 @@ export const getAllUsers = () => {
   };
 };
 
-export const getSingleUser = user => {
-  return async dispatch => {
-    try {
-      // console.log('in s u', id);
-
-      const { data } = await axios.get(`/api/users/${user.id}`);
-      dispatch(gotSingleUser(data));
-      console.log('out s u');
-    } catch (error) {
-      console.error(error);
-    }
-  };
+export const getSingleUser = id => async (dispatch, getState) => {
+  try {
+    let userId = id.id;
+    const { data } = await axios.get(`/api/users/${userId}`);
+    dispatch(gotSingleUser(data));
+  } catch (error) {
+    console.log('We could not find the user.');
+  }
 };
 
 /**
@@ -72,7 +68,8 @@ function singleUserReducer(user = {}, action) {
 
 const rootReducer = combineReducers({
   allUsers: allUsersReducer,
-  singleUser: singleUserReducer,
+  //singleUser: singleUserReducer,
+  singleUserReducer,
 });
 
 export default rootReducer;

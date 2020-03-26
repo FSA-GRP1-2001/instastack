@@ -16,10 +16,10 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-//test purposes
+//GET user by id
 router.get('/:id', async (req, res, next) => {
   try {
-    console.log('in users/:id');
+    //console.log('in users/:id');
     const singleUser = await User.findOne({
       where: {
         id: +req.params.id,
@@ -27,48 +27,22 @@ router.get('/:id', async (req, res, next) => {
       include: [{ model: Project }],
     });
     res.json(singleUser);
-    console.log('in users/:id');
   } catch (error) {
     next(error);
   }
 });
 
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     const singleUsers = await User.findByPk(req.params.id);
-//     if (!singleUsers) {
-//       const error = Error('Sorry we currently do not have that user listed');
-//       error.status = 404;
-//       return next(error);
-//     } else {
-//       res.json(singleUsers);
-//     }
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-// GET api/users/projects
+//GET user by id + projects
 router.get('/:id/projects', async (req, res, next) => {
   try {
-    // const singleUsers = await User.findByPk(req.params.id, {
-    //   include: { model: Project },
-    // });
-
-    const singleUsers = await User.findOne({
+    //console.log('in users/:id');
+    const singleUser = await User.findOne({
       where: {
         id: +req.params.id,
       },
       include: [{ model: Project }],
     });
-
-    if (!singleUsers) {
-      const error = Error('Sorry we currently do not have that user listed');
-      error.status = 404;
-      return next(error);
-    } else {
-      res.json(singleUsers);
-    }
+    res.json(singleUser);
   } catch (error) {
     next(error);
   }
