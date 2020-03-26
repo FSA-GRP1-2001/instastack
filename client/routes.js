@@ -7,7 +7,6 @@ import {
   Signup,
   UserHome,
   MainPage,
-  CreateContainer,
   Profile,
   ProfileProjects,
   ProfileSecurity,
@@ -32,8 +31,6 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         {/* <Route path="/lof" component={ListOfComponents} /> */}
         <Route path="/mainpage" component={MainPage} />
-        <Route path="/createcontainer" component={CreateContainer} />
-
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
