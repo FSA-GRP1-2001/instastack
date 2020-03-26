@@ -109,7 +109,7 @@ class ProfileSecurity extends Component {
                   Done
                 </button>
 
-                <Link to="/profile">
+                <Link to="/users/:id/profile">
                   <h2>Back to your profile</h2>
                 </Link>
               </ul>

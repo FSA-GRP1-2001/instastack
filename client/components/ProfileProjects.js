@@ -61,7 +61,7 @@ class ProfileProjects extends Component {
               </ul>
             );
           })}
-          <Link to="/profile">
+          <Link to="/users/:id/profile">
             <h2>Back to your profile</h2>
           </Link>
 

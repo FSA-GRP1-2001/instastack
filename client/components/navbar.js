@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import ClipButton from './ClipButton';
 
-const Navbar = ({ handleLogout, isLoggedIn }) => (
+const Navbar = ({ handleLogout, isLoggedIn, user }) => (
   <div>
     <h1>InstaStack</h1>
     <ClipButton />
@@ -18,7 +18,8 @@ const Navbar = ({ handleLogout, isLoggedIn }) => (
             Logout
           </a>
           <Link to="/home">Home</Link>
-          <Link to="/profile">Profile</Link>
+          {/* <Link to="/profile">Profile</Link> */}
+          <Link to={`/users/${user.id}/profile`}>Profile</Link>
         </div>
       ) : (
         <div>
@@ -39,6 +40,7 @@ const Navbar = ({ handleLogout, isLoggedIn }) => (
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
+    user: state.user,
   };
 };
 
