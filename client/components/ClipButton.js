@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'primereact/button';
 
 const ClipButton = ({ code }) => {
+  useEffect(() => {
+    /// re-render this functional component if code updates
+  }, [code]);
+
   // destructuring code off props
   // make a button that treats code as a string
   // copies string to clipboard on click
@@ -10,16 +14,16 @@ const ClipButton = ({ code }) => {
     var promise = await navigator.clipboard.writeText(code);
     if (promise) {
       // do fancy toast stuff
+      console.log('Clipped!');
     }
   }
-  code = 'testing testing 123';
   console.log('code in Clip Button: ', code);
   return (
     <>
       {document.queryCommandSupported('copy') && (
         <div>
           <Button
-            onClick={() => copyToClipboard}
+            onClick={copyToClipboard}
             label="Copy Code to Clipboard"
             className="p-button-raised"
           />
