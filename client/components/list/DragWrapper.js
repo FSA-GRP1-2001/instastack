@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 
-const tagMap = { '<p>': 'p', '<img>': 'img' };
-
 class DragWrapper extends Component {
   state = {};
 
   drag = e => {
     // clone the item we are dragging
     const componentObj = JSON.parse(e.target.dataset.component);
-    const tag = tagMap[componentObj.openTag];
-    const newComponent = document.createElement(tag);
-    if (tag === 'img') {
-      newComponent.src = componentObj.src;
-    }
+    const tag = componentObj.htmlTag;
+    let newComponent = document.createElement(tag);
     newComponent.id = e.target.id + `${Math.floor(Math.random() * 100)}`;
-    newComponent.textContent = componentObj.body;
+
+    if (tag === 'ul') {
+      let innerHtmlText = componentObj.children
+        .map(str => '<li>' + str + '</li>')
+        .join('');
+      newComponent.innerHTML = innerHtmlText;
+    } else if (tag === 'img') {
+      newComponent.src = componentObj.src;
+    } else {
+      newComponent.textContent = componentObj.textContent;
+    }
     document.body.appendChild(newComponent);
     e.dataTransfer.setData('transfer', newComponent.id);
-    // // const clone = document.createElement(tag);
-    // clone.id = e.target.id + 'clone';
-    // clone.textContent = e.target.textContent;
-    // document.body.appendChild(clone);
     console.log('the new component is ', newComponent);
     console.log('the data transfer obj is ', e.dataTransfer);
     // e.dataTransfer.setData('transfer', clone.id);

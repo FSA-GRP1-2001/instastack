@@ -41,8 +41,8 @@ async function seed() {
     Component.create({
       title: 'Img Component',
       htmlTag: 'img',
-      textContent:
-        'https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&w=1000&q=80',
+      src:
+        'https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&w=250&q=250',
     }),
     Component.create({
       title: 'Button Component',
@@ -61,7 +61,7 @@ async function seed() {
     Component.create({
       title: 'List Component',
       htmlTag: 'ul',
-      textContent: 'First list item',
+      children: ['First item', 'Second Item', 'Third Item'],
     }),
     Component.create({
       title: 'Paragraph Component',
@@ -72,7 +72,7 @@ async function seed() {
     Component.create({
       title: 'Navbar Component',
       htmlTag: 'navbar',
-      textContent: `Contact`,
+      children: ['Contact info'],
     }),
   ]);
 
