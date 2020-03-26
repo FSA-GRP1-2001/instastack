@@ -7,17 +7,17 @@ import { Link } from 'react-router-dom';
  * COMPONENT
  */
 export const UserHome = props => {
-  const { email } = props;
+  const { displayName, id } = props;
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      <h3>Welcome, {displayName}</h3>
       <section className="userhome-container">
         <div className="userhome-nav-selection">
           <Link to="/mainpage">Start a New Project</Link>
         </div>
         <div className="userhome-nav-selection">
-          <Link to="/projects">View Saved Projects</Link>
+          <Link to={`/users/${id}/projects`}>View Saved Projects</Link>
         </div>
       </section>
     </div>
@@ -29,7 +29,7 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    email: state.user.email,
+    displayName: state.user.displayName,
   };
 };
 
