@@ -9,7 +9,7 @@ class ProfileSecurity extends Component {
   }
   render() {
     const { users } = this.props;
-    console.log(this.props);
+    console.log('here', this.props);
     // return users && users.name ? (
     return (
       <div>
