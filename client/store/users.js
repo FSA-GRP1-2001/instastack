@@ -35,11 +35,12 @@ export const getAllUsers = () => {
   };
 };
 
-export const getSingleUser = id => {
+export const getSingleUser = user => {
   return async dispatch => {
     try {
-      console.log('in s u', id);
-      const { data } = await axios.get(`/api/users/${id}`);
+      // console.log('in s u', id);
+
+      const { data } = await axios.get(`/api/users/${user.id}`);
       dispatch(gotSingleUser(data));
       console.log('out s u');
     } catch (error) {

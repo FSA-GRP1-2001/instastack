@@ -20,7 +20,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     console.log('in users/:id');
-
     const singleUser = await User.findOne({
       where: {
         id: +req.params.id,
@@ -56,11 +55,11 @@ router.get('/:id/projects', async (req, res, next) => {
     //   include: { model: Project },
     // });
 
-    const singleUsers = await User.findByOne({
+    const singleUsers = await User.findOne({
       where: {
         id: +req.params.id,
       },
-      include: { model: Project },
+      include: [{ model: Project }],
     });
 
     if (!singleUsers) {

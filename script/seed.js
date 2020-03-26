@@ -25,6 +25,8 @@ async function seed() {
   const projects = await Promise.all([
     Project.create({ title: 'First Demo' }),
     Project.create({ title: 'Sales Ideas' }),
+    Project.create({ title: 'Test Ideas' }),
+    Project.create({ title: 'Third Ideas' }),
   ]);
 
   const components = await Promise.all([
@@ -69,9 +71,13 @@ async function seed() {
 
   await users[0].addProjects(projects[0]);
   await users[1].addProjects(projects[1]);
+  await users[0].addProjects(projects[2]);
+  await users[1].addProjects(projects[3]);
 
   await projects[0].addComponents(components[0]);
   await projects[1].addComponents(components[1]);
+  await projects[2].addComponents(components[1]);
+  await projects[3].addComponents(components[1]);
 
   const userProjs = await users[0].getProjects();
 

@@ -46,10 +46,12 @@ export const getAllProjects = () => {
 //   };
 // };
 
-export const getSingleProject = id => {
+export const getSingleProject = project => {
   return async dispatch => {
     try {
-      const { data } = await axios.get(`/api/projects/${id}`);
+      // console.log('in s p', id);
+
+      const { data } = await axios.get(`/api/projects/${project.id}`);
       dispatch(gotSingleProject(data));
     } catch (error) {
       console.error(error);
