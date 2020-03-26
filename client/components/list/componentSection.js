@@ -4,18 +4,18 @@ import DragWrapper from './DragWrapper';
 import { getAllComponents } from '../../store';
 
 const para = {
-  id: 100,
+  id: 11,
   title: 'Paragraph',
-  body: 'Enter text here',
+  textContent: 'Enter text here',
   openTag: '<p>',
   closeTag: '</p>',
   wholeTag: '<p>Enter text here</p>',
 };
 
 const image = {
-  id: 200,
+  id: 22,
   title: 'Image',
-  body: 'Image url here',
+  textContent: 'Image url here',
   openTag: '<img>',
   closeTag: '',
   src: 'https://source.unsplash.com/random/250x250',
@@ -29,15 +29,15 @@ class ListOfComponents extends Component {
   }
   render() {
     console.log('in lof', this.props);
-    // const { components } = this.props;
-    const components = [para, image];
+    const { components } = this.props;
+    const dummyComponents = [para, image];
     const haveComponents = components.length > 0;
     return (
       <div className="component-selection-sidebar">
         {/* supposed to import all the components available */}
         <p>List of currently available components:</p>
         {haveComponents &&
-          components.map(component => {
+          [...dummyComponents, ...components].map(component => {
             return (
               <DragWrapper
                 key={component.id}

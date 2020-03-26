@@ -3,12 +3,12 @@ const db = require('../db');
 
 const tagConstants = {
   p: { open: '<p>', close: '</p>' },
-  ul: { open: '<ul><li>', close: '</li></ul>' },
+  ul: { open: '<ul>', close: '</ul>' },
   //li: { open: '<li>', close: '</li>' },
   div: { open: '<div>', close: '</div>' },
   h1: { open: '<h1>', close: '</h1>' },
-  img: { open: '<img src="', close: '">' },
-  button: { open: '<button type="button">', close: '</button>' },
+  img: { open: '<img', close: '>' },
+  button: { open: '<button>', close: '</button>' },
   footer: { open: '<footer><p>', close: '</p></footer>' },
   html: {
     open:
@@ -44,29 +44,29 @@ const Component = db.define('component', {
   openTag: {
     type: Sequelize.TEXT,
   },
-  closeTag: {
-    type: Sequelize.STRING,
-  },
   textContent: {
     type: Sequelize.TEXT,
   },
-  contentTag: {
+  children: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  src: {
     type: Sequelize.TEXT,
   },
 });
 
-Component.afterCreate(async component => {
-  const tag = component.htmlTag;
-  if (component.openTag !== tagConstants[tag].open) {
-    component.openTag = tagConstants[tag].open;
-  }
-  if (component.closeTag !== tagConstants[tag].close) {
-    component.closeTag = tagConstants[tag].close;
-  }
-  component.contentTag =
-    component.openTag + component.textContent + component.closeTag;
-  await component.save();
-  console.log('updated tags ', component);
-});
+// Component.afterCreate(async component => {
+//   const tag = component.htmlTag;
+//   if (component.openTag !== tagConstants[tag].open) {
+//     component.openTag = tagConstants[tag].open;
+//   }
+//   if (component.closeTag !== tagConstants[tag].close) {
+//     component.closeTag = tagConstants[tag].close;
+//   }
+//   component.contentTag =
+//     component.openTag + component.textContent + component.closeTag;
+//   await component.save();
+//   console.log('updated tags ', component);
+// });
 
 module.exports = Component;
