@@ -14,7 +14,7 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
             <h1>InstaStack</h1>
           </Link>
           <Link to="/mainPage">DnD</Link>
-          <Link to="templatehp"> Templates </Link>
+          <Link to="template"> Templates </Link>
 
           <a href="#" onClick={handleLogout}>
             Logout

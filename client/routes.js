@@ -10,7 +10,7 @@ import {
   Profile,
   ProfileProjects,
   ProfileSecurity,
-  TemplateHP,
+  TemplateHome,
 } from './components';
 import { me } from './store';
 
@@ -48,7 +48,7 @@ class Routes extends Component {
               path="/users/:id/security"
               component={ProfileSecurity}
             />
-            <Route path="/templatehp" component={TemplateHP} />
+            <Route path="/template" component={TemplateHome} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

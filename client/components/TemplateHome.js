@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class TemplateHP extends Component {
+export default class TemplateHome extends Component {
   render() {
     return (
       <div>

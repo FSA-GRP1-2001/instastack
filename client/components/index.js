@@ -12,6 +12,6 @@ export { default as CodeMirror } from './CodeBox';
 export { default as Profile } from './Profile';
 export { default as ProfileSecurity } from './ProfileSecurity';
 export { default as ProfileProjects } from './ProfileProjects';
-export { default as TemplateHP } from './TemplateHP';
+export { default as TemplateHome } from './TemplateHome';
 
 export { Login, Signup } from './auth-form';
