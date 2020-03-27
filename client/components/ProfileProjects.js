@@ -19,29 +19,40 @@ class ProfileProjects extends Component {
   render() {
     const { user, userProjects } = this.props;
     console.log('state1', this.props);
-    // if (!user.projects)
-    //   return (
-    //     <div>
-    //       <h1>Project Not Found!</h1>
-    //     </div>
-    //   );
-    // if (!user.projects.title)
-    //   return (
-    //     <div>
-    //       <h1>Loading Project...</h1>
-    //     </div>
-    //   );
-    // //return project && project.title ? (
     return (
       <div>
         <h2> Your Projects </h2>
-        {/* <p>{user.singleUser.projects.title}</p> */}
         <h4>{user.displayName}</h4>
         {userProjects.length &&
           userProjects.map(p => {
             return (
               <ul key={p.id}>
-                <p> {p.title}</p>
+                <h3>Projects:</h3>
+                <h4>{p.title}</h4>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  // onClick={}
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  // onClick={}
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  // onClick={}
+                >
+                  Save
+                </button>
               </ul>
             );
           })}
