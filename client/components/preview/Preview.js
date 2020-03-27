@@ -35,7 +35,7 @@ class Preview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      layout: [...this.props.containers],
+      layout: this.props.containers,
       resizeplotly: false,
       code: '',
     };
@@ -133,7 +133,7 @@ class Preview extends Component {
             draggableCancel=".MyDragCancel"
           >
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
-            {this.props.containers.map((item, idx) => {
+            {this.props.usedContainers.map((item, idx) => {
               return this.createContainer(item);
               // <div
               //   className="MyDragHandleClassName"
@@ -148,6 +148,12 @@ class Preview extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    usedContainers: state.containers,
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     updateCode: code => dispatch(updateCode(code)),
@@ -155,4 +161,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Preview);
+export default connect(mapStateToProps, mapDispatchToProps)(Preview);
