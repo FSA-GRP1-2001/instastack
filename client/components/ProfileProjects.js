@@ -14,10 +14,10 @@ class ProfileProjects extends Component {
   //   // console.log('test', this.props.match.params.id);
   // }
   componentDidMount() {
-    this.props.getSingleUser(this.props.match.params);
+    this.props.getSingleUser(this.props.match.params.id);
   }
   render() {
-    const { user } = this.props;
+    const { user, userProjects } = this.props;
     console.log('state1', this.props);
     // if (!user.projects)
     //   return (
@@ -37,13 +37,14 @@ class ProfileProjects extends Component {
         <h2> Your Projects </h2>
         {/* <p>{user.singleUser.projects.title}</p> */}
         <h4>{user.displayName}</h4>
-        {/* {projects.map(p => {
-          return (
-            <ul key={p.id}>
-              <p> {p.title}</p>
-            </ul>
-          );
-        })} */}
+        {userProjects.length &&
+          userProjects.map(p => {
+            return (
+              <ul key={p.id}>
+                <p> {p.title}</p>
+              </ul>
+            );
+          })}
       </div>
     );
   }
@@ -52,6 +53,7 @@ class ProfileProjects extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user,
+    userProjects: state.users.singleUserReducer.projects,
   };
 };
 

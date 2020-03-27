@@ -37,8 +37,7 @@ export const getAllUsers = () => {
 
 export const getSingleUser = id => async (dispatch, getState) => {
   try {
-    let userId = id.id;
-    console.log('id', id);
+    let userId = id;
     const { data } = await axios.get(`/api/users/${userId}`);
     dispatch(gotSingleUser(data));
   } catch (error) {
