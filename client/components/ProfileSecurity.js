@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 
 class ProfileSecurity extends Component {
   componentDidMount() {
-    this.props.getSingleUser(this.props.match.params);
+    this.props.getSingleUser(this.props.match.params.id);
   }
   render() {
     const { user } = this.props;
-    console.log('here', this.props);
+    //console.log('here', this.props);
     // return users && users.name ? (
     return (
       <div>

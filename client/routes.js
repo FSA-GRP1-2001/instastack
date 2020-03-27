@@ -35,9 +35,17 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
-            <Route path="/users/:id/profile" component={Profile} />
-            <Route path="/users/:id/projects" component={ProfileProjects} />
-            <Route path="/users/:id/security" component={ProfileSecurity} />
+            <Route exact path="/users/:id/profile" component={Profile} />
+            <Route
+              exact
+              path="/users/:id/projects"
+              component={ProfileProjects}
+            />
+            <Route
+              exact
+              path="/users/:id/security"
+              component={ProfileSecurity}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
