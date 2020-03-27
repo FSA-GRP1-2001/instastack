@@ -10,6 +10,7 @@ import {
   Profile,
   ProfileProjects,
   ProfileSecurity,
+  TemplateHP,
 } from './components';
 import { me } from './store';
 
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         {/* <Route path="/lof" component={ListOfComponents} /> */}
         <Route path="/mainpage" component={MainPage} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -46,6 +48,7 @@ class Routes extends Component {
               path="/users/:id/security"
               component={ProfileSecurity}
             />
+            <Route path="/templatehp" component={TemplateHP} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

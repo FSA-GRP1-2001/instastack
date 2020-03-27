@@ -17,6 +17,9 @@ export const UserHome = props => {
           <Link to="/mainpage">Start a New Project</Link>
         </div>
         <div className="userhome-nav-selection">
+          <Link to="/templatehp">Start from a Template</Link>
+        </div>
+        <div className="userhome-nav-selection">
           <Link to={`/users/${id}/projects`}>View Saved Projects</Link>
         </div>
       </section>
