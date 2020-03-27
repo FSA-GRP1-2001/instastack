@@ -9,9 +9,8 @@ import 'codemirror/theme/material.css';
 
 const styles = {
   container: {
-    width: '80%',
-    height: '80%',
-    overflow: 'scroll',
+    padding: 5,
+    overflow: 'auto',
   },
 };
 

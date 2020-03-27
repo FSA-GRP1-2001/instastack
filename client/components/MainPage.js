@@ -5,6 +5,7 @@ import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
 
 const placeholderItem = {
+  i: '0',
   x: 0,
   y: 0,
   w: 3,
@@ -23,8 +24,17 @@ class MainPage extends Component {
   }
 
   addContainer() {
+    const containerLen = this.state.containers.length;
+    let nextIdx;
+    if (containerLen < 1) {
+      nextIdx = '0';
+    } else {
+      let lastIdx = this.state.containers[containerLen - 1].i;
+      nextIdx = `${parseInt(lastIdx) + 1}`;
+    }
     console.log('clicking add container button');
     const newItem = {
+      i: nextIdx,
       x: 3,
       y: 2,
       w: 1,
@@ -42,8 +52,8 @@ class MainPage extends Component {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 2fr 1fr',
-            gridGap: 20,
+            gridTemplateColumns: '1fr 3fr 3fr',
+            gridGap: 12,
           }}
         >
           <ListOfComponents />
