@@ -5,7 +5,7 @@ import DropWrapper from './DropWrapper';
 import ContainerBox from './Container';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import Generic from '../PreviewElements/Generic';
-import { updateCode } from '../../store';
+import { updateCode, saveContainers } from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
@@ -42,7 +42,12 @@ class Preview extends Component {
     this.setDroppedElement = this.setDroppedElement.bind(this);
     this.createContainer = this.createContainer.bind(this);
     this.removeContainer = this.removeContainer.bind(this);
+    this.onResize = this.onResize.bind(this);
   }
+
+  onResize = layouts => {
+    this.props.saveContainers(layouts);
+  };
 
   removeContainer() {
     console.log('clicked remove container button');
@@ -146,6 +151,7 @@ class Preview extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     updateCode: code => dispatch(updateCode(code)),
+    saveContainers: containers => dispatch(saveContainers(containers)),
   };
 };
 
