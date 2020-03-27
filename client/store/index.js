@@ -7,10 +7,12 @@ import component from './component';
 import code from './code';
 import users from './users';
 import projects from './projects';
+import usedComponents from './usedComponents';
 
 const reducer = combineReducers({
   user,
   component,
+  usedComponents,
   code,
   users,
   projects,
@@ -27,3 +29,4 @@ export * from './component';
 export * from './code';
 export * from './users';
 export * from './projects';
+export * from './usedComponents';
