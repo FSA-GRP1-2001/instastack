@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropWrapper from './DropWrapper';
+import ContainerBox from './Container';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import Generic from '../PreviewElements/Generic';
 import { updateCode } from '../../store';
@@ -34,16 +35,53 @@ class Preview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      layout: [
-        { i: '1', x: 0, y: 0, w: 1, h: 2, minH: 1, maxH: 12 }, // *** -- minH & maxH doesnt effect the grid items
-        { i: '2', x: 1, y: 0, w: 1, h: 2, minH: 1, maxH: 12 },
-        { i: '3', x: 3, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
-        { i: '4', x: 1, y: 1, w: 1, h: 2, minH: 1, maxH: 12 },
-      ],
+      layout: [...this.props.containers],
       resizeplotly: false,
       code: '',
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
+    this.createContainer = this.createContainer.bind(this);
+    this.removeContainer = this.removeContainer.bind(this);
+  }
+
+  removeContainer() {
+    console.log('clicked remove container button');
+  }
+
+  createContainer(container) {
+    const removeIcon = {
+      position: 'absolute',
+      left: '2px',
+      top: 0,
+      cursor: 'pointer',
+    };
+    const editIcon = {
+      position: 'absolute',
+      right: '2px',
+      top: 0,
+      cursor: 'pointer',
+    };
+    const i = container.i;
+    return (
+      <div
+        style={{ border: '1px solid yellow', overflow: 'auto', paddingTop: 10 }}
+        key={i}
+        data-grid={container}
+        id={i}
+        className="MyDragHandleClassName"
+      >
+        <span
+          style={removeIcon}
+          onClick={this.removeContainer}
+          className="remove pi pi-trash"
+        />
+        <span
+          style={editIcon}
+          onClick={this.removeContainer}
+          className="remove pi pi-pencil"
+        />
+      </div>
+    );
   }
 
   parseComponent(obj) {
@@ -81,20 +119,19 @@ class Preview extends Component {
             width={1200}
             cols={12}
             onResize={this.onResize}
-            // layout={this.state.layout}
+            layout={this.state.layout}
             onLayoutChange={this.onLayoutChange}
             draggableHandle=".MyDragHandleClassName"
             draggableCancel=".MyDragCancel"
           >
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
             {this.props.containers.map((item, idx) => {
-              return (
-                <div
-                  className="MyDragHandleClassName"
-                  key={idx + 1}
-                  data-grid={item}
-                />
-              );
+              return this.createContainer(item);
+              // <div
+              //   className="MyDragHandleClassName"
+              //   key={idx + 1}
+              //   data-grid={item}
+              // />
             })}
           </ReactGridLayout>
         </DropWrapper>
