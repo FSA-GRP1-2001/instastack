@@ -52,8 +52,8 @@ class MainPage extends Component {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 2fr 1fr',
-            gridGap: 20,
+            gridTemplateColumns: '1fr 825px 2fr',
+            gridGap: 12,
           }}
         >
           <ListOfComponents />

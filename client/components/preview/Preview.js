@@ -51,20 +51,23 @@ class Preview extends Component {
   createContainer(container) {
     const removeIcon = {
       position: 'absolute',
-      left: '2px',
-      top: 0,
+      left: '1px',
       cursor: 'pointer',
     };
     const editIcon = {
       position: 'absolute',
-      right: '2px',
-      top: 0,
+      right: '1px',
       cursor: 'pointer',
     };
     const i = container.i;
     return (
       <div
-        style={{ border: '1px solid yellow', overflow: 'auto', paddingTop: 10 }}
+        style={{
+          border: '1px solid yellow',
+          overflow: 'auto',
+          paddingLeft: 10,
+          paddingRight: 10,
+        }}
         key={i}
         data-grid={container}
         id={i}

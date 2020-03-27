@@ -18,7 +18,13 @@ class DropWrapper extends Component {
     const containerIdx = e.target.id;
     const data = e.dataTransfer.getData('transfer');
     const component = document.getElementById(data);
-    console.log('dropping the component ', component);
+    console.log(
+      'dropping the component ',
+      component,
+      ' datagrid data is ',
+      component.dataset
+    );
+
     let children = null;
     if (component.children.length) {
       children = [...component.children].map(c => ({
@@ -29,6 +35,7 @@ class DropWrapper extends Component {
     const componentObj = {
       domId: data,
       tag: component.tagName,
+      // dataGrid: component.dataset.component,
       content: component.textContent,
       src: component.src || '',
       children: children,
