@@ -4,7 +4,7 @@ import beautify from 'js-beautify';
  * ACTION TYPES
  */
 const UPDATE_CODE = 'UPDATE_CODE';
-
+const CLEAR_CODE = 'CLEAR_CODE';
 /**
  * ACTION CREATORS
  */
@@ -13,13 +13,15 @@ const updatedCode = code => ({
   code,
 });
 
+export const clearedCode = () => ({ type: CLEAR_CODE });
 /**
  * THUNK CREATORS
  */
 
 export const updateCode = code => {
   return dispatch => {
-    const prettyCode = beautify.html(code);
+    const fullCode = openHtml + code + closeHtml;
+    const prettyCode = beautify.html(fullCode);
     try {
       dispatch(updatedCode(prettyCode));
       console.log('new code is ', prettyCode);
@@ -35,17 +37,14 @@ export const updateCode = code => {
   switch (action.type) {
     case UPDATE_CODE:
       return action.code;
+    case CLEAR_CODE:
+      return '';
     default:
       return code;
   }
 }
 
-// const openHtml = '<!DOCTYPE html>
-// <html>
-//   <head>
-//     <meta charset='utf-8'>
-//     <meta name='viewport' content='width=device-width initial-scale=1.0'>
-//     <title>Your Code</title>
-//   </head><body>'
+const openHtml =
+  "<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width initial-scale=1.0'><title>Your Code</title></head><body>";
 
-// const closeHtml = '</body></html>'
+const closeHtml = '</body></html>';

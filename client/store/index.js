@@ -8,6 +8,8 @@ import code from './code';
 import users from './users';
 import projects from './projects';
 import usedComponents from './usedComponents';
+import currentProject from './currentProject';
+import containers from './containers';
 
 const reducer = combineReducers({
   user,
@@ -16,6 +18,8 @@ const reducer = combineReducers({
   code,
   users,
   projects,
+  currentProject,
+  containers,
 });
 
 const middleware = composeWithDevTools(
@@ -30,3 +34,5 @@ export * from './code';
 export * from './users';
 export * from './projects';
 export * from './usedComponents';
+export * from './currentProject';
+export * from './containers';

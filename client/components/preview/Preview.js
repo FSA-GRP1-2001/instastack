@@ -5,9 +5,10 @@ import DropWrapper from './DropWrapper';
 import ContainerBox from './Container';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import Generic from '../PreviewElements/Generic';
-import { updateCode } from '../../store';
+import { updateCode, saveContainers } from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import usedComponents from '../../store/usedComponents';
 
 const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {
@@ -15,6 +16,23 @@ const isEmpty = obj => {
     if (obj.hasOwnProperty(key)) return false;
   }
   return true;
+};
+
+const populateSavedComponents = arr => {
+  const grid = document.querySelector('.react-grid-layout');
+
+  arr.map(obj => {
+    const { component, i } = obj;
+    console.log(component, i);
+    let node = document.createElement(component.tag);
+    node.textContent = component.content;
+    if (component.tag.toLowerCase() === 'img') {
+      node.src = component.src;
+    }
+    node.id = component.domId;
+    let container = grid.querySelector(`#\\3${i}`);
+    container.appendChild(node);
+  });
 };
 
 // item and MyDrageHandleClassName in css file
@@ -35,13 +53,26 @@ class Preview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      layout: [...this.props.containers],
+      layout: this.props.containers,
       resizeplotly: false,
       code: '',
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
     this.createContainer = this.createContainer.bind(this);
     this.removeContainer = this.removeContainer.bind(this);
+    this.onResize = this.onResize.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('loading Preview area');
+    if (this.props.usedContainers.length > 0) {
+      console.log('loading used components');
+      populateSavedComponents(this.props.usedComponents);
+    }
+  }
+
+  onResize(layouts) {
+    this.props.saveContainers(layouts);
   }
 
   removeContainer() {
@@ -122,20 +153,22 @@ class Preview extends Component {
             width={1200}
             cols={12}
             onResize={this.onResize}
-            layout={this.state.layout}
+            layout={this.props.usedContainers}
             onLayoutChange={this.onLayoutChange}
             draggableHandle=".MyDragHandleClassName"
             draggableCancel=".MyDragCancel"
           >
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
-            {this.props.containers.map((item, idx) => {
-              return this.createContainer(item);
-              // <div
-              //   className="MyDragHandleClassName"
-              //   key={idx + 1}
-              //   data-grid={item}
-              // />
-            })}
+            {this.props.usedContainers.length
+              ? this.props.usedContainers.map(item => {
+                  return this.createContainer(item);
+                  // <div
+                  //   className="MyDragHandleClassName"
+                  //   key={idx + 1}
+                  //   data-grid={item}
+                  // />
+                })
+              : null}
           </ReactGridLayout>
         </DropWrapper>
       </div>
@@ -143,10 +176,18 @@ class Preview extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    updateCode: code => dispatch(updateCode(code)),
+    usedContainers: state.containers,
+    usedComponents: state.usedComponents,
   };
 };
 
-export default connect(null, mapDispatchToProps)(Preview);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCode: code => dispatch(updateCode(code)),
+    saveContainers: containers => dispatch(saveContainers(containers)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preview);
