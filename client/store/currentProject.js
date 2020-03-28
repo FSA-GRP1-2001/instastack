@@ -48,26 +48,24 @@ export const saveProject = (
   }
 };
 
-export const getSavedProject = () => {
-  return async dispatch => {
-    try {
-      // remove hard coded proj ID
-      const { data } = await axios.get('/api/projects/1');
-      const { usedContainers, usedComponents } = data;
-      console.log('saved data is ', usedContainers, usedComponents);
-      dispatch(
-        gotSavedProject({
-          usedComponents: JSON.parse(usedComponents),
-          containers: JSON.parse(usedContainers),
-        })
-      );
-      dispatch(gotSavedContainers(JSON.parse(usedContainers)));
-      dispatch(gotSavedComponents(JSON.parse(usedComponents)));
-      history.push('/mainPage');
-    } catch (error) {
-      console.error(error);
-    }
-  };
+export const getSavedProject = projId => async dispatch => {
+  try {
+    console.log('dispatch proj id is ', projId);
+    const { data } = await axios.get(`/api/projects/${projId}`);
+    const { usedContainers, usedComponents } = data;
+    console.log('saved data is ', usedContainers, usedComponents);
+    dispatch(
+      gotSavedProject({
+        usedComponents: JSON.parse(usedComponents),
+        containers: JSON.parse(usedContainers),
+      })
+    );
+    dispatch(gotSavedContainers(JSON.parse(usedContainers)));
+    dispatch(gotSavedComponents(JSON.parse(usedComponents)));
+    history.push('/mainPage');
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 /**
