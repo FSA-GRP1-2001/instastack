@@ -1,6 +1,7 @@
 import axios from 'axios';
 import history from '../history';
-import { clearedProject, clearedContainers } from './index';
+import { clearedProject } from './currentProject';
+import { clearedContainers } from './containers';
 /**
  * ACTION TYPES
  */

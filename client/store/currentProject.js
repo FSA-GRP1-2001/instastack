@@ -1,6 +1,7 @@
 import axios from 'axios';
 import history from '../history';
-import { gotSavedComponents, gotSavedContainers } from './index';
+import { gotSavedComponents } from './usedComponents';
+import { gotSavedContainers } from './containers';
 /**
  * ACTION TYPES
  */
