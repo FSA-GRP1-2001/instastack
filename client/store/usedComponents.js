@@ -2,6 +2,7 @@
  * ACTION TYPES
  */
 const ADD_COMPONENT = 'ADD_COMPONENT';
+const GOT_SAVED_COMPONENTS = 'GOT_SAVED_COMPONENTS';
 
 /**
  * ACTION CREATORS
@@ -9,6 +10,11 @@ const ADD_COMPONENT = 'ADD_COMPONENT';
 const addedComponent = componentObj => ({
   type: ADD_COMPONENT,
   componentObj,
+});
+
+export const gotSavedComponents = components => ({
+  type: GOT_SAVED_COMPONENTS,
+  components,
 });
 
 /**
@@ -35,6 +41,8 @@ export default function usedComponents(components = [], action) {
   switch (action.type) {
     case ADD_COMPONENT:
       return [...components, action.componentObj];
+    case GOT_SAVED_COMPONENTS:
+      return action.components;
     default:
       return components;
   }

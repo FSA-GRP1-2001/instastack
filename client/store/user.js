@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-
+import { clearedProject, clearedContainers } from './index';
 /**
  * ACTION TYPES
  */
@@ -61,6 +61,8 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout');
     dispatch(removeUser());
+    dispatch(clearedProject());
+    dispatch(clearedContainers());
     history.push('/login');
   } catch (err) {
     console.error(err);

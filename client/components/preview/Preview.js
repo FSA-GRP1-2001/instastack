@@ -8,6 +8,7 @@ import Generic from '../PreviewElements/Generic';
 import { updateCode, saveContainers } from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import usedComponents from '../../store/usedComponents';
 
 const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {
@@ -15,6 +16,23 @@ const isEmpty = obj => {
     if (obj.hasOwnProperty(key)) return false;
   }
   return true;
+};
+
+const populateSavedComponents = arr => {
+  const grid = document.querySelector('.react-grid-layout');
+
+  arr.map(obj => {
+    const { component, i } = obj;
+    console.log(component, i);
+    let node = document.createElement(component.tag);
+    node.textContent = component.content;
+    if (component.tag.toLowerCase() === 'img') {
+      node.src = component.src;
+    }
+    node.id = component.domId;
+    let container = grid.querySelector(`#\\3${i}`);
+    container.appendChild(node);
+  });
 };
 
 // item and MyDrageHandleClassName in css file
@@ -43,6 +61,14 @@ class Preview extends Component {
     this.createContainer = this.createContainer.bind(this);
     this.removeContainer = this.removeContainer.bind(this);
     this.onResize = this.onResize.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('loading Preview area');
+    if (this.props.usedContainers.length > 0) {
+      console.log('loading used components');
+      populateSavedComponents(this.props.usedComponents);
+    }
   }
 
   onResize = layouts => {
@@ -151,6 +177,7 @@ class Preview extends Component {
 const mapStateToProps = state => {
   return {
     usedContainers: state.containers,
+    usedComponents: state.usedComponents,
   };
 };
 
