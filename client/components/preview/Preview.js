@@ -5,7 +5,7 @@ import DropWrapper from './DropWrapper';
 import ContainerBox from './Container';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import Generic from '../PreviewElements/Generic';
-import { updateCode, saveContainers } from '../../store';
+import { updateCode, saveContainers, removeContainer } from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import usedComponents from '../../store/usedComponents';
@@ -75,8 +75,8 @@ class Preview extends Component {
     this.props.saveContainers(layouts);
   }
 
-  removeContainer() {
-    console.log('clicked remove container button');
+  removeContainer(containerId) {
+    this.props.removeContainer(containerId);
   }
 
   createContainer(container) {
@@ -106,7 +106,7 @@ class Preview extends Component {
       >
         <span
           style={removeIcon}
-          onClick={this.removeContainer}
+          onClick={() => this.removeContainer(container.i)}
           className="remove pi pi-trash"
         />
         <span
@@ -186,6 +186,7 @@ const mapDispatchToProps = dispatch => {
   return {
     updateCode: code => dispatch(updateCode(code)),
     saveContainers: containers => dispatch(saveContainers(containers)),
+    removeContainer: containerId => dispatch(removeContainer(containerId)),
   };
 };
 
