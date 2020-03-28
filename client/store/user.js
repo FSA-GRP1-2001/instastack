@@ -2,6 +2,7 @@ import axios from 'axios';
 import history from '../history';
 import { clearedProject } from './currentProject';
 import { clearedContainers } from './containers';
+import { clearedCode } from './code';
 /**
  * ACTION TYPES
  */
@@ -64,6 +65,7 @@ export const logout = () => async dispatch => {
     dispatch(removeUser());
     dispatch(clearedProject());
     dispatch(clearedContainers());
+    dispatch(clearedCode());
     history.push('/login');
   } catch (err) {
     console.error(err);

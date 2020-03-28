@@ -71,9 +71,9 @@ class Preview extends Component {
     }
   }
 
-  onResize = layouts => {
+  onResize(layouts) {
     this.props.saveContainers(layouts);
-  };
+  }
 
   removeContainer() {
     console.log('clicked remove container button');
@@ -153,20 +153,22 @@ class Preview extends Component {
             width={1200}
             cols={12}
             onResize={this.onResize}
-            layout={this.state.layout}
+            layout={this.props.usedContainers}
             onLayoutChange={this.onLayoutChange}
             draggableHandle=".MyDragHandleClassName"
             draggableCancel=".MyDragCancel"
           >
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
-            {this.props.usedContainers.map((item, idx) => {
-              return this.createContainer(item);
-              // <div
-              //   className="MyDragHandleClassName"
-              //   key={idx + 1}
-              //   data-grid={item}
-              // />
-            })}
+            {this.props.usedContainers.length
+              ? this.props.usedContainers.map(item => {
+                  return this.createContainer(item);
+                  // <div
+                  //   className="MyDragHandleClassName"
+                  //   key={idx + 1}
+                  //   data-grid={item}
+                  // />
+                })
+              : null}
           </ReactGridLayout>
         </DropWrapper>
       </div>

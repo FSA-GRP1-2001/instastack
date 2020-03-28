@@ -4,7 +4,7 @@ import beautify from 'js-beautify';
  * ACTION TYPES
  */
 const UPDATE_CODE = 'UPDATE_CODE';
-
+const CLEAR_CODE = 'CLEAR_CODE';
 /**
  * ACTION CREATORS
  */
@@ -13,6 +13,7 @@ const updatedCode = code => ({
   code,
 });
 
+export const clearedCode = () => ({ type: CLEAR_CODE });
 /**
  * THUNK CREATORS
  */
@@ -36,6 +37,8 @@ export const updateCode = code => {
   switch (action.type) {
     case UPDATE_CODE:
       return action.code;
+    case CLEAR_CODE:
+      return '';
     default:
       return code;
   }
