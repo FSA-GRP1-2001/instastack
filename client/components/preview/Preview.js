@@ -60,7 +60,7 @@ class Preview extends Component {
     this.setDroppedElement = this.setDroppedElement.bind(this);
     this.createContainer = this.createContainer.bind(this);
     this.removeContainer = this.removeContainer.bind(this);
-    this.onResize = this.onResize.bind(this);
+    this.handleLayoutChange = this.handleLayoutChange.bind(this);
   }
 
   componentDidMount() {
@@ -70,8 +70,8 @@ class Preview extends Component {
       populateSavedComponents(this.props.usedComponents);
     }
   }
-
-  onResize(layouts) {
+  handleLayoutChange(layouts) {
+    console.log('layout change', layouts);
     this.props.saveContainers(layouts);
   }
 
@@ -152,9 +152,8 @@ class Preview extends Component {
             rowHeight={60}
             width={1200}
             cols={12}
-            onResize={this.onResize}
             layout={this.props.usedContainers}
-            onLayoutChange={this.onLayoutChange}
+            onLayoutChange={layout => this.handleLayoutChange(layout)}
             draggableHandle=".MyDragHandleClassName"
             draggableCancel=".MyDragCancel"
           >

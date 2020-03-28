@@ -36,9 +36,9 @@ class MainPage extends Component {
     console.log('clicking add container button');
     const newItem = {
       i: nextIdx,
-      x: 3,
-      y: 2,
-      w: 1,
+      x: 0,
+      y: Infinity,
+      w: 4,
       h: 2,
     };
     this.props.addContainer(newItem);
