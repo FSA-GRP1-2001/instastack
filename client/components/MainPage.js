@@ -24,6 +24,13 @@ class MainPage extends Component {
     this.handleAddContainer = this.handleAddContainer.bind(this);
   }
 
+  componentDidMount() {
+    // check to see if any containers already exist - if not, make one
+    if (!this.props.containers.length > 0) {
+      this.handleAddContainer();
+    }
+  }
+
   handleAddContainer() {
     const containerLen = this.props.containers.length;
     let nextIdx;
