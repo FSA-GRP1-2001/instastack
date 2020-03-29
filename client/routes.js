@@ -11,6 +11,7 @@ import {
   ProfileProjects,
   ProfileSecurity,
   TemplateHome,
+  LandingPageTemplate,
 } from './components';
 import { me } from './store';
 
@@ -49,6 +50,10 @@ class Routes extends Component {
               component={ProfileSecurity}
             />
             <Route path="/template" component={TemplateHome} />
+            <Route
+              path="/landingpagetemplate"
+              component={LandingPageTemplate}
+            />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
