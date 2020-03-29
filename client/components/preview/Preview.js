@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropWrapper, { getPreviewHtml } from './DropWrapper';
@@ -39,7 +37,7 @@ const populateSavedComponents = arr => {
   });
 };
 
-// item and MyDrageHandleClassName in css file
+// item and MyDragHandleClassName in css file
 const styles = {
   gridContainer: {
     border: '1px solid black',
@@ -75,23 +73,22 @@ class Preview extends Component {
       populateSavedComponents(this.props.usedComponents);
     }
     if (this.props.usedStyles.length > 0) {
-      console.log('laoding saved styles!');
+      console.log('loading saved styles!');
       this.props.usedStyles.forEach(styleObj => {
         let node = document.getElementById(styleObj.domId);
-        console.log('the node is ', node);
-        const styles = styleObj.styles;
-        console.log('loading curr style ', styles);
-        if (styles.fontSize.length)
+        // const styles = styleObj.styles;
+        if (styleObj.styles.fontSize.length)
           node.style.fontSize = styles.fontSize + 'px';
-        if (styles.color.length) node.style.color = styles.color;
-        if (styles.borderStyle.length)
+        if (styleObj.styles.color.length) node.style.color = styles.color;
+        if (styleObj.styles.borderStyle.length)
           node.style.borderStyle = styles.borderStyle;
-        if (styles.borderWidth.length)
+        if (styleObj.styles.borderWidth.length)
           node.style.borderWidth = styles.borderWidth;
-        if (styles.borderRadius.length)
+        if (styleObj.styles.borderRadius.length)
           node.style.borderRadius = styles.borderRadius + 'px';
-        if (styles.padding.length) node.style.padding = styles.padding + 'px';
-        if (styles.backgroundColor.length)
+        if (styleObj.styles.padding.length)
+          node.style.padding = styles.padding + 'px';
+        if (styleObj.styles.backgroundColor.length)
           node.style.backgroundColor = '#' + styles.backgroundColor;
       });
     }

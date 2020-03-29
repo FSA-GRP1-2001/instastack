@@ -10,10 +10,11 @@ const adapter = new Adapter();
 enzyme.configure({ adapter });
 
 describe('UserHome', () => {
+  let user = { displayName: 'Cody' };
   let userHome;
 
   beforeEach(() => {
-    userHome = shallow(<UserHome displayName="Cody" />);
+    userHome = shallow(<UserHome user={user} />);
   });
 
   it('renders the users displayName in an h3', () => {

@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addContainer } from '../store';
@@ -30,7 +29,7 @@ class MainPage extends Component {
       nextIdx = '0';
     } else {
       let lastIdx = this.props.containers[containerLen - 1].i;
-      nextIdx = `${parseInt(lastIdx) + 1}`;
+      nextIdx = `${parseInt(lastIdx, 10) + 1}`;
     }
     console.log('clicking add container button');
     const newItem = {
