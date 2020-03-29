@@ -59,7 +59,6 @@ class SideBar extends Component {
     this.setState({
       domId: this.props.sidebar.componentDomId,
       node: document.getElementById(this.props.sidebar.componentDomId),
-      title: this.props.sidebar.componentTitle,
       i: this.props.sidebar.i,
       textContent: component.textContent,
       ...startingProps,
