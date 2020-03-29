@@ -18,12 +18,13 @@ class ProfileProjects extends Component {
   //   this.props.getSingleUser(+this.props.match.params);
   //   // console.log('test', this.props.match.params.id);
   // }
-  componentDidMount() {
-    this.props.getSingleUser(this.props.match.params.id);
+  async componentDidMount() {
+    await this.props.getSingleUser(this.props.match.params.id);
   }
 
-  handleOpenProject() {
-    this.props.getSavedProject();
+  async handleOpenProject(projId) {
+    console.log('handle open proj id is ', projId);
+    await this.props.getSavedProject(projId);
   }
 
   render() {
@@ -43,7 +44,7 @@ class ProfileProjects extends Component {
                   type="button"
                   size="small"
                   color="primary"
-                  onClick={this.handleOpenProject}
+                  onClick={() => this.handleOpenProject(p.id)}
                 >
                   OPEN
                 </button>
@@ -89,7 +90,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getSingleUser: id => dispatch(getSingleUser(id)),
-    getSavedProject: () => dispatch(getSavedProject()),
+    getSavedProject: projId => dispatch(getSavedProject(projId)),
   };
 };
 
