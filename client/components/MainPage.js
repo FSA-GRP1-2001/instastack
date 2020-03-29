@@ -1,18 +1,10 @@
+/* eslint-disable radix */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addContainer } from '../store';
 import Preview from './preview/Preview';
 import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
-
-const placeholderItem = {
-  i: '0',
-  x: 0,
-  y: 0,
-  w: 3,
-  h: 2,
-};
-
 import ButtonBar from './ButtonBar';
 
 class MainPage extends Component {

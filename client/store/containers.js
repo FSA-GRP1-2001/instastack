@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { removedUsedComponents } from './usedComponents';
 
 /**

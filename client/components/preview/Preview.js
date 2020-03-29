@@ -1,10 +1,9 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DropWrapper from './DropWrapper';
-import ContainerBox from './Container';
+import DropWrapper, { getPreviewHtml } from './DropWrapper';
 import RGL, { WidthProvider } from 'react-grid-layout';
-import Generic from '../PreviewElements/Generic';
 import {
   updateCode,
   saveContainers,
@@ -13,9 +12,7 @@ import {
 } from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
-import usedComponents from '../../store/usedComponents';
 import SideBar from './SideBar';
-import { getPreviewHtml } from './DropWrapper';
 
 const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {

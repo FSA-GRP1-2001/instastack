@@ -1,8 +1,9 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react/no-direct-mutation-state */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { closedSideBar } from '../../store';
-import { updateCode, saveStyles } from '../../store';
+import { closedSideBar, updateCode, saveStyles } from '../../store';
 import { Sidebar } from 'primereact/sidebar';
 import { InputText } from 'primereact/inputtext';
 import { ColorPicker } from 'primereact/colorpicker';

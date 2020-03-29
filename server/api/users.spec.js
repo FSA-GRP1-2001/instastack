@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* global describe beforeEach it */
 
-const { expect } = require('chai');
-const request = require('supertest');
+// const { expect } = require('chai');
+// const request = require('supertest');
 const db = require('../db');
-const app = require('../index');
+// const app = require('../index');
 const User = db.model('user');
 
 describe('User routes', () => {
@@ -13,9 +14,8 @@ describe('User routes', () => {
 
   describe('/api/users/', () => {
     const codysEmail = 'cody@puppybook.com';
-    const projectName = 'algo beginner';
+    // const projectName = 'algo beginner';
     let murphy;
-
     beforeEach(async () => {
       murphy = await User.create({ email: 'murphy@email.com' });
 

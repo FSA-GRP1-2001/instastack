@@ -35,7 +35,7 @@ export const getAllUsers = () => {
   };
 };
 
-export const getSingleUser = id => async (dispatch, getState) => {
+export const getSingleUser = id => async dispatch => {
   try {
     let userId = id;
     const { data } = await axios.get(`/api/users/${userId}`);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { getAllProjects, getSingleProject } from '../store/projects';
 // import { getAllUsers, getSingleUser } from '../store/users';
