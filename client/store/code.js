@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import beautify from 'js-beautify';
 
 /**

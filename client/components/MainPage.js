@@ -4,15 +4,6 @@ import { addContainer } from '../store';
 import Preview from './preview/Preview';
 import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
-
-const placeholderItem = {
-  i: '0',
-  x: 0,
-  y: 0,
-  w: 3,
-  h: 2,
-};
-
 import ButtonBar from './ButtonBar';
 
 class MainPage extends Component {
@@ -38,7 +29,7 @@ class MainPage extends Component {
       nextIdx = '0';
     } else {
       let lastIdx = this.props.containers[containerLen - 1].i;
-      nextIdx = `${parseInt(lastIdx) + 1}`;
+      nextIdx = `${parseInt(lastIdx, 10) + 1}`;
     }
     console.log('clicking add container button');
     const newItem = {

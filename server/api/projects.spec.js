@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* global describe beforeEach it */
 
 const { expect } = require('chai');

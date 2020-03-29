@@ -1,8 +1,6 @@
-/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { closedSideBar } from '../../store';
-import { updateCode, saveStyles } from '../../store';
+import { closedSideBar, updateCode, saveStyles } from '../../store';
 import { Sidebar } from 'primereact/sidebar';
 import { InputText } from 'primereact/inputtext';
 import { ColorPicker } from 'primereact/colorpicker';
@@ -68,7 +66,9 @@ class SideBar extends Component {
 
   handleTextContent(e) {
     this.setState({ textContent: e.target.value });
-    this.state.node.textContent = e.target.value;
+    const node = this.state.node;
+    node.textContent = e.target.value;
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
@@ -76,43 +76,57 @@ class SideBar extends Component {
     this.setState({
       fontSize: size,
     });
-    this.state.node.style.fontSize = size + 'px';
+    const node = this.state.node;
+    node.style.fontSize = size + 'px';
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
   handleColor(e) {
     this.setState({ color: '#' + e.value });
-    this.state.node.style.color = '#' + e.value;
+    const node = this.state.node;
+    node.style.color = '#' + e.value;
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
   handleBorderStyle(e) {
     this.setState({ borderStyle: e.value });
-    this.state.node.style.borderStyle = e.value;
+    const node = this.state.node;
+    node.style.borderStyle = e.value;
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
   handleBorderWidth(e) {
     this.setState({ borderWidth: e.value + 'px' });
-    this.state.node.style.borderWidth = e.value + 'px';
+    const node = this.state.node;
+    node.style.borderWidth = e.value + 'px';
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
   handleBorderRadius(e) {
     this.setState({ borderRadius: e.value });
-    this.state.node.style.borderRadius = e.value + 'px';
+    const node = this.state.node;
+    node.style.borderRadius = e.value + 'px';
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
   handlePadding(e) {
     this.setState({ padding: e.value });
-    this.state.node.style.padding = e.value + 'px';
+    const node = this.state.node;
+    node.style.padding = e.value + 'px';
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 
   handleBackgroundColor(e) {
     this.setState({ backgroundColor: e.value });
-    this.state.node.style.backgroundColor = '#' + e.value;
+    const node = this.state.node;
+    node.style.backgroundColor = '#' + e.value;
+    this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
 

@@ -9,10 +9,6 @@ export const getPreviewHtml = () => {
 };
 
 class DropWrapper extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   drop = e => {
     e.preventDefault();
     const containerIdx = e.target.id;
