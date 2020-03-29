@@ -23,7 +23,15 @@ async function seed() {
   ]);
 
   const projects = await Promise.all([
-    Project.create({ title: 'First Demo' }),
+    Project.create({
+      title: 'First Demo',
+      usedContainers:
+        '[{"w":12,"h":2,"x":0,"y":0,"i":"0","moved":false,"static":false},{"w":5,"h":5,"x":0,"y":2,"i":"1","moved":false,"static":false},{"w":7,"h":5,"x":5,"y":2,"i":"2","moved":false,"static":false}]',
+      usedComponents:
+        '[{"component":{"domId":"286","tag":"H1","title":"H1 Component","content":"Welcome to InstaStack","src":"","children":null},"i":"0"},{"component":{"domId":"774","tag":"UL","title":"List Component","content":"First itemSecond ItemThird Item","src":"","children":[{"tag":"LI","content":"First item"},{"tag":"LI","content":"Second Item"},{"tag":"LI","content":"Third Item"}]},"i":"1"},{"component":{"domId":"822","tag":"P","title":"Paragraph Component","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","src":"","children":null},"i":"2"}]',
+      usedStyles:
+        '[{"styles":{"fontSize":"","color":"#d95959","borderStyle":"","borderWidth":"","borderColor":"","borderRadius":"","padding":"","backgroundColor":"00ffc8"},"i":"0","domId":"286"},{"styles":{"fontSize":10,"color":"#ff0004","borderStyle":"solid","borderWidth":"1px","borderColor":"","borderRadius":7,"padding":7,"backgroundColor":"f7fcfa"},"i":"2","domId":"822"}]',
+    }),
     Project.create({ title: 'Sales Ideas' }),
     Project.create({ title: 'Test Ideas' }),
     Project.create({ title: 'Third Ideas' }),
