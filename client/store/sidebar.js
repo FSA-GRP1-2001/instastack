@@ -6,11 +6,12 @@ const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
 /**
  * ACTION CREATORS
  */
-export const openedSideBar = (compId, compType) => ({
+export const openedSideBar = (compId, compType, i) => ({
   type: OPEN_SIDEBAR,
   component: {
     domId: compId,
     title: compType,
+    i,
   },
 });
 
@@ -31,6 +32,7 @@ const defaultBar = {
   componentDomId: '',
   componentTitle: '',
 };
+
 export default function sidebarReducer(sidebar = defaultBar, action) {
   switch (action.type) {
     case OPEN_SIDEBAR: {
@@ -40,6 +42,7 @@ export default function sidebarReducer(sidebar = defaultBar, action) {
         visible: true,
         componentDomId: action.component.domId,
         componentTitle: action.component.title,
+        i: action.component.i,
       };
     }
     case CLOSE_SIDEBAR:

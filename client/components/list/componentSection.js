@@ -38,7 +38,6 @@ class ListOfComponents extends Component {
         <p>List of currently available components:</p>
         {haveComponents &&
           [...dummyComponents, ...components].map(component => {
-            console.log('mapping component ', component);
             return (
               <DragWrapper
                 key={component.id}

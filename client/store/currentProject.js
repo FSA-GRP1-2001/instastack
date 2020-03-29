@@ -2,6 +2,7 @@ import axios from 'axios';
 import history from '../history';
 import { gotSavedComponents } from './usedComponents';
 import { gotSavedContainers } from './containers';
+import { gotSavedStyles } from './usedStyles';
 /**
  * ACTION TYPES
  */
@@ -31,15 +32,18 @@ export const clearedProject = () => ({
 export const saveProject = (
   components,
   containers,
+  styles,
   projId = 1
 ) => async dispatch => {
   const usedComponents = JSON.stringify(components);
   const usedContainers = JSON.stringify(containers);
+  const usedStyles = JSON.stringify(styles);
   try {
     console.log('SAVING PROJECT');
     const { data } = await axios.put(`/api/projects/${projId}`, {
       usedComponents,
       usedContainers,
+      usedStyles,
     });
     console.log('saved dta is ', data);
     dispatch(savedProject({ usedComponents, usedContainers }));
@@ -52,16 +56,18 @@ export const getSavedProject = projId => async dispatch => {
   try {
     console.log('dispatch proj id is ', projId);
     const { data } = await axios.get(`/api/projects/${projId}`);
-    const { usedContainers, usedComponents } = data;
+    const { usedContainers, usedComponents, usedStyles } = data;
     console.log('saved data is ', usedContainers, usedComponents);
     dispatch(
       gotSavedProject({
         usedComponents: JSON.parse(usedComponents),
         containers: JSON.parse(usedContainers),
+        usedStyles: JSON.parse(usedStyles),
       })
     );
     dispatch(gotSavedContainers(JSON.parse(usedContainers)));
     dispatch(gotSavedComponents(JSON.parse(usedComponents)));
+    dispatch(gotSavedStyles(JSON.parse(usedStyles)));
     history.push('/mainPage');
   } catch (error) {
     console.error(error);

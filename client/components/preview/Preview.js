@@ -15,6 +15,7 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import usedComponents from '../../store/usedComponents';
 import SideBar from './SideBar';
+import { getPreviewHtml } from './DropWrapper';
 
 const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {
@@ -76,6 +77,28 @@ class Preview extends Component {
       console.log('loading used components');
       populateSavedComponents(this.props.usedComponents);
     }
+    if (this.props.usedStyles.length > 0) {
+      console.log('laoding saved styles!');
+      this.props.usedStyles.forEach(styleObj => {
+        let node = document.getElementById(styleObj.domId);
+        console.log('the node is ', node);
+        const styles = styleObj.styles;
+        console.log('loading curr style ', styles);
+        if (styles.fontSize.length)
+          node.style.fontSize = styles.fontSize + 'px';
+        if (styles.color.length) node.style.color = styles.color;
+        if (styles.borderStyle.length)
+          node.style.borderStyle = styles.borderStyle;
+        if (styles.borderWidth.length)
+          node.style.borderWidth = styles.borderWidth;
+        if (styles.borderRadius.length)
+          node.style.borderRadius = styles.borderRadius + 'px';
+        if (styles.padding.length) node.style.padding = styles.padding + 'px';
+        if (styles.backgroundColor.length)
+          node.style.backgroundColor = '#' + styles.backgroundColor;
+      });
+    }
+    this.props.updateCode(getPreviewHtml());
   }
   handleLayoutChange(layouts) {
     console.log('layout change', layouts);
@@ -92,7 +115,7 @@ class Preview extends Component {
     const title = componentObj.component.title;
     const id = componentObj.component.domId;
     console.log('handle open menu component is ', componentObj, title, id);
-    this.props.openSideBar(id, title);
+    this.props.openSideBar(id, title, i);
   }
   createContainer(container) {
     const removeIcon = {
@@ -195,6 +218,7 @@ const mapStateToProps = state => {
   return {
     usedContainers: state.containers,
     usedComponents: state.usedComponents,
+    usedStyles: state.usedStyles,
   };
 };
 
@@ -203,8 +227,8 @@ const mapDispatchToProps = dispatch => {
     updateCode: code => dispatch(updateCode(code)),
     saveContainers: containers => dispatch(saveContainers(containers)),
     removeContainer: containerId => dispatch(removeContainer(containerId)),
-    openSideBar: (compId, compType) =>
-      dispatch(openedSideBar(compId, compType)),
+    openSideBar: (compId, compType, i) =>
+      dispatch(openedSideBar(compId, compType, i)),
   };
 };
 

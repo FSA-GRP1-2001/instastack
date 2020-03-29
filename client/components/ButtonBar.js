@@ -20,7 +20,8 @@ class ButtonBar extends Component {
   handleProjectSave() {
     const containers = this.props.usedContainers;
     const components = this.props.usedComponents;
-    this.props.saveProject(components, containers);
+    const styles = this.props.usedStyles;
+    this.props.saveProject(components, containers, styles);
   }
 
   render() {
@@ -50,13 +51,14 @@ const mapStateToProps = state => {
   return {
     usedContainers: state.containers,
     usedComponents: state.usedComponents,
+    usedStyles: state.usedStyles,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveProject: (usedComponents, containers) =>
-      dispatch(saveProject(usedComponents, containers)),
+    saveProject: (usedComponents, containers, styles) =>
+      dispatch(saveProject(usedComponents, containers, styles)),
   };
 };
 

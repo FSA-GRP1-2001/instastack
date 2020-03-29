@@ -21,6 +21,9 @@ const Project = db.define('project', {
   usedComponents: {
     type: Sequelize.TEXT,
   },
+  usedStyles: {
+    type: Sequelize.TEXT,
+  },
 });
 
 module.exports = Project;

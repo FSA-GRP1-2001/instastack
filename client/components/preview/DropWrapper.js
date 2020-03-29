@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateCode, addComponent } from '../../store';
 
+export const getPreviewHtml = () => {
+  const grid = document.querySelector('.react-grid-layout');
+  const html = grid.innerHTML;
+  return html;
+};
+
 class DropWrapper extends Component {
   constructor(props) {
     super(props);
-  }
-
-  getPreviewHtml() {
-    const grid = document.querySelector('.react-grid-layout');
-    const html = grid.innerHTML;
-    return html;
   }
 
   drop = e => {
@@ -47,7 +47,7 @@ class DropWrapper extends Component {
     this.props.addComponent(componentObj, containerIdx);
     if (data && !e.target.classList.contains('react-grid-layout')) {
       e.target.appendChild(document.getElementById(data));
-      this.props.updateCode(this.getPreviewHtml());
+      this.props.updateCode(getPreviewHtml());
     }
   };
 
