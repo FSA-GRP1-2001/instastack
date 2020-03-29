@@ -6,8 +6,10 @@ class DragWrapper extends Component {
   drag = e => {
     // clone the item we are dragging
     const componentObj = JSON.parse(e.target.dataset.component);
+    console.log('dragged compObj is ', componentObj);
     const tag = componentObj.htmlTag;
     let newComponent = document.createElement(tag);
+    newComponent.className = componentObj.title;
     newComponent.id = e.target.id + `${Math.floor(Math.random() * 100)}`;
 
     if (tag === 'ul') {

@@ -10,16 +10,20 @@ import projects from './projects';
 import usedComponents from './usedComponents';
 import currentProject from './currentProject';
 import containers from './containers';
+import sidebar from './sidebar';
+import usedStyles from './usedStyles';
 
 const reducer = combineReducers({
   user,
   component,
   usedComponents,
+  usedStyles,
   code,
   users,
   projects,
   currentProject,
   containers,
+  sidebar,
 });
 
 const middleware = composeWithDevTools(
@@ -36,3 +40,5 @@ export * from './projects';
 export * from './usedComponents';
 export * from './currentProject';
 export * from './containers';
+export * from './sidebar';
+export * from './usedStyles';

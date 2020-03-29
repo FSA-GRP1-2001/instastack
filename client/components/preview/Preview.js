@@ -5,10 +5,17 @@ import DropWrapper from './DropWrapper';
 import ContainerBox from './Container';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import Generic from '../PreviewElements/Generic';
-import { updateCode, saveContainers, removeContainer } from '../../store';
+import {
+  updateCode,
+  saveContainers,
+  removeContainer,
+  openedSideBar,
+} from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import usedComponents from '../../store/usedComponents';
+import SideBar from './SideBar';
+import { getPreviewHtml } from './DropWrapper';
 
 const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {
@@ -61,6 +68,7 @@ class Preview extends Component {
     this.createContainer = this.createContainer.bind(this);
     this.removeContainer = this.removeContainer.bind(this);
     this.handleLayoutChange = this.handleLayoutChange.bind(this);
+    this.handleOpenEditMenu = this.handleOpenEditMenu.bind(this);
   }
 
   componentDidMount() {
@@ -69,6 +77,28 @@ class Preview extends Component {
       console.log('loading used components');
       populateSavedComponents(this.props.usedComponents);
     }
+    if (this.props.usedStyles.length > 0) {
+      console.log('laoding saved styles!');
+      this.props.usedStyles.forEach(styleObj => {
+        let node = document.getElementById(styleObj.domId);
+        console.log('the node is ', node);
+        const styles = styleObj.styles;
+        console.log('loading curr style ', styles);
+        if (styles.fontSize.length)
+          node.style.fontSize = styles.fontSize + 'px';
+        if (styles.color.length) node.style.color = styles.color;
+        if (styles.borderStyle.length)
+          node.style.borderStyle = styles.borderStyle;
+        if (styles.borderWidth.length)
+          node.style.borderWidth = styles.borderWidth;
+        if (styles.borderRadius.length)
+          node.style.borderRadius = styles.borderRadius + 'px';
+        if (styles.padding.length) node.style.padding = styles.padding + 'px';
+        if (styles.backgroundColor.length)
+          node.style.backgroundColor = '#' + styles.backgroundColor;
+      });
+    }
+    this.props.updateCode(getPreviewHtml());
   }
   handleLayoutChange(layouts) {
     console.log('layout change', layouts);
@@ -78,7 +108,15 @@ class Preview extends Component {
   removeContainer(containerId) {
     this.props.removeContainer(containerId);
   }
-
+  handleOpenEditMenu(i) {
+    const componentObj = this.props.usedComponents.filter(comp => {
+      return comp.i === i;
+    })[0];
+    const title = componentObj.component.title;
+    const id = componentObj.component.domId;
+    console.log('handle open menu component is ', componentObj, title, id);
+    this.props.openSideBar(id, title, i);
+  }
   createContainer(container) {
     const removeIcon = {
       position: 'absolute',
@@ -111,7 +149,7 @@ class Preview extends Component {
         />
         <span
           style={editIcon}
-          onClick={this.removeContainer}
+          onClick={() => this.handleOpenEditMenu(container.i)}
           className="remove pi pi-pencil"
         />
       </div>
@@ -147,6 +185,7 @@ class Preview extends Component {
   render() {
     return (
       <div className="App" style={styles.gridContainer}>
+        <SideBar />
         <DropWrapper>
           <ReactGridLayout
             rowHeight={60}
@@ -179,6 +218,7 @@ const mapStateToProps = state => {
   return {
     usedContainers: state.containers,
     usedComponents: state.usedComponents,
+    usedStyles: state.usedStyles,
   };
 };
 
@@ -187,6 +227,8 @@ const mapDispatchToProps = dispatch => {
     updateCode: code => dispatch(updateCode(code)),
     saveContainers: containers => dispatch(saveContainers(containers)),
     removeContainer: containerId => dispatch(removeContainer(containerId)),
+    openSideBar: (compId, compType, i) =>
+      dispatch(openedSideBar(compId, compType, i)),
   };
 };
 

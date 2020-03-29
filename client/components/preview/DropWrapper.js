@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateCode, addComponent } from '../../store';
 
+export const getPreviewHtml = () => {
+  const grid = document.querySelector('.react-grid-layout');
+  const html = grid.innerHTML;
+  return html;
+};
+
 class DropWrapper extends Component {
   constructor(props) {
     super(props);
-  }
-
-  getPreviewHtml() {
-    const grid = document.querySelector('.react-grid-layout');
-    const html = grid.innerHTML;
-    return html;
   }
 
   drop = e => {
@@ -18,11 +18,12 @@ class DropWrapper extends Component {
     const containerIdx = e.target.id;
     const data = e.dataTransfer.getData('transfer');
     const component = document.getElementById(data);
+    // const prevCompData = JSON.parse(component.dataset.component)
     console.log(
       'dropping the component ',
       component,
       ' datagrid data is ',
-      component.dataset
+      component.dataset.component
     );
 
     let children = null;
@@ -35,6 +36,7 @@ class DropWrapper extends Component {
     const componentObj = {
       domId: data,
       tag: component.tagName,
+      title: component.className,
       // dataGrid: component.dataset.component,
       content: component.textContent,
       src: component.src || '',
@@ -45,7 +47,7 @@ class DropWrapper extends Component {
     this.props.addComponent(componentObj, containerIdx);
     if (data && !e.target.classList.contains('react-grid-layout')) {
       e.target.appendChild(document.getElementById(data));
-      this.props.updateCode(this.getPreviewHtml());
+      this.props.updateCode(getPreviewHtml());
     }
   };
 
