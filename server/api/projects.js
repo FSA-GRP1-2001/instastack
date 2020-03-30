@@ -94,8 +94,11 @@ router.delete('/:id/users', async (req, res, next) => {
 //POST - Create a New Project w' title input field
 router.post('/', async (req, res, next) => {
   try {
-    let { title } = req.body;
+    let { title, userId } = req.body;
     const project = await Project.create({ title });
+    const user = await User.findByPk(userId);
+    await project.addUser(user);
+    await project.save();
     res.status(201).json(project);
   } catch (error) {
     next(error);

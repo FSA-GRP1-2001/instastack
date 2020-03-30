@@ -40,10 +40,10 @@ export const clearedProject = () => ({
  * THUNK CREATORS
  */
 
-export const createProject = title => async dispatch => {
+export const createProject = (title, userId) => async dispatch => {
   try {
     console.log('ADD TITLE');
-    const { data } = await axios.post(`/api/projects`, { title });
+    const { data } = await axios.post(`/api/projects`, { title, userId });
     dispatch(createdProject(data.title, data.id));
   } catch (error) {
     console.error(error);
@@ -55,7 +55,6 @@ export const saveProject = (
   containers,
   styles,
   projId
-  //projId = 1
 ) => async dispatch => {
   const usedComponents = JSON.stringify(components);
   const usedContainers = JSON.stringify(containers);
@@ -78,13 +77,15 @@ export const getSavedProject = projId => async dispatch => {
   try {
     console.log('dispatch proj id is ', projId);
     const { data } = await axios.get(`/api/projects/${projId}`);
-    const { usedContainers, usedComponents, usedStyles } = data;
+    const { id, title, usedContainers, usedComponents, usedStyles } = data;
     console.log('saved data is ', usedContainers, usedComponents);
     dispatch(
       gotSavedProject({
         usedComponents: JSON.parse(usedComponents),
         containers: JSON.parse(usedContainers),
         usedStyles: JSON.parse(usedStyles),
+        id,
+        title,
       })
     );
     dispatch(gotSavedContainers(JSON.parse(usedContainers)));
@@ -113,7 +114,7 @@ export default function usedComponents(project = defaultProj, action) {
     case SAVE_PROJECT:
       return action.projObj;
     case GET_SAVED_PROJECT:
-      return action.projObj;
+      return { ...project, ...action.projObj };
     case CLEAR_PROJECT:
       return defaultProj;
     default:

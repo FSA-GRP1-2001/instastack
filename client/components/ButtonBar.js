@@ -6,11 +6,18 @@ import ClipButton from './ClipButton';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
+const styling = {
+  container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+};
+
 class ButtonBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      title: this.props.currentProject.title,
     };
     this.handleAddContainer = this.handleAddContainer.bind(this);
     this.handleProjectSave = this.handleProjectSave.bind(this);
@@ -22,12 +29,13 @@ class ButtonBar extends Component {
     this.props.addContainer();
   }
 
-  handleProjectSave() {
+  async handleProjectSave() {
     const containers = this.props.usedContainers;
     const components = this.props.usedComponents;
     const styles = this.props.usedStyles;
     const id = this.props.currentProject.id;
-    this.props.saveProject(components, containers, styles, id);
+    console.log('current proj id is ', id);
+    await this.props.saveProject(components, containers, styles, id);
   }
 
   handleAddTitle(e) {
@@ -37,15 +45,16 @@ class ButtonBar extends Component {
   handleKeyDown(e) {
     if (e.key === 'Enter') {
       console.log('enter', this.state);
-      this.props.createProject(this.state.title);
-      this.handleProjectSave();
+      this.props.createProject(this.state.title, this.props.userId);
+      console.log('new id is ', this.props.currentProject.id);
     }
   }
 
   render() {
+    console.log('title is ', this.props.currentProject.title);
     return (
       <div className="content-section implementation">
-        <Toolbar>
+        <Toolbar style={styling.container}>
           <div>
             <span className="p-float-label">
               <InputText
@@ -57,15 +66,15 @@ class ButtonBar extends Component {
             </span>
           </div>
           <Button
-            onClick={this.handleAddContainer}
-            label="Add Container"
-            className="p-button-raised"
-          />
-
-          <Button
             label="Save"
             className="p-button-rounded p-button-warning"
             onClick={this.handleProjectSave}
+            disabled={this.props.currentProject.id === ''}
+          />
+          <Button
+            onClick={this.handleAddContainer}
+            label="Add Container"
+            className="p-button-raised"
           />
           <div className="p-toolbar-group-right">
             <ClipButton />
@@ -78,7 +87,9 @@ class ButtonBar extends Component {
 
 const mapStateToProps = state => {
   return {
+    userId: state.user.id,
     title: state.currentProject.title,
+    currentProject: state.currentProject,
     usedContainers: state.containers,
     usedComponents: state.usedComponents,
     usedStyles: state.usedStyles,
@@ -87,9 +98,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createProject: title => dispatch(createProject(title)),
-    saveProject: (usedComponents, containers, styles) =>
-      dispatch(saveProject(usedComponents, containers, styles)),
+    createProject: (title, userId) => dispatch(createProject(title, userId)),
+    saveProject: (usedComponents, containers, styles, projId) =>
+      dispatch(saveProject(usedComponents, containers, styles, projId)),
   };
 };
 
