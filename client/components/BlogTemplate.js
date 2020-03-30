@@ -14,6 +14,7 @@ class BlogTemplate extends Component {
     this.state = {};
     this.handleAddContainer = this.handleAddContainer.bind(this);
   }
+
   componentDidMount() {
     // check to see if any containers already exist - if not, make one
     if (!this.props.containers.length > 0) {
