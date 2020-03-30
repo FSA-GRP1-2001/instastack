@@ -65,31 +65,31 @@ class ButtonBar extends Component {
               <label htmlFor="title">Project Name</label>
             </span>
           </div>
-      <div className="ui-toolbar">
-        <Toolbar>
-          <Button
-            onClick={this.handleAddContainer}
-            label="Add Container"
-            className="p-button-raised ui-button"
-          />
-          <Button
-            label="Save"
-            className="p-button-warning ui-button"
-            onClick={this.handleProjectSave}
-            disabled={this.props.currentProject.id === ''}
-          />
-          <Button
-            onClick={this.handleAddContainer}
-            label="Add Container"
-            className="p-button-raised"
-          />
+          <div className="ui-toolbar">
+            <Button
+              onClick={this.handleAddContainer}
+              label="Add Container"
+              className="p-button-raised ui-button"
+            />
+            <Button
+              label="Save"
+              className="p-button-warning ui-button"
+              onClick={this.handleProjectSave}
+              disabled={this.props.currentProject.id === ''}
+            />
+            <Button
+              onClick={this.handleAddContainer}
+              label="Add Container"
+              className="p-button-raised"
+            />
 
-          <div className="p-toolbar-group-right ui-button">
-            <ShowCodeMirror />
-          </div>
+            <div className="p-toolbar-group-right ui-button">
+              <ShowCodeMirror />
+            </div>
 
-          <div className="p-toolbar-group-right ui-button">
-            <ClipButton />
+            <div className="p-toolbar-group-right ui-button">
+              <ClipButton />
+            </div>
           </div>
         </Toolbar>
       </div>
