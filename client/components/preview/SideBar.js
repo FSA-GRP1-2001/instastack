@@ -17,7 +17,6 @@ class SideBar extends Component {
     this.state = {
       domId: '',
       node: null,
-      title: '',
       i: '',
       textContent: '',
       fontSize: 10,
@@ -25,7 +24,7 @@ class SideBar extends Component {
       borderWidth: '',
       borderColor: '',
       borderRadius: '',
-      startingProps: {},
+      prevStyles: {},
     };
     this.handleOnShow = this.handleOnShow.bind(this);
     this.handleTextContent = this.handleTextContent.bind(this);
@@ -37,6 +36,8 @@ class SideBar extends Component {
     this.handlePadding = this.handlePadding.bind(this);
     this.handleBackgroundColor = this.handleBackgroundColor.bind(this);
     this.handleSaveStyles = this.handleSaveStyles.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
   handleOnShow() {
     console.log('sidebar mounted ', this.props.sidebar);
@@ -57,10 +58,10 @@ class SideBar extends Component {
     this.setState({
       domId: this.props.sidebar.componentDomId,
       node: document.getElementById(this.props.sidebar.componentDomId),
-      title: this.props.sidebar.componentTitle,
       i: this.props.sidebar.i,
       textContent: component.textContent,
       ...startingProps,
+      prevStyles: { ...startingProps },
     });
   }
 
@@ -144,6 +145,25 @@ class SideBar extends Component {
     };
     console.log('saving styles ', styleObj);
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
+    this.props.closedSideBar();
+  }
+
+  handleCancel() {
+    const prevStyles = this.state.prevStyles;
+    const node = this.state.node;
+    for (let style in prevStyles) {
+      if (prevStyles[style].length) {
+        console.log('resetting style ', style);
+        node.style[style] = prevStyles[style];
+      } else {
+        node.style[style] = '';
+      }
+    }
+  }
+
+  handleClose() {
+    this.handleCancel();
+    this.props.closedSideBar();
   }
   render() {
     const { componentDomId, componentTitle } = this.props.sidebar;
@@ -152,7 +172,7 @@ class SideBar extends Component {
         onShow={this.handleOnShow}
         className="ui-sidebar-sm"
         visible={this.props.sidebar.visible}
-        onHide={this.props.closedSideBar}
+        onHide={this.handleClose}
       >
         <h4>{componentTitle}</h4>
         <p>ID: {componentDomId}</p>
@@ -210,8 +230,21 @@ class SideBar extends Component {
             onChange={e => this.handleBackgroundColor(e)}
           />
         </Fieldset>
-        <Button label="Save" onClick={this.handleSaveStyles} />
-        <Button className="p-button-warning" label="Cancel" />
+        <Fieldset legend="Save Changes">
+          <div style={styles.buttonContainer}>
+            <Button
+              label="Save"
+              icon="pi pi-check"
+              onClick={this.handleSaveStyles}
+            />
+            <Button
+              className="p-button-warning"
+              icon="pi pi-times-circle"
+              label="Cancel"
+              onClick={this.handleClose}
+            />
+          </div>
+        </Fieldset>
       </Sidebar>
     );
   }
@@ -232,6 +265,13 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+
+const styles = {
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+};
 
 const borderStyles = [
   'solid',
