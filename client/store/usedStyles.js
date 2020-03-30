@@ -37,8 +37,21 @@ export const saveStyles = (styles, domId, i) => {
  */
 export default function usedComponents(styles = [], action) {
   switch (action.type) {
-    case SAVE_STYLES:
-      return [...styles, action.styleObj];
+    case SAVE_STYLES: {
+      let prevObjIdx = null;
+      styles.forEach((obj, i) => {
+        if (obj.domId === action.styleObj.domId) {
+          prevObjIdx = i;
+        }
+      });
+      if (prevObjIdx !== null) {
+        let newStyles = [...styles];
+        newStyles[prevObjIdx] = action.styleObj;
+        return newStyles;
+      } else {
+        return [...styles, action.styleObj];
+      }
+    }
     case GOT_SAVED_STYLES:
       return action.styles;
     default:
