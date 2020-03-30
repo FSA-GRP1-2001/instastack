@@ -13,8 +13,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-//test for profile
-
+//GET by is
 router.get('/:id', async (req, res, next) => {
   try {
     console.log('in projects/:id');
@@ -92,16 +91,15 @@ router.delete('/:id/users', async (req, res, next) => {
   }
 });
 
-//POST - Create a New Project
+//POST - Create a New Project w' title input field
 router.post('/', async (req, res, next) => {
   try {
-    // let findUser = await User.findByPk(req.params.id);
-
-    // find or create project by name
-    let { title } = req.body;
+    let { title, userId } = req.body;
     const project = await Project.create({ title });
-    //await findUser.addProject(project);
-    res.status(201).json(project); // send newly associated project to thunk
+    const user = await User.findByPk(userId);
+    await project.addUser(user);
+    await project.save();
+    res.status(201).json(project);
   } catch (error) {
     next(error);
   }
