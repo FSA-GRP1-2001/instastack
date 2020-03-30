@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unused-state */
+/* eslint-disable react/no-multi-comp */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropWrapper from './preview/DropWrapper';

@@ -16,5 +16,7 @@ export { default as TemplateHome } from './TemplateHome';
 export { default as LandingPageTemplate } from './LandingPageTemplate';
 export { default as LandingPageTemplatePreview } from './LandingPageTemplatePreview';
 export { default as ShowCodeMirror } from './ShowCodeMirror';
+export { default as BlogTemplate } from './BlogTemplate';
+export { default as BlogTemplatePreview } from './BlogTemplatePreview';
 
 export { Login, Signup } from './auth-form';

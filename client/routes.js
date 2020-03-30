@@ -12,6 +12,7 @@ import {
   ProfileSecurity,
   TemplateHome,
   LandingPageTemplate,
+  BlogTemplate,
 } from './components';
 import { me } from './store';
 
@@ -54,6 +55,7 @@ class Routes extends Component {
               path="/landingpagetemplate"
               component={LandingPageTemplate}
             />
+            <Route path="/blogtemplate" component={BlogTemplate} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

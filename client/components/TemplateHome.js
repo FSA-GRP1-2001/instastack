@@ -11,6 +11,9 @@ export default class TemplateHome extends Component {
             <center>
               <ul>
                 <div className="userhome-nav-selection">
+                  <Link to="blogtemplate">Blog</Link>
+                </div>
+                <div className="userhome-nav-selection">
                   <Link to="landingpagetemplate">Landing Page</Link>
                 </div>
                 <div className="userhome-nav-selection">
@@ -24,9 +27,6 @@ export default class TemplateHome extends Component {
                 </div>
                 <div className="userhome-nav-selection">
                   <Link to="">About Page</Link>
-                </div>
-                <div className="userhome-nav-selection">
-                  <Link to="">Blog</Link>
                 </div>
               </ul>
             </center>
