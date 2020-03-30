@@ -1,5 +1,9 @@
-/* eslint-disable no-use-before-define */
 import beautify from 'js-beautify';
+
+const openHtml =
+  "<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width initial-scale=1.0'><title>Your Code</title></head><body>";
+
+const closeHtml = '</body></html>';
 
 /**
  * ACTION TYPES
@@ -44,8 +48,3 @@ export const updateCode = code => {
       return code;
   }
 }
-
-const openHtml =
-  "<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width initial-scale=1.0'><title>Your Code</title></head><body>";
-
-const closeHtml = '</body></html>';
