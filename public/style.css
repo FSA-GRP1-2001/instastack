@@ -106,6 +106,6 @@ form div {
   margin-right: 10px;
 }
 
-.preview-button {
-  margin: 20px;
+.component-selection-sidebar .preview-button {
+  margin: 10px;
 }
