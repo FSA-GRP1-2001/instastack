@@ -1,13 +1,16 @@
-/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DropWrapper from './DropWrapper';
-import ContainerBox from './Container';
+import DropWrapper, { getPreviewHtml } from './DropWrapper';
 import RGL, { WidthProvider } from 'react-grid-layout';
-import Generic from '../PreviewElements/Generic';
-import { updateCode } from '../../store';
+import {
+  updateCode,
+  saveContainers,
+  removeContainer,
+  openedSideBar,
+} from '../../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import SideBar from './SideBar';
 
 const ReactGridLayout = WidthProvider(RGL);
 const isEmpty = obj => {
@@ -17,7 +20,24 @@ const isEmpty = obj => {
   return true;
 };
 
-// item and MyDrageHandleClassName in css file
+const populateSavedComponents = arr => {
+  const grid = document.querySelector('.react-grid-layout');
+
+  arr.map(obj => {
+    const { component, i } = obj;
+    console.log(component, i);
+    let node = document.createElement(component.tag);
+    node.textContent = component.content;
+    if (component.tag.toLowerCase() === 'img') {
+      node.src = component.src;
+    }
+    node.id = component.domId;
+    let container = grid.querySelector(`#\\3${i}`);
+    container.appendChild(node);
+  });
+};
+
+// item and MyDragHandleClassName in css file
 const styles = {
   gridContainer: {
     border: '1px solid black',
@@ -35,19 +55,62 @@ class Preview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      layout: [...this.props.containers],
+      layout: this.props.containers,
       resizeplotly: false,
       code: '',
     };
     this.setDroppedElement = this.setDroppedElement.bind(this);
     this.createContainer = this.createContainer.bind(this);
     this.removeContainer = this.removeContainer.bind(this);
+    this.handleLayoutChange = this.handleLayoutChange.bind(this);
+    this.handleOpenEditMenu = this.handleOpenEditMenu.bind(this);
   }
 
-  removeContainer() {
-    console.log('clicked remove container button');
+  componentDidMount() {
+    console.log('loading Preview area');
+    if (this.props.usedContainers.length > 0) {
+      console.log('loading used components');
+      populateSavedComponents(this.props.usedComponents);
+    }
+    if (this.props.usedStyles.length > 0) {
+      console.log('loading saved styles!');
+      this.props.usedStyles.forEach(styleObj => {
+        let node = document.getElementById(styleObj.domId);
+        // const styles = styleObj.styles;
+        if (styleObj.styles.fontSize.length)
+          node.style.fontSize = styles.fontSize + 'px';
+        if (styleObj.styles.color.length) node.style.color = styles.color;
+        if (styleObj.styles.borderStyle.length)
+          node.style.borderStyle = styles.borderStyle;
+        if (styleObj.styles.borderWidth.length)
+          node.style.borderWidth = styles.borderWidth;
+        if (styleObj.styles.borderRadius.length)
+          node.style.borderRadius = styles.borderRadius + 'px';
+        if (styleObj.styles.padding.length)
+          node.style.padding = styles.padding + 'px';
+        if (styleObj.styles.backgroundColor.length)
+          node.style.backgroundColor = '#' + styles.backgroundColor;
+      });
+    }
+    this.props.updateCode(getPreviewHtml());
+  }
+  handleLayoutChange(layouts) {
+    console.log('layout change', layouts);
+    this.props.saveContainers(layouts);
   }
 
+  removeContainer(containerId) {
+    this.props.removeContainer(containerId);
+  }
+  handleOpenEditMenu(i) {
+    const componentObj = this.props.usedComponents.filter(comp => {
+      return comp.i === i;
+    })[0];
+    const title = componentObj.component.title;
+    const id = componentObj.component.domId;
+    console.log('handle open menu component is ', componentObj, title, id);
+    this.props.openSideBar(id, title, i);
+  }
   createContainer(container) {
     const removeIcon = {
       position: 'absolute',
@@ -75,12 +138,12 @@ class Preview extends Component {
       >
         <span
           style={removeIcon}
-          onClick={this.removeContainer}
+          onClick={() => this.removeContainer(container.i)}
           className="remove pi pi-trash"
         />
         <span
           style={editIcon}
-          onClick={this.removeContainer}
+          onClick={() => this.handleOpenEditMenu(container.i)}
           className="remove pi pi-pencil"
         />
       </div>
@@ -116,26 +179,28 @@ class Preview extends Component {
   render() {
     return (
       <div className="App" style={styles.gridContainer}>
+        <SideBar />
         <DropWrapper>
           <ReactGridLayout
             rowHeight={60}
             width={1200}
             cols={12}
-            onResize={this.onResize}
-            layout={this.state.layout}
-            onLayoutChange={this.onLayoutChange}
+            layout={this.props.usedContainers}
+            onLayoutChange={layout => this.handleLayoutChange(layout)}
             draggableHandle=".MyDragHandleClassName"
             draggableCancel=".MyDragCancel"
           >
             {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
-            {this.props.containers.map((item, idx) => {
-              return this.createContainer(item);
-              // <div
-              //   className="MyDragHandleClassName"
-              //   key={idx + 1}
-              //   data-grid={item}
-              // />
-            })}
+            {this.props.usedContainers.length
+              ? this.props.usedContainers.map(item => {
+                  return this.createContainer(item);
+                  // <div
+                  //   className="MyDragHandleClassName"
+                  //   key={idx + 1}
+                  //   data-grid={item}
+                  // />
+                })
+              : null}
           </ReactGridLayout>
         </DropWrapper>
       </div>
@@ -143,10 +208,22 @@ class Preview extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    updateCode: code => dispatch(updateCode(code)),
+    usedContainers: state.containers,
+    usedComponents: state.usedComponents,
+    usedStyles: state.usedStyles,
   };
 };
 
-export default connect(null, mapDispatchToProps)(Preview);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCode: code => dispatch(updateCode(code)),
+    saveContainers: containers => dispatch(saveContainers(containers)),
+    removeContainer: containerId => dispatch(removeContainer(containerId)),
+    openSideBar: (compId, compType, i) =>
+      dispatch(openedSideBar(compId, compType, i)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preview);

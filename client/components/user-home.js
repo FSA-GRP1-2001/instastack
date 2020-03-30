@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -7,12 +6,11 @@ import { Link } from 'react-router-dom';
  * COMPONENT
  */
 export const UserHome = props => {
-  const { displayName, id, email } = props;
+  const { displayName, id } = props.user;
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
-      {/* <h3>Welcome, {displayName}</h3> */}
+      <h3>Welcome, {displayName}</h3>
 
       <section className="userhome-container">
         <div className="userhome-nav-selection">
@@ -34,15 +32,8 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    displayName: state.user.displayName,
+    user: state.user,
   };
 };
 
 export default connect(mapState)(UserHome);
-
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string,
-};

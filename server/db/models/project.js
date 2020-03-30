@@ -15,6 +15,15 @@ const Project = db.define('project', {
   externalUrl: {
     type: Sequelize.TEXT,
   },
+  usedContainers: {
+    type: Sequelize.TEXT,
+  },
+  usedComponents: {
+    type: Sequelize.TEXT,
+  },
+  usedStyles: {
+    type: Sequelize.TEXT,
+  },
 });
 
 module.exports = Project;

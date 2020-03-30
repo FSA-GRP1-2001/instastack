@@ -8,14 +8,24 @@ import code from './code';
 import users from './users';
 import projects from './projects';
 import usedComponents from './usedComponents';
+import currentProject from './currentProject';
+import containers from './containers';
+import sidebar from './sidebar';
+import usedStyles from './usedStyles';
+import showCodeMirror from './showCodeMirror';
 
 const reducer = combineReducers({
   user,
   component,
   usedComponents,
+  usedStyles,
   code,
   users,
   projects,
+  currentProject,
+  containers,
+  sidebar,
+  showCodeMirror,
 });
 
 const middleware = composeWithDevTools(
@@ -30,3 +40,8 @@ export * from './code';
 export * from './users';
 export * from './projects';
 export * from './usedComponents';
+export * from './currentProject';
+export * from './containers';
+export * from './sidebar';
+export * from './usedStyles';
+export * from './showCodeMirror';

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { getAllProjects, getSingleProject } from '../store/projects';
 // import { getAllUsers, getSingleUser } from '../store/users';
-import { getSingleUser } from '../store/users';
+import { getSingleUser, getSavedProject } from '../store';
 
 class ProfileProjects extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleOpenProject = this.handleOpenProject.bind(this);
+  }
   // componentDidMount() {
   //   // this.props.getAllProjects(this.props.match.params.id);
   //   // this.props.getSingleProject(this.props.match.params);
@@ -13,9 +17,15 @@ class ProfileProjects extends Component {
   //   this.props.getSingleUser(+this.props.match.params);
   //   // console.log('test', this.props.match.params.id);
   // }
-  componentDidMount() {
-    this.props.getSingleUser(this.props.match.params.id);
+  async componentDidMount() {
+    await this.props.getSingleUser(this.props.match.params.id);
   }
+
+  async handleOpenProject(projId) {
+    console.log('handle open proj id is ', projId);
+    await this.props.getSavedProject(projId);
+  }
+
   render() {
     const { user, userProjects } = this.props;
     console.log('state1', this.props);
@@ -29,6 +39,14 @@ class ProfileProjects extends Component {
               <ul key={p.id}>
                 <h3>Projects:</h3>
                 <h4>{p.title}</h4>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  onClick={() => this.handleOpenProject(p.id)}
+                >
+                  OPEN
+                </button>
                 <button
                   type="button"
                   size="small"
@@ -71,6 +89,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getSingleUser: id => dispatch(getSingleUser(id)),
+    getSavedProject: projId => dispatch(getSavedProject(projId)),
   };
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const router = require('express').Router();
 const { User, Project } = require('../db/models');
 module.exports = router;
@@ -53,7 +54,7 @@ router.post('/:id/projects', async (req, res, next) => {
     let oneUser = await User.findByPk(req.params.id);
     // find or create project by name
     let { title } = req.body;
-    const [project, wasCreated] = await Project.findOrCreate({
+    const [project, _wasCreated] = await Project.findOrCreate({
       where: { title },
     });
     await oneUser.addProject(project);
