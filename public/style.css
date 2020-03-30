@@ -105,3 +105,7 @@ form div {
 .ui-toolbar .ui-button {
   margin-right: 10px;
 }
+
+.preview-button {
+  margin: 20px;
+}

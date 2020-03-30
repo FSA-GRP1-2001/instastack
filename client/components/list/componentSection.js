@@ -3,26 +3,6 @@ import { connect } from 'react-redux';
 import DragWrapper from './DragWrapper';
 import { getAllComponents } from '../../store';
 
-const para = {
-  id: 11,
-  title: 'Paragraph',
-  textContent: 'Enter text here',
-  openTag: '<p>',
-  closeTag: '</p>',
-  wholeTag: '<p>Enter text here</p>',
-};
-
-const image = {
-  id: 22,
-  title: 'Image',
-  textContent: 'Image url here',
-  openTag: '<img>',
-  closeTag: '',
-  src: 'https://source.unsplash.com/random/250x250',
-  wholeTag:
-    '<img src="https://source.unsplash.com/random/250x250" alt="random image" >',
-};
-
 class ListOfComponents extends Component {
   componentDidMount() {
     this.props.getAllComponents();
@@ -30,14 +10,13 @@ class ListOfComponents extends Component {
   render() {
     console.log('in lof', this.props);
     const { components } = this.props;
-    const dummyComponents = [para, image];
     const haveComponents = components.length > 0;
     return (
       <div className="component-selection-sidebar">
         {/* supposed to import all the components available */}
         <p>List of currently available components:</p>
         {haveComponents &&
-          [...dummyComponents, ...components].map(component => {
+          [...components].map(component => {
             return (
               <DragWrapper
                 key={component.id}
