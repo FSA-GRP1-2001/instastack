@@ -46,20 +46,28 @@ class MainPage extends Component {
   }
 
   render() {
+    const gridStyle = this.props.showCodeMirror
+      ? {
+          display: 'grid',
+          gridTemplateColumns: '3fr 4fr 2fr',
+          gridGap: 5,
+        }
+      : {
+          display: 'grid',
+          gridTemplateColumns: '4fr 4fr',
+          gridGap: 5,
+        };
     return (
       <div>
         <ButtonBar addContainer={this.handleAddContainer} />
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 3fr 3fr',
-            gridGap: 12,
-          }}
-        >
+        <div style={gridStyle}>
           <ListOfComponents />
-          {/* <Preview containers={this.state.containers} /> */}
           <Preview />
-          <CodeBox key={this.props.code.length} code={this.props.code} />
+          {this.props.showCodeMirror ? (
+            <CodeBox key={this.props.code.length} code={this.props.code} />
+          ) : (
+            ''
+          )}
         </div>
       </div>
     );
@@ -71,6 +79,7 @@ const mapStateToProps = state => {
     components: state.component.allComponents,
     containers: state.containers,
     code: '',
+    showCodeMirror: state.showCodeMirror,
   };
 };
 

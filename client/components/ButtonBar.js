@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Toolbar } from 'primereact/toolbar';
 import ClipButton from './ClipButton';
 import { Button } from 'primereact/button';
+import ShowCodeMirror from './ShowCodeMirror';
 import { InputText } from 'primereact/inputtext';
 
 const styling = {
@@ -65,9 +66,16 @@ class ButtonBar extends Component {
               <label htmlFor="title">Project Name</label>
             </span>
           </div>
+      <div className="ui-toolbar">
+        <Toolbar>
+          <Button
+            onClick={this.handleAddContainer}
+            label="Add Container"
+            className="p-button-raised ui-button"
+          />
           <Button
             label="Save"
-            className="p-button-rounded p-button-warning"
+            className="p-button-warning ui-button"
             onClick={this.handleProjectSave}
             disabled={this.props.currentProject.id === ''}
           />
@@ -76,7 +84,12 @@ class ButtonBar extends Component {
             label="Add Container"
             className="p-button-raised"
           />
-          <div className="p-toolbar-group-right">
+
+          <div className="p-toolbar-group-right ui-button">
+            <ShowCodeMirror />
+          </div>
+
+          <div className="p-toolbar-group-right ui-button">
             <ClipButton />
           </div>
         </Toolbar>
