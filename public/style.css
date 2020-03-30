@@ -101,3 +101,7 @@ form div {
   border: 1px solid lightcyan;
   border-radius: 4px;
 }
+
+.ui-toolbar .ui-button {
+  margin-right: 10px;
+}

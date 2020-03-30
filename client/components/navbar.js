@@ -13,7 +13,7 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           <Link to="/home">
             <h1>InstaStack</h1>
           </Link>
-          <Link to="/mainPage">DnD</Link>
+          <Link to="/mainPage">Main Page</Link>
           <Link to="template"> Templates </Link>
 
           <a href="#" onClick={handleLogout}>
@@ -27,7 +27,7 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           <Link to="/home">
             <h1>InstaStack</h1>
           </Link>
-          <Link to="/mainPage">DnD</Link>
+          <Link to="/mainPage">Main Page</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
         </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Toolbar } from 'primereact/toolbar';
 import ClipButton from './ClipButton';
 import { Button } from 'primereact/button';
+import ShowCodeMirror from './ShowCodeMirror';
 
 class ButtonBar extends Component {
   constructor(props) {
@@ -26,19 +27,24 @@ class ButtonBar extends Component {
 
   render() {
     return (
-      <div className="content-section implementation">
+      <div className="ui-toolbar">
         <Toolbar>
           <Button
             onClick={this.handleAddContainer}
             label="Add Container"
-            className="p-button-raised"
+            className="p-button-raised ui-button"
           />
           <Button
             label="Save"
-            className="p-button-rounded p-button-warning"
+            className="p-button-warning ui-button"
             onClick={this.handleProjectSave}
           />
-          <div className="p-toolbar-group-right">
+
+          <div className="p-toolbar-group-right ui-button">
+            <ShowCodeMirror />
+          </div>
+
+          <div className="p-toolbar-group-right ui-button">
             <ClipButton />
           </div>
         </Toolbar>
