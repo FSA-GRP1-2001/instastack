@@ -35,7 +35,6 @@ class ButtonBar extends Component {
     const components = this.props.usedComponents;
     const styles = this.props.usedStyles;
     const id = this.props.currentProject.id;
-    console.log('current proj id is ', id);
     await this.props.saveProject(components, containers, styles, id);
   }
 
