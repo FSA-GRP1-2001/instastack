@@ -1,45 +1,95 @@
 import React, { Component } from 'react';
-import { saveProject } from '../store';
+import { saveProject, createProject } from '../store';
 import { connect } from 'react-redux';
 import { Toolbar } from 'primereact/toolbar';
 import ClipButton from './ClipButton';
 import { Button } from 'primereact/button';
+import ShowCodeMirror from './ShowCodeMirror';
+import { InputText } from 'primereact/inputtext';
+
+const styling = {
+  container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+};
 
 class ButtonBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: this.props.currentProject.title,
+    };
     this.handleAddContainer = this.handleAddContainer.bind(this);
     this.handleProjectSave = this.handleProjectSave.bind(this);
+    this.handleAddTitle = this.handleAddTitle.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleAddContainer() {
     this.props.addContainer();
   }
 
-  handleProjectSave() {
+  async handleProjectSave() {
     const containers = this.props.usedContainers;
     const components = this.props.usedComponents;
     const styles = this.props.usedStyles;
-    this.props.saveProject(components, containers, styles);
+    const id = this.props.currentProject.id;
+    await this.props.saveProject(components, containers, styles, id);
+  }
+
+  handleAddTitle(e) {
+    this.setState({ title: e.target.value });
+  }
+
+  handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      console.log('enter', this.state);
+      this.props.createProject(this.state.title, this.props.userId);
+      console.log('new id is ', this.props.currentProject.id);
+    }
   }
 
   render() {
+    console.log('title is ', this.props.currentProject.title);
     return (
       <div className="content-section implementation">
-        <Toolbar>
-          <Button
-            onClick={this.handleAddContainer}
-            label="Add Container"
-            className="p-button-raised"
-          />
-          <Button
-            label="Save"
-            className="p-button-rounded p-button-warning"
-            onClick={this.handleProjectSave}
-          />
-          <div className="p-toolbar-group-right">
-            <ClipButton />
+        <Toolbar style={styling.container}>
+          <div>
+            <span className="p-float-label">
+              <InputText
+                value={this.state.title}
+                onKeyDown={e => this.handleKeyDown(e)}
+                onChange={e => this.handleAddTitle(e)}
+              />
+              <label htmlFor="title">Project Name</label>
+            </span>
+          </div>
+          <div className="ui-toolbar">
+            <Button
+              onClick={this.handleAddContainer}
+              label="Add Container"
+              className="p-button-raised ui-button"
+            />
+            <Button
+              label="Save"
+              className="p-button-warning ui-button"
+              onClick={this.handleProjectSave}
+              disabled={this.props.currentProject.id === ''}
+            />
+            <Button
+              onClick={this.handleAddContainer}
+              label="Add Container"
+              className="p-button-raised"
+            />
+
+            <div className="p-toolbar-group-right ui-button">
+              <ShowCodeMirror />
+            </div>
+
+            <div className="p-toolbar-group-right ui-button">
+              <ClipButton />
+            </div>
           </div>
         </Toolbar>
       </div>
@@ -49,6 +99,9 @@ class ButtonBar extends Component {
 
 const mapStateToProps = state => {
   return {
+    userId: state.user.id,
+    title: state.currentProject.title,
+    currentProject: state.currentProject,
     usedContainers: state.containers,
     usedComponents: state.usedComponents,
     usedStyles: state.usedStyles,
@@ -57,8 +110,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveProject: (usedComponents, containers, styles) =>
-      dispatch(saveProject(usedComponents, containers, styles)),
+    createProject: (title, userId) => dispatch(createProject(title, userId)),
+    saveProject: (usedComponents, containers, styles, projId) =>
+      dispatch(saveProject(usedComponents, containers, styles, projId)),
   };
 };
 

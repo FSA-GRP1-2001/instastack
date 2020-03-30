@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addContainer } from '../store';
-import Preview from './preview/Preview';
+
+// import Preview from './preview/Preview';
+import BlogTemplatePreview from './BlogTemplatePreview';
 import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
 import ButtonBar from './ButtonBar';
 
-class MainPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // containers: [placeholderItem],
-    };
+class BlogTemplate extends Component {
+  constructor() {
+    super();
+    this.state = {};
     this.handleAddContainer = this.handleAddContainer.bind(this);
   }
-
   componentDidMount() {
     // check to see if any containers already exist - if not, make one
     if (!this.props.containers.length > 0) {
@@ -46,23 +45,19 @@ class MainPage extends Component {
   }
 
   render() {
-    const gridStyle = this.props.showCodeMirror
-      ? {
-          display: 'grid',
-          gridTemplateColumns: '3fr 4fr 2fr',
-          gridGap: 5,
-        }
-      : {
-          display: 'grid',
-          gridTemplateColumns: '4fr 4fr',
-          gridGap: 5,
-        };
     return (
       <div>
         <ButtonBar addContainer={this.handleAddContainer} />
-        <div style={gridStyle}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 3fr 3fr',
+            gridGap: 12,
+          }}
+        >
           <ListOfComponents />
-          <Preview />
+          {/* <Preview containers={this.state.containers} /> */}
+          <BlogTemplatePreview />
           {this.props.showCodeMirror ? (
             <CodeBox key={this.props.code.length} code={this.props.code} />
           ) : (
@@ -89,4 +84,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(BlogTemplate);
