@@ -27,7 +27,6 @@ class CodeBox extends Component {
     };
     return (
       <div style={styles.container}>
-        <h4>Code Mirror</h4>
         <CodeMirror
           editorDidMount={editor => {
             this.instance = editor;
