@@ -59,7 +59,11 @@ class MainPage extends Component {
           <ListOfComponents />
           {/* <Preview containers={this.state.containers} /> */}
           <Preview />
-          <CodeBox key={this.props.code.length} code={this.props.code} />
+          {this.props.showCodeMirror ? (
+            <CodeBox key={this.props.code.length} code={this.props.code} />
+          ) : (
+            ''
+          )}
         </div>
       </div>
     );
@@ -71,6 +75,7 @@ const mapStateToProps = state => {
     components: state.component.allComponents,
     containers: state.containers,
     code: '',
+    showCodeMirror: state.showCodeMirror,
   };
 };
 

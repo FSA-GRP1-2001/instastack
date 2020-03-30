@@ -12,6 +12,7 @@ import currentProject from './currentProject';
 import containers from './containers';
 import sidebar from './sidebar';
 import usedStyles from './usedStyles';
+import showCodeMirror from './showCodeMirror';
 
 const reducer = combineReducers({
   user,
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   currentProject,
   containers,
   sidebar,
+  showCodeMirror,
 });
 
 const middleware = composeWithDevTools(
@@ -42,3 +44,4 @@ export * from './currentProject';
 export * from './containers';
 export * from './sidebar';
 export * from './usedStyles';
+export * from './showCodeMirror';
