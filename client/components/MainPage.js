@@ -5,6 +5,7 @@ import Preview from './preview/Preview';
 import CodeBox from './CodeBox';
 import ListOfComponents from './list/componentSection';
 import ButtonBar from './ButtonBar';
+import SlidingCodePane from './CodeBox/SlidingCodePane';
 
 class MainPage extends Component {
   constructor(props) {
@@ -62,11 +63,7 @@ class MainPage extends Component {
         <ButtonBar addContainer={this.handleAddContainer} />
         <div style={gridStyle}>
           <Preview />
-          {this.props.showCodeMirror ? (
-            <CodeBox key={this.props.code.length} code={this.props.code} />
-          ) : (
-            ''
-          )}
+          <SlidingCodePane />
         </div>
       </div>
     );
