@@ -123,13 +123,13 @@ class Preview extends Component {
       position: 'absolute',
       left: '3px',
       cursor: 'pointer',
-      'font-size': '2em',
+      fontSize: '2em',
     };
     const editIcon = {
       position: 'absolute',
       right: '5px',
       cursor: 'pointer',
-      'font-size': '2.5em',
+      fontSize: '2.5em',
     };
     const i = container.i;
     return (
