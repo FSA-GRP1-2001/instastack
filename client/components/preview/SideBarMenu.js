@@ -59,6 +59,7 @@ class SideBarMenu extends Component {
       ...startingProps,
       prevStyles: startingProps,
     });
+    this.props.cancelHelper(startingProps, this.props.component.domId);
   }
 
   handleTextContent(e) {
