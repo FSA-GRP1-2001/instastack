@@ -110,6 +110,17 @@ form div {
   margin: 10px;
 }
 
+.guest-homepage {
+  background-color: #edf1f1;
+}
+.bottom-half {
+  background-color: #0c62c1;
+}
+
+.text {
+  text-align: right;
+}
+
 .mainpage {
   width: 100%;
   border: 1px solid red;

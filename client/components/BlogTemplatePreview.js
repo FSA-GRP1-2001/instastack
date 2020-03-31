@@ -11,8 +11,9 @@ import {
 } from '../store';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
-import SideBar from './preview/SideBar';
+// import SideBar from './preview/SideBar';
 import GridLayout from 'react-grid-layout';
+import SideBarParent from './preview/SideBarParent';
 
 class MyFirstGrid extends React.Component {
   render() {
@@ -127,20 +128,23 @@ class BlogTemplatePreview extends Component {
       console.log('loading saved styles!');
       this.props.usedStyles.forEach(styleObj => {
         let node = document.getElementById(styleObj.domId);
-        // const styles = styleObj.styles;
-        if (styleObj.styles.fontSize.length)
+        const styles = styleObj.styles;
+        console.log(styleObj.styles, styleObj.styles.fontSize);
+        if (styleObj.styles.fontSize)
           node.style.fontSize = styles.fontSize + 'px';
-        if (styleObj.styles.color.length) node.style.color = styles.color;
-        if (styleObj.styles.borderStyle.length)
+        if (styleObj.styles.color) node.style.color = styles.color;
+        if (styleObj.styles.borderStyle)
           node.style.borderStyle = styles.borderStyle;
-        if (styleObj.styles.borderWidth.length)
+        if (styleObj.styles.borderWidth)
           node.style.borderWidth = styles.borderWidth;
-        if (styleObj.styles.borderRadius.length)
+        if (styleObj.styles.borderRadius)
           node.style.borderRadius = styles.borderRadius + 'px';
-        if (styleObj.styles.padding.length)
-          node.style.padding = styles.padding + 'px';
-        if (styleObj.styles.backgroundColor.length)
-          node.style.backgroundColor = '#' + styles.backgroundColor;
+        if (styleObj.styles.padding) node.style.padding = styles.padding + 'px';
+        if (styleObj.styles.backgroundColor)
+          node.style.backgroundColor = styles.backgroundColor;
+        if (styleObj.styles.src) node.src = styles.src;
+        if (styleObj.styles.imageWidth) node.style.width = styles.imageWidth;
+        console.log('styled node is ', node);
       });
     }
     this.props.updateCode(getPreviewHtml());
@@ -154,30 +158,35 @@ class BlogTemplatePreview extends Component {
     this.props.removeContainer(containerId);
   }
   handleOpenEditMenu(i) {
-    const componentObj = this.props.usedComponents.filter(comp => {
-      return comp.i === i;
-    })[0];
-    const title = componentObj.component.title;
-    const id = componentObj.component.domId;
-    console.log('handle open menu component is ', componentObj, title, id);
-    this.props.openSideBar(id, title, i);
+    if (!this.props.usedComponents.length) return;
+    const componentObjArr = this.props.usedComponents
+      .filter(comp => {
+        return comp.i === i;
+      })
+      .map(comp => ({
+        domId: comp.component.domId,
+        title: comp.component.title,
+        i: i,
+      }));
+    this.props.openSideBar(componentObjArr);
   }
   createContainer(container) {
     const removeIcon = {
       position: 'absolute',
-      left: '1px',
+      left: '3px',
       cursor: 'pointer',
     };
     const editIcon = {
       position: 'absolute',
-      right: '1px',
+      right: '5px',
       cursor: 'pointer',
+      'font-size': '3em',
     };
     const i = container.i;
     return (
       <div
         style={{
-          border: '1px solid yellow',
+          // border: '1px solid yellow',
           overflow: 'auto',
           paddingLeft: 10,
           paddingRight: 10,
@@ -195,7 +204,7 @@ class BlogTemplatePreview extends Component {
         <span
           style={editIcon}
           onClick={() => this.handleOpenEditMenu(container.i)}
-          className="remove pi pi-pencil"
+          className="remove pi pi-spin pi-pencil"
         />
       </div>
     );
@@ -252,7 +261,7 @@ class BlogTemplatePreview extends Component {
   render() {
     return (
       <div className="App" style={styles.gridContainer}>
-        <SideBar />
+        <SideBarParent />
         <DropWrapper>
           <MyFirstGrid />
 
