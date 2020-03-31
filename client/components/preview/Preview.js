@@ -138,6 +138,8 @@ class Preview extends Component {
           overflow: 'auto',
           paddingLeft: 10,
           paddingRight: 10,
+          display: 'flex',
+          flexDirection: 'column',
         }}
         key={i}
         data-grid={container}
