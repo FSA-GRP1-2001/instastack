@@ -1,6 +1,7 @@
+/* eslint-disable complexity */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateCode, addComponent } from '../../store';
+import { updateCode, addComponent, resizedContainer } from '../../store';
 
 export const getPreviewHtml = () => {
   const grid = document.querySelector('.react-grid-layout');
@@ -9,6 +10,38 @@ export const getPreviewHtml = () => {
 };
 
 class DropWrapper extends Component {
+  constructor(props) {
+    super(props);
+    this.handleResizeContainer = this.handleResizeContainer.bind(this);
+  }
+
+  handleResizeContainer = (containerId, tagName) => {
+    let container = this.props.usedContainers.filter(
+      c => c.i === containerId
+    )[0];
+    let w;
+    let h = container.h;
+    console.log('the tagname is ', tagName);
+    if (tagName === 'H1' && container.x - 5 <= 7 && container.w < 5) {
+      w = 5;
+    }
+    if (
+      tagName === 'IMG' &&
+      ((container.x - 4 <= 8 && container.w <= 4) ||
+        (container.y - 3 <= 9 && container.h < 2))
+    ) {
+      w = 4;
+      h = 3;
+    }
+    if (tagName === 'P' && (container.h < 4 || container.w < 4)) {
+      console.log('updating p container size');
+      w = 4;
+      h = 4;
+    }
+    container = { ...container, w, h };
+    this.props.resizedContainer(container);
+  };
+
   drop = e => {
     e.preventDefault();
     const containerIdx = e.target.id;
@@ -18,8 +51,10 @@ class DropWrapper extends Component {
     console.log(
       'dropping the component ',
       component,
-      ' datagrid data is ',
-      component.dataset.component
+      ' width is ',
+      component.offsetWidth,
+      ' on container ',
+      containerIdx
     );
 
     let children = null;
@@ -45,6 +80,7 @@ class DropWrapper extends Component {
       e.target.appendChild(document.getElementById(data));
       this.props.updateCode(getPreviewHtml());
     }
+    this.handleResizeContainer(containerIdx, component.tagName);
   };
 
   allowDrop = e => {
@@ -65,12 +101,19 @@ class DropWrapper extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    usedContainers: state.containers,
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     updateCode: code => dispatch(updateCode(code)),
     addComponent: (componentObj, containerIdx) =>
       dispatch(addComponent(componentObj, containerIdx)),
+    resizedContainer: container => dispatch(resizedContainer(container)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(DropWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(DropWrapper);

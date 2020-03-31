@@ -10,7 +10,7 @@ class DragWrapper extends Component {
     let newComponent = document.createElement(tag);
     newComponent.className = componentObj.title;
     newComponent.id = e.target.id + `${Math.floor(Math.random() * 100)}`;
-
+    console.log('tag is ', tag);
     if (tag === 'ul') {
       let innerHtmlText = componentObj.children
         .map(str => '<li>' + str + '</li>')
@@ -20,6 +20,9 @@ class DragWrapper extends Component {
       newComponent.src = componentObj.src;
     } else {
       newComponent.textContent = componentObj.textContent;
+    }
+    if (tag === 'p') {
+      newComponent.style.lineHeight = 'normal';
     }
     document.body.appendChild(newComponent);
     e.dataTransfer.setData('transfer', newComponent.id);
