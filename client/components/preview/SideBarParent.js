@@ -10,12 +10,15 @@ class SideBarParent extends Component {
     super(props);
     this.state = {
       selectIdx: 0,
+      currentPrevStyles: {},
+      currentDomId: '',
     };
     this.handleNextItem = this.handleNextItem.bind(this);
     this.handlePrevItem = this.handlePrevItem.bind(this);
     this.handleOnShow = this.handleOnShow.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseIconHelper = this.handleCloseIconHelper.bind(this);
   }
 
   handleNextItem() {
@@ -31,8 +34,8 @@ class SideBarParent extends Component {
   }
 
   handleCancel() {
-    const prevStyles = this.state.prevStyles;
-    const node = this.state.node;
+    const prevStyles = this.state.currentPrevStyles;
+    const node = document.getElementById(this.state.currentDomId);
     for (let style in prevStyles) {
       if (prevStyles[style].length) {
         console.log('resetting style ', style);
@@ -44,14 +47,25 @@ class SideBarParent extends Component {
   }
 
   handleClose() {
+    console.log('handle close running');
     this.handleCancel();
     this.props.closedSideBar();
   }
+
+  handleCloseIconHelper(currentPrevStyles, domId) {
+    console.log('handle close icon helper is runngin');
+    this.setState({ currentPrevStyles, currentDomId: domId });
+  }
+
   render() {
     const { selectIdx } = this.state;
     const len = this.props.sidebar.length;
     const componentMenus = this.props.sidebar.map(comp => (
-      <SideBarMenu key={comp.domId} component={comp} />
+      <SideBarMenu
+        key={comp.domId}
+        component={comp}
+        cancelHelper={this.handleCloseIconHelper}
+      />
     ));
     return (
       <Sidebar
@@ -65,6 +79,7 @@ class SideBarParent extends Component {
             className="p-button-secondary rounded"
             icon="pi pi-angle-left"
             onClick={this.handlePrevItem}
+            style={{ visibility: selectIdx === 0 ? 'hidden' : 'visible' }}
           />
           <div style={styles.displayContainer}>
             <h4>{len && this.props.sidebar[selectIdx].title}</h4>
@@ -74,6 +89,10 @@ class SideBarParent extends Component {
             className="p-button-secondary rounded"
             icon="pi pi-angle-right"
             onClick={this.handleNextItem}
+            style={{
+              visibility:
+                selectIdx === componentMenus.length - 1 ? 'hidden' : 'visible',
+            }}
           />
         </div>
         {componentMenus[selectIdx]}
