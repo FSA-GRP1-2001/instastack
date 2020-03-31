@@ -13,6 +13,9 @@ const styling = {
     display: 'flex',
     justifyContent: 'space-between',
   },
+  buttonContainer: {
+    width: '75%',
+  },
 };
 
 class ButtonBar extends Component {
@@ -86,7 +89,10 @@ class ButtonBar extends Component {
               <label htmlFor="title">Project Name</label>
             </span>
           </div>
-          <div className="ui-toolbar">
+          <div
+            className="ui-toolbar"
+            style={{ ...styling.container, ...styling.buttonContainer }}
+          >
             <Button
               onClick={this.handleAddContainer}
               label="Add Container"
@@ -98,11 +104,6 @@ class ButtonBar extends Component {
               className="p-button-warning ui-button p-button-rounded"
               onClick={this.handleProjectSave}
               disabled={this.props.currentProject.id === ''}
-            />
-            <Button
-              onClick={this.handleAddContainer}
-              label="Add Container"
-              className="p-button-raised p-button-rounded"
             />
             <Button
               onClick={this.handlePreviewHtml}

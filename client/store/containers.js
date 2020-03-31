@@ -9,6 +9,7 @@ const ADD_CONTAINER = 'ADD_CONTAINER';
 const GOT_SAVED_CONTAINERS = 'GOT_SAVED_CONTAINERS';
 const CLEAR_CONTAINERS = 'CLEAR_CONTAINERS';
 const REMOVE_CONTAINER = 'REMOVE_CONTAINER';
+const RESIZE_CONTAINER = 'RESIZE_CONTAINER';
 /**
  * ACTION CREATORS
  */
@@ -25,6 +26,11 @@ const addedContainer = container => ({
 const removedContainer = containerId => ({
   type: REMOVE_CONTAINER,
   containerId,
+});
+
+export const resizedContainer = container => ({
+  type: RESIZE_CONTAINER,
+  container,
 });
 
 export const clearedContainers = () => ({ type: CLEAR_CONTAINERS });
@@ -82,6 +88,14 @@ export default function containers(containers = [], action) {
     case REMOVE_CONTAINER:
       // i is the key on the container obj we use, not the idx
       return [...containers.filter(c => c.i !== action.containerId)];
+    case RESIZE_CONTAINER:
+      return containers.map(c => {
+        if (c.i === action.container.i) {
+          return action.container;
+        } else {
+          return c;
+        }
+      });
     default:
       return containers;
   }
