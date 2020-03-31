@@ -15,8 +15,11 @@ class SideBarMenu extends Component {
     super(props);
     this.state = {
       domId: '',
+      tagName: '',
       node: null,
       i: '',
+      src: '',
+      imageWidth: '',
       textContent: '',
       fontSize: '',
       borderStyle: '',
@@ -36,6 +39,8 @@ class SideBarMenu extends Component {
     this.handleSaveStyles = this.handleSaveStyles.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleImageSrc = this.handleImageSrc.bind(this);
+    this.handleImageWidth = this.handleImageWidth.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +48,8 @@ class SideBarMenu extends Component {
     const style = node.style;
     const startingProps = {
       fontSize: style.fontSize,
+      src: node.src,
+      imageWidth: node.style.width,
       color: style.color,
       borderStyle: style.borderStyle,
       borderWidth: style.borderWidth,
@@ -53,6 +60,7 @@ class SideBarMenu extends Component {
     };
     this.setState({
       node: node,
+      tagName: node.tagName,
       i: this.props.component.i,
       domId: this.props.component.domId,
       textContent: node.textContent,
@@ -70,12 +78,12 @@ class SideBarMenu extends Component {
     this.props.updateCode(getPreviewHtml());
   }
 
-  handleFontSize(size) {
+  handleFontSize(e) {
     this.setState({
-      fontSize: size,
+      fontSize: e.value,
     });
     const node = this.state.node;
-    node.style.fontSize = size + 'px';
+    node.style.fontSize = e.value + 'px';
     this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
@@ -132,6 +140,8 @@ class SideBarMenu extends Component {
     console.log('saving styles');
     const styleObj = {
       fontSize: this.state.fontSize,
+      src: this.state.src,
+      imageWidth: this.state.imageWidth,
       color: this.state.color,
       borderStyle: this.state.borderStyle,
       borderWidth: this.state.borderWidth,
@@ -163,34 +173,61 @@ class SideBarMenu extends Component {
     this.props.closedSideBar();
   }
 
+  handleImageSrc(e) {
+    console.log(e.target.value);
+    this.setState({ src: e.target.value });
+    const node = this.state.node;
+    node.src = e.target.value;
+    this.setState({ node });
+    this.props.updateCode(getPreviewHtml());
+  }
+  handleImageWidth(e) {
+    this.setState({ imageWidth: e.value });
+    const node = this.state.node;
+    node.style.width = e.value + '%';
+    this.setState({ node });
+    this.props.updateCode(getPreviewHtml());
+  }
   render() {
     return (
       <section>
-        <Fieldset legend="Text Properites">
-          <label htmlFor="Text Content">Text Content</label>
-          <InputText
-            value={this.state.textContent}
-            onChange={e => this.handleTextContent(e)}
-          />
-          <label>Font Color</label>
-          <ColorPicker
-            value={this.state.color}
-            onChange={e => this.handleColor(e)}
-          />
-          <label>Font Size</label>
-          <Spinner
-            min={10}
-            max={44}
-            value={this.state.fontSize}
-            onChange={e => this.handleFontSize(e.value)}
-          />
-        </Fieldset>
+        {this.state.tagName === 'IMG' ? (
+          <Fieldset legend="Image Properites">
+            <label htmlFor="Image Src">Image Src</label>
+            <InputText value={this.state.src} onChange={this.handleImageSrc} />
+            <label>Image Width (%)</label>
+            <Spinner
+              min={10}
+              max={100}
+              step={2}
+              value={this.state.imageWidth}
+              onChange={this.handleImageWidth}
+            />
+          </Fieldset>
+        ) : (
+          <Fieldset legend="Text Properites">
+            <label htmlFor="Text Content">Text Content</label>
+            <InputText
+              value={this.state.textContent}
+              onChange={this.handleTextContent}
+            />
+            <label>Font Color</label>
+            <ColorPicker value={this.state.color} onChange={this.handleColor} />
+            <label>Font Size</label>
+            <Spinner
+              min={10}
+              max={44}
+              value={this.state.fontSize}
+              onChange={this.handleFontSize}
+            />
+          </Fieldset>
+        )}
         <Fieldset legend="Component Properites">
           <label>Border Style</label>
           <Dropdown
             value={this.state.borderStyle}
             options={borderStyles}
-            onChange={e => this.handleBorderStyle(e)}
+            onChange={this.handleBorderStyle}
             placeholder="Select a border style"
           />
           <label>Border Width</label>
@@ -198,26 +235,26 @@ class SideBarMenu extends Component {
             min={1}
             max={12}
             value={this.state.borderWidth}
-            onChange={e => this.handleBorderWidth(e)}
+            onChange={this.handleBorderWidth}
           />
           <label>Border Radius: {this.state.borderRadius}px</label>
           <Slider
             value={this.state.borderRadius}
             min={0}
             max={20}
-            onChange={e => this.handleBorderRadius(e)}
+            onChange={this.handleBorderRadius}
           />
           <label>Padding</label>
           <Spinner
             min={1}
             max={25}
             value={this.state.padding}
-            onChange={e => this.handlePadding(e)}
+            onChange={this.handlePadding}
           />
           <label>Background Color</label>
           <ColorPicker
             value={this.state.backgroundColor}
-            onChange={e => this.handleBackgroundColor(e)}
+            onChange={this.handleBackgroundColor}
           />
         </Fieldset>
         <Fieldset legend="Save Changes">

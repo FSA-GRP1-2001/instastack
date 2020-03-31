@@ -89,6 +89,8 @@ class Preview extends Component {
         if (styleObj.styles.padding) node.style.padding = styles.padding + 'px';
         if (styleObj.styles.backgroundColor)
           node.style.backgroundColor = styles.backgroundColor;
+        if (styleObj.styles.src) node.src = styles.src;
+        if (styleObj.styles.imageWidth) node.style.width = styles.imageWidth;
         console.log('styled node is ', node);
       });
     }
