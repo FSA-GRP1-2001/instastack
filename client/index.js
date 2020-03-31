@@ -5,8 +5,6 @@ import { Router } from 'react-router-dom';
 import history from './history';
 import store from './store';
 import App from './app';
-import { DndProvider } from 'react-dnd';
-import Backend from 'react-dnd-html5-backend';
 
 // Prime React imports
 import 'primereact/resources/themes/nova-light/theme.css';
@@ -19,9 +17,7 @@ import './socket';
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <DndProvider backend={Backend}>
-        <App />
-      </DndProvider>
+      <App />
     </Router>
   </Provider>,
   document.getElementById('app')
