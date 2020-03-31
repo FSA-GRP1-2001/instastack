@@ -1,91 +1,3 @@
-// import React from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import { auth } from '../store';
-
-// /**
-//  * COMPONENT
-//  */
-// const AuthForm = props => {
-//   const { name, displayName, handleSubmit, error } = props;
-
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit} name={name}>
-//         <div>
-//           <label htmlFor="email">
-//             <small>Email</small>
-//           </label>
-//           <input name="email" type="text" />
-//         </div>
-//         <div>
-//           <label htmlFor="password">
-//             <small>Password</small>
-//           </label>
-//           <input name="password" type="password" />
-//         </div>
-//         <div>
-//           <button type="submit">{displayName}</button>
-//         </div>
-//         {error && error.response && <div> {error.response.data} </div>}
-//       </form>
-//       <a href="/auth/google">{displayName} with Google</a>
-//       <br />
-//       <a href="/auth/github">{displayName} with Github</a>
-//     </div>
-//   );
-// };
-
-// /**
-//  * CONTAINER
-//  *   Note that we have two different sets of 'mapStateToProps' functions -
-//  *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
-//  *   function, and share the same Component. This is a good example of how we
-//  *   can stay DRY with interfaces that are very similar to each other!
-//  */
-// const mapLogin = state => {
-//   return {
-//     name: 'login',
-//     displayName: 'Login',
-//     error: state.user.error,
-//   };
-// };
-
-// const mapSignup = state => {
-//   return {
-//     name: 'signup',
-//     displayName: 'Sign Up',
-//     error: state.user.error,
-//   };
-// };
-
-// const mapDispatch = dispatch => {
-//   return {
-//     handleSubmit(evt) {
-//       evt.preventDefault();
-//       const formName = evt.target.name;
-//       const email = evt.target.email.value;
-//       const password = evt.target.password.value;
-//       dispatch(auth(email, password, formName));
-//     },
-//   };
-// };
-
-// export const Login = connect(mapLogin, mapDispatch)(AuthForm);
-// export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
-
-// /**
-//  * PROP TYPES
-//  */
-// AuthForm.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   displayName: PropTypes.string.isRequired,
-//   handleSubmit: PropTypes.func.isRequired,
-//   error: PropTypes.object,
-// };
-
-//=================================================================
-
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -103,6 +15,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import stack from '../../public/stack.png';
+import github from '../../public/github.png';
+import google from '../../public/google.png';
+// import { Button } from 'primereact/button';
 
 function Copyright() {
   return (
@@ -110,9 +26,8 @@ function Copyright() {
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         InstaStack
-      </Link>{' '}
+      </Link>
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
@@ -149,12 +64,42 @@ const AuthForm = props => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          {/* <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
           <Typography component="h1" variant="h5">
-            Welcome
+            <img src={stack} width="40" height="40" />
+            InstaStack
           </Typography>
+
+          <Button fullWidth variant="contained">
+            <img src={github} width="15" height="15" />
+            {''} {''} {''}
+            {''} {''} {''}
+            <Link href="/auth/github">{displayName} with GitHub</Link>
+          </Button>
+          <Button fullWidth variant="contained">
+            <img src={google} width="13" height="13" />
+            {''} {''} {''}
+            {''} {''} {''}
+            <Link href="/auth/google">{displayName} with Google</Link>
+          </Button>
+
+          {/* <a href="/auth/google">{displayName} with Google</a>
+
+          <a href="/auth/github">{displayName} with Github</a> */}
+
+          <hr
+            style={{
+              color: '#000000',
+              backgroundColor: '#000000',
+              width: 400,
+              borderColor: '#000000',
+            }}
+          />
+
+          <h2>{displayName}</h2>
+
           <form onSubmit={handleSubmit} name={name}>
             <TextField
               variant="outlined"
@@ -178,15 +123,23 @@ const AuthForm = props => {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+            <center>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value="remember"
+                    // color="primary"
+                  />
+                }
+                label="Remember me"
+              />
+            </center>
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              color="Inprimary"
+              // color="Inprimary"
               className={classes.submit}
             >
               {displayName}
@@ -206,7 +159,6 @@ const AuthForm = props => {
               </Grid>
             </Grid>
           </form>
-          <a href="/auth/google">{displayName} with Google</a>
         </div>
         <Box mt={8}>
           <Copyright />
