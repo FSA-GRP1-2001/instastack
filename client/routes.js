@@ -13,6 +13,7 @@ import {
   TemplateHome,
   LandingPageTemplate,
   BlogTemplate,
+  GuestHome,
 } from './components';
 import { me } from './store';
 
@@ -35,10 +36,13 @@ class Routes extends Component {
         {/* <Route path="/lof" component={ListOfComponents} /> */}
         <Route path="/mainpage" component={MainPage} />
 
+        {/* this is breaking the code for logged in users */}
+        <Route path="/" component={GuestHome} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            <Route exact path="/home" component={UserHome} />
             <Route exact path="/users/:id/profile" component={Profile} />
             <Route
               exact

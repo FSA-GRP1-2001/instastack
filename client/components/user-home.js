@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import GuestHome from './GuestHome';
 
 /**
  * COMPONENT
@@ -23,6 +24,7 @@ export const UserHome = props => {
           <Link to={`/users/${id}/projects`}>View Saved Projects</Link>
         </div>
       </section>
+      <GuestHome />
     </div>
   );
 };

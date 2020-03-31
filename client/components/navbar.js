@@ -48,7 +48,7 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/home">
+          <Link to="/">
             <h1>InstaStack</h1>
           </Link>
 
