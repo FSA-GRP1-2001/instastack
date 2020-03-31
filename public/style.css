@@ -67,7 +67,7 @@ form div {
   cursor: move;
   height: 40px;
   line-height: 38px;
-  background: #61dafb;
+  background: #56be96;
 }
 
 /* testing purposes remove before commiting */
@@ -113,16 +113,26 @@ form div {
 .mainpage {
   width: 100%;
   border: 1px solid red;
-  margin-top: 5%;
+  background: #edf1f1;
 }
 
-.app-logo,
+.app-logo {
+  background: #333055 !important;
+}
 .component-selection-sidebar {
-  background: #000000;
+  background: linear-gradient(#333055, #060509) !important;
 }
 
 .navbar {
-  height: 60px;
+  height: 100%;
+}
+
+.navbar nav {
+  height: 100%;
+}
+
+.loggedin-nav {
+  height: 100%;
 }
 
 .navbar .ui-button {
@@ -141,4 +151,14 @@ form div {
   color: #ffffff !important;
   background-color: #56be96 !important;
   border-color: #56be96 !important;
+}
+
+/* Logo and Left Bar */
+.logo {
+  width: 100%;
+  padding: 8px;
+}
+
+.react-grid-layout {
+  background: white;
 }

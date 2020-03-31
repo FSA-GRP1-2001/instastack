@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Navbar } from './components';
 import Routes from './routes';
 import ListOfComponents from './components/list/componentSection';
@@ -17,7 +17,11 @@ const App = () => {
   return (
     <div>
       <div style={styles.appContainer}>
-        <div className="app-logo">App Logo</div>
+        <div className="app-logo">
+          <Link to="/home">
+            <img className="logo" src="logo.png" />
+          </Link>
+        </div>
         <Navbar />
         <ListOfComponents />
         <Routes />
