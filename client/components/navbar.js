@@ -9,11 +9,8 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
   <div className="navbar">
     <nav>
       {isLoggedIn ? (
-        <div>
+        <div className="loggedin-nav">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">
-            <h1>InstaStack</h1>
-          </Link>
           <Link to="/mainPage">
             <Button
               // onClick={this.handleAddContainer}

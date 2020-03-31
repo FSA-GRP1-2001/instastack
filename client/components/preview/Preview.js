@@ -192,6 +192,7 @@ class Preview extends Component {
         <SideBarParent />
         <DropWrapper>
           <ReactGridLayout
+            style={styles.gridContainer}
             rowHeight={60}
             width={1200}
             cols={12}
