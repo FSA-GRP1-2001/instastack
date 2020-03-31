@@ -8,7 +8,6 @@ import {
   getColumnProps,
 } from 'react-flexbox-grid';
 import temp from '../../public/temp.png';
-import google from '../../public/google.png';
 
 // import temp from '../../public/temp.jpg';
 
