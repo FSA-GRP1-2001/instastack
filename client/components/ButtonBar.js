@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { Component } from 'react';
 import { saveProject, createProject } from '../store';
 import { connect } from 'react-redux';
@@ -19,11 +20,13 @@ class ButtonBar extends Component {
     super(props);
     this.state = {
       title: this.props.currentProject.title,
+      showPreview: false,
     };
     this.handleAddContainer = this.handleAddContainer.bind(this);
     this.handleProjectSave = this.handleProjectSave.bind(this);
     this.handleAddTitle = this.handleAddTitle.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handlePreviewHtml = this.handlePreviewHtml.bind(this);
   }
 
   handleAddContainer() {
@@ -50,6 +53,24 @@ class ButtonBar extends Component {
     }
   }
 
+  handlePreviewHtml() {
+    const containers = [...document.querySelectorAll('.react-grid-item')];
+    const icons = [
+      ...document.querySelectorAll('.pi-trash'),
+      ...document.querySelectorAll('.pi-pencil'),
+      ...document.querySelectorAll('.react-resizable-handle'),
+    ];
+    console.log(icons);
+    if (this.state.showPreview) {
+      containers.map(c => (c.style.backgroundColor = ''));
+      icons.map(i => (i.style.display = ''));
+    } else {
+      containers.map(c => (c.style.backgroundColor = 'white'));
+      icons.map(i => (i.style.display = 'none'));
+    }
+    this.setState(prevState => ({ showPreview: !prevState.showPreview }));
+  }
+
   render() {
     console.log('title is ', this.props.currentProject.title);
     return (
@@ -69,21 +90,26 @@ class ButtonBar extends Component {
             <Button
               onClick={this.handleAddContainer}
               label="Add Container"
-              className="p-button-raised ui-button"
+              className="p-button-raised ui-button p-button-rounded"
+              disabled={this.state.showPreview}
             />
             <Button
               label="Save"
-              className="p-button-warning ui-button"
+              className="p-button-warning ui-button p-button-rounded"
               onClick={this.handleProjectSave}
               disabled={this.props.currentProject.id === ''}
             />
             <Button
               onClick={this.handleAddContainer}
               label="Add Container"
-              className="p-button-raised"
+              className="p-button-raised p-button-rounded"
             />
-
-            <div className="p-toolbar-group-right ui-button">
+            <Button
+              onClick={this.handlePreviewHtml}
+              className="p-button-raised p-button-rounded"
+              icon={this.state.showPreview ? 'pi pi-eye-slash' : 'pi pi-eye'}
+            />
+            <div className="p-toolbar-group-right ui-button p-button-rounded">
               <ShowCodeMirror />
             </div>
 

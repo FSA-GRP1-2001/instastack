@@ -49,12 +49,12 @@ class MainPage extends Component {
     const gridStyle = this.props.showCodeMirror
       ? {
           display: 'grid',
-          gridTemplateColumns: '3fr 4fr 2fr',
+          gridTemplateColumns: 'auto 4fr 2fr',
           gridGap: 5,
         }
       : {
           display: 'grid',
-          gridTemplateColumns: '4fr 4fr',
+          gridTemplateColumns: 'auto 4fr',
           gridGap: 5,
         };
     return (

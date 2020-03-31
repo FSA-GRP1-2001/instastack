@@ -20,7 +20,7 @@ class ShowCodeMirror extends Component {
     return (
       <div>
         <Button
-          className="p-button-info p-button-raised"
+          className="p-button-info p-button-raised p-button-rounded"
           label={label}
           onClick={this.toggleCode}
         />

@@ -39,7 +39,7 @@ form div {
   flex-direction: column;
   align-items: center;
   border: 1px solid gray;
-  width: 120px;
+  width: 160px;
 }
 
 /* PREVEW AREA */
@@ -58,8 +58,7 @@ form div {
 }
 
 /* RGL Preview Items */
-.item,
-.MyDragHandleClassName {
+.item {
   border: 1px solid;
 }
 

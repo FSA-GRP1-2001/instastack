@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DragWrapper from './DragWrapper';
 import { getAllComponents } from '../../store';
+import { Card } from 'primereact/card';
 
 class ListOfComponents extends Component {
   componentDidMount() {
@@ -12,9 +13,8 @@ class ListOfComponents extends Component {
     const { components } = this.props;
     const haveComponents = components.length > 0;
     return (
-      <div className="component-selection-sidebar">
-        {/* supposed to import all the components available */}
-        <p>List of currently available components:</p>
+      // <div className="component-selection-sidebar">
+      <Card className="component-selection-sidebar">
         {haveComponents &&
           [...components].map(component => {
             return (
@@ -27,7 +27,8 @@ class ListOfComponents extends Component {
               </DragWrapper>
             );
           })}
-      </div>
+      </Card>
+      // </div>
     );
   }
 }
