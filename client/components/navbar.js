@@ -54,9 +54,25 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           <Link to="/home">
             <h1>InstaStack</h1>
           </Link>
-          <Link to="/mainPage">Main Page</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+
+          <Link to="/mainPage">
+            <Button
+              label="Main Page"
+              className="p-button-raised ui-button p-button-rounded"
+            />
+          </Link>
+          <Link to="/login">
+            <Button
+              label="Log In"
+              className="p-button-raised ui-button p-button-rounded"
+            />
+          </Link>
+          <Link to="/signup">
+            <Button
+              label="Sign Up"
+              className="p-button-raised ui-button p-button-rounded"
+            />
+          </Link>
         </div>
       )}
     </nav>
