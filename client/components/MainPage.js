@@ -49,19 +49,18 @@ class MainPage extends Component {
     const gridStyle = this.props.showCodeMirror
       ? {
           display: 'grid',
-          gridTemplateColumns: 'auto 4fr 2fr',
+          gridTemplateColumns: 'auto 2fr',
           gridGap: 5,
         }
       : {
           display: 'grid',
-          gridTemplateColumns: 'auto 4fr',
+          gridTemplateColumns: 'auto',
           gridGap: 5,
         };
     return (
-      <div>
+      <div className="mainpage">
         <ButtonBar addContainer={this.handleAddContainer} />
         <div style={gridStyle}>
-          <ListOfComponents />
           <Preview />
           {this.props.showCodeMirror ? (
             <CodeBox key={this.props.code.length} code={this.props.code} />
