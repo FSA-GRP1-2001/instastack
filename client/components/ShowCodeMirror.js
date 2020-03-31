@@ -36,8 +36,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  console.log('here', toggleCodeMirror);
-
   return {
     toggle: show => dispatch(toggleCodeMirror(show)),
   };

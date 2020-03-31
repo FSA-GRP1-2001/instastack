@@ -54,35 +54,6 @@ class MyFirstGrid extends React.Component {
         rowHeight={30}
         width={1600}
       >
-        {/* <div className="MyDragHandleClassName"> */}
-        <div className="MyDragHandleClassName" key="a">
-          nav bar
-        </div>
-        <div className="MyDragHandleClassName" key="b">
-          feature blog
-        </div>
-        <div className="MyDragHandleClassName" key="c">
-          blog post1
-        </div>
-        <div className="MyDragHandleClassName" key="d">
-          blog post1 image
-        </div>
-        <div className="MyDragHandleClassName" key="e">
-          blog post2
-        </div>
-        {/* <div key="f">blog post2 image</div> */}
-        <div className="MyDragHandleClassName" key="g">
-          blog post3 header
-        </div>
-        <div className="MyDragHandleClassName" key="h">
-          blog post3
-        </div>
-        <div className="MyDragHandleClassName" key="i">
-          blog post4 header
-        </div>
-        <div className="MyDragHandleClassName" key="j">
-          blog post4
-        </div>
         {/* <div key="k">article links</div> */}
         {/* <div key="l">footer</div> */}
         {/* </div> */}
