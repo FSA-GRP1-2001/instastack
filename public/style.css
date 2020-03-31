@@ -142,3 +142,7 @@ form div {
   background-color: #56be96 !important;
   border-color: #56be96 !important;
 }
+
+.navbar .ui-button:focus {
+  box-shadow: none !important;
+}
