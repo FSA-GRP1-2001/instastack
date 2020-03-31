@@ -108,3 +108,14 @@ form div {
 .component-selection-sidebar .preview-button {
   margin: 10px;
 }
+
+.guest-homepage {
+  background-color: #edf1f1;
+}
+.bottom-half {
+  background-color: #0c62c1;
+}
+
+.text {
+  text-align: right;
+}
