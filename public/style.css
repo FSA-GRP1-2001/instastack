@@ -39,7 +39,8 @@ form div {
   flex-direction: column;
   align-items: center;
   border: 1px solid gray;
-  width: 160px;
+  width: 100%;
+  text-align: center;
 }
 
 /* PREVEW AREA */
@@ -118,4 +119,41 @@ form div {
 
 .text {
   text-align: right;
+}
+
+.mainpage {
+  width: 100%;
+  border: 1px solid red;
+  margin-top: 5%;
+}
+
+.app-logo,
+.component-selection-sidebar {
+  background: #000000;
+}
+
+.navbar {
+  height: 60px;
+}
+
+.navbar .ui-button {
+  color: #ffffff;
+  background-color: #333055;
+  border-color: #333055;
+}
+
+.navbar .ui-button-icon-only {
+  border-radius: 5px !important;
+  max-width: 20px !important;
+  min-width: 20px !important;
+}
+
+.navbar .ui-button:hover {
+  color: #ffffff !important;
+  background-color: #56be96 !important;
+  border-color: #56be96 !important;
+}
+
+.navbar .ui-button:focus {
+  box-shadow: none !important;
 }

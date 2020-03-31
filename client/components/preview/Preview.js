@@ -123,12 +123,13 @@ class Preview extends Component {
       position: 'absolute',
       left: '3px',
       cursor: 'pointer',
+      fontSize: '2em',
     };
     const editIcon = {
       position: 'absolute',
       right: '5px',
       cursor: 'pointer',
-      'font-size': '3em',
+      fontSize: '2.5em',
     };
     const i = container.i;
     return (
@@ -137,6 +138,8 @@ class Preview extends Component {
           overflow: 'auto',
           paddingLeft: 10,
           paddingRight: 10,
+          display: 'flex',
+          flexDirection: 'column',
         }}
         key={i}
         data-grid={container}
@@ -151,7 +154,7 @@ class Preview extends Component {
         <span
           style={editIcon}
           onClick={() => this.handleOpenEditMenu(container.i)}
-          className="remove pi pi-spin pi-pencil"
+          className="remove pi pi-pencil"
         />
       </div>
     );

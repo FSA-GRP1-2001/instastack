@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
+import { Button } from 'primereact/button';
 
 const Navbar = ({ handleLogout, isLoggedIn, user }) => (
-  <div>
+  <div className="navbar">
     <nav>
       {isLoggedIn ? (
         <div>
@@ -13,13 +14,39 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           <Link to="/home">
             <h1>InstaStack</h1>
           </Link>
-          <Link to="/mainPage">Main Page</Link>
-          <Link to="template"> Templates </Link>
+          <Link to="/mainPage">
+            <Button
+              // onClick={this.handleAddContainer}
+              label="Main Page"
+              className="p-button-raised ui-button p-button-rounded"
+              // disabled={this.state.showPreview}
+            />
+          </Link>
+          <Link to="template">
+            <Button
+              // onClick={this.handleAddContainer}
+              label="Templates"
+              className="p-button-raised ui-button p-button-rounded"
+              // disabled={this.state.showPreview}
+            />{' '}
+          </Link>
 
           <a href="#" onClick={handleLogout}>
-            Logout
+            <Button
+              // onClick={this.handleAddContainer}
+              label="Log Out"
+              className="p-button-raised ui-button p-button-rounded"
+              // disabled={this.state.showPreview}
+            />
           </a>
-          <Link to={`/users/${user.id}/profile`}>Profile</Link>
+          <Link to={`/users/${user.id}/profile`}>
+            <Button
+              // onClick={this.handleAddContainer}
+              label="Profile"
+              className="p-button-raised ui-button p-button-rounded"
+              // disabled={this.state.showPreview}
+            />
+          </Link>
         </div>
       ) : (
         <div>
@@ -27,9 +54,25 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           <Link to="/">
             <h1>InstaStack</h1>
           </Link>
-          <Link to="/mainPage">Main Page</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+
+          <Link to="/mainPage">
+            <Button
+              label="Main Page"
+              className="p-button-raised ui-button p-button-rounded"
+            />
+          </Link>
+          <Link to="/login">
+            <Button
+              label="Log In"
+              className="p-button-raised ui-button p-button-rounded"
+            />
+          </Link>
+          <Link to="/signup">
+            <Button
+              label="Sign Up"
+              className="p-button-raised ui-button p-button-rounded"
+            />
+          </Link>
         </div>
       )}
     </nav>
