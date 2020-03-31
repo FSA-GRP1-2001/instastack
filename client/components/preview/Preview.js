@@ -130,7 +130,6 @@ class Preview extends Component {
     return (
       <div
         style={{
-          border: '1px solid yellow',
           overflow: 'auto',
           paddingLeft: 10,
           paddingRight: 10,

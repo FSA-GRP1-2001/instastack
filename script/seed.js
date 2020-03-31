@@ -65,10 +65,6 @@ async function seed() {
       textContent: `Posted by ${User.email}`,
     }),
     Component.create({
-      title: 'HTML Component',
-      htmlTag: 'html',
-    }),
-    Component.create({
       title: 'List Component',
       htmlTag: 'ul',
       children: ['First item', 'Second Item', 'Third Item'],
@@ -79,11 +75,11 @@ async function seed() {
       textContent:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     }),
-    Component.create({
-      title: 'Navbar Component',
-      htmlTag: 'navbar',
-      children: ['Contact info'],
-    }),
+    // Component.create({
+    //   title: 'Navbar Component',
+    //   htmlTag: 'navbar',
+    //   children: ['Contact info'],
+    // }),
   ]);
 
   await users[0].addProjects(projects[0]);

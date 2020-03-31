@@ -47,13 +47,11 @@ class SideBarParent extends Component {
   }
 
   handleClose() {
-    console.log('handle close running');
     this.handleCancel();
     this.props.closedSideBar();
   }
 
   handleCloseIconHelper(currentPrevStyles, domId) {
-    console.log('handle close icon helper is runngin');
     this.setState({ currentPrevStyles, currentDomId: domId });
   }
 
