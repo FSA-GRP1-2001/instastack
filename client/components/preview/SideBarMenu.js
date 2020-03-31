@@ -10,6 +10,32 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { getPreviewHtml } from './DropWrapper';
 
+const borderStyles = [
+  'solid',
+  'dotted',
+  'dashed',
+  'double',
+  'groove',
+  'ridge',
+  'inset',
+  'onset',
+  'outset',
+  'none',
+  'hidden',
+];
+
+const horizontalAlignment = ['center', 'flex-start', 'flex-end'];
+
+const colorPickerBox = {
+  display: 'flex',
+  alignItems: 'center',
+  paddingTop: '5px',
+};
+
+const colorLabel = {
+  marginRight: '6px',
+};
+
 class SideBarMenu extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +52,7 @@ class SideBarMenu extends Component {
       borderWidth: '',
       borderColor: '',
       borderRadius: '',
+      alignSelf: '',
       prevStyles: {},
     };
     this.handleTextContent = this.handleTextContent.bind(this);
@@ -41,6 +68,7 @@ class SideBarMenu extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleImageSrc = this.handleImageSrc.bind(this);
     this.handleImageWidth = this.handleImageWidth.bind(this);
+    this.handleAlignment = this.handleAlignment.bind(this);
   }
 
   componentDidMount() {
@@ -190,6 +218,13 @@ class SideBarMenu extends Component {
     this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
+  handleAlignment(e) {
+    this.setState({ alignSelf: e.value });
+    const node = this.state.node;
+    node.style.alignSelf = e.value;
+    this.setState({ node });
+    this.props.updateCode(getPreviewHtml());
+  }
   render() {
     return (
       <section>
@@ -213,8 +248,14 @@ class SideBarMenu extends Component {
               value={this.state.textContent}
               onChange={this.handleTextContent}
             />
-            <label>Font Color</label>
-            <ColorPicker value={this.state.color} onChange={this.handleColor} />
+            <div style={colorPickerBox}>
+              <label style={colorLabel}>Font Color </label>
+              <ColorPicker
+                value={this.state.color}
+                onChange={this.handleColor}
+              />
+            </div>
+
             <label>Font Size</label>
             <Spinner
               min={10}
@@ -225,6 +266,13 @@ class SideBarMenu extends Component {
           </Fieldset>
         )}
         <Fieldset legend="Component Properites">
+          <label>Horizontal Alignment</label>
+          <Dropdown
+            value={this.state.alignSelf}
+            options={horizontalAlignment}
+            onChange={this.handleAlignment}
+            placeholder="Select an alignment"
+          />
           <label>Border Style</label>
           <Dropdown
             value={this.state.borderStyle}
@@ -253,11 +301,13 @@ class SideBarMenu extends Component {
             value={this.state.padding}
             onChange={this.handlePadding}
           />
-          <label>Background Color</label>
-          <ColorPicker
-            value={this.state.backgroundColor}
-            onChange={this.handleBackgroundColor}
-          />
+          <div style={colorPickerBox}>
+            <label style={colorLabel}>Background Color</label>
+            <ColorPicker
+              value={this.state.backgroundColor}
+              onChange={this.handleBackgroundColor}
+            />
+          </div>
         </Fieldset>
         <Fieldset legend="Save Changes">
           <div style={styles.buttonContainer}>
@@ -301,17 +351,3 @@ const styles = {
     justifyContent: 'space-between',
   },
 };
-
-const borderStyles = [
-  'solid',
-  'dotted',
-  'dashed',
-  'double',
-  'groove',
-  'ridge',
-  'inset',
-  'onset',
-  'outset',
-  'none',
-  'hidden',
-];
