@@ -19,7 +19,7 @@ class DropWrapper extends Component {
     let container = this.props.usedContainers.filter(
       c => c.i === containerId
     )[0];
-    let w;
+    let w = container.w;
     let h = container.h;
     console.log('the tagname is ', tagName);
     if (tagName === 'H1' && container.x - 5 <= 7 && container.w < 5) {

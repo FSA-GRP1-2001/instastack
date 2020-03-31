@@ -48,7 +48,6 @@ class SideBarMenu extends Component {
     const style = node.style;
     const startingProps = {
       fontSize: style.fontSize,
-      src: node.src,
       imageWidth: node.style.width,
       color: style.color,
       borderStyle: style.borderStyle,
@@ -58,6 +57,9 @@ class SideBarMenu extends Component {
       padding: style.padding,
       backgroundColor: style.backgroundColor,
     };
+    if (node.tagName === 'IMG') {
+      startingProps.src = node.src;
+    }
     this.setState({
       node: node,
       tagName: node.tagName,
