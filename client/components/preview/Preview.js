@@ -104,6 +104,7 @@ class Preview extends Component {
   removeContainer(containerId) {
     this.props.removeContainer(containerId);
   }
+
   handleOpenEditMenu(i) {
     if (!this.props.usedComponents.length) return;
     const componentObjArr = this.props.usedComponents
@@ -120,13 +121,14 @@ class Preview extends Component {
   createContainer(container) {
     const removeIcon = {
       position: 'absolute',
-      left: '1px',
+      left: '3px',
       cursor: 'pointer',
     };
     const editIcon = {
       position: 'absolute',
-      right: '1px',
+      right: '5px',
       cursor: 'pointer',
+      'font-size': '3em',
     };
     const i = container.i;
     return (
@@ -149,7 +151,7 @@ class Preview extends Component {
         <span
           style={editIcon}
           onClick={() => this.handleOpenEditMenu(container.i)}
-          className="remove pi pi-pencil"
+          className="remove pi pi-spin pi-pencil"
         />
       </div>
     );
