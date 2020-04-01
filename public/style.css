@@ -162,8 +162,8 @@ form div {
 
 .mainpage {
   width: 100%;
-  border: 1px solid red;
   background: #edf1f1;
+  height: 845px;
 }
 
 .app-logo {
@@ -199,6 +199,9 @@ form div {
   border-color: #56be96 !important;
 }
 
+.white-buttons:focus {
+  box-shadow: none !important;
+}
 .navbar .ui-button-icon-only {
   border-radius: 5px !important;
   max-width: 20px !important;
@@ -246,7 +249,6 @@ form div {
 .profile-background {
   background: linear-gradient(to bottom, #56be96 0%, #0c62c1 100%);
   width: 100%;
-  border: 1px solid red;
 }
 
 .profile-bar-color {
