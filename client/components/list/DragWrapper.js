@@ -24,6 +24,10 @@ class DragWrapper extends Component {
     if (tag === 'p') {
       newComponent.style.lineHeight = 'normal';
     }
+    if (tag === 'button') {
+      newComponent.style.minWidth = '80px';
+      newComponent.style.width = '40%';
+    }
     document.body.appendChild(newComponent);
     e.dataTransfer.setData('transfer', newComponent.id);
     // e.dataTransfer.setData('transfer', clone.id);
