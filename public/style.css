@@ -123,7 +123,7 @@ form div {
   height: 190px;
 }
 
-.bottom-half {
+.about {
   background-color: #0c62c1;
   display: flex;
   justify-content: space-evenly;
@@ -132,10 +132,13 @@ form div {
 
 .profile-grid {
   width: 400px;
+  color: #edf1f1;
+  font-size: smaller;
 }
 
 .about-text {
   width: 400px;
+  color: #edf1f1;
 }
 
 .mainpage {
