@@ -40,46 +40,54 @@ async function seed() {
   const components = await Promise.all([
     Component.create({
       title: 'Div Component',
+      displayName: 'div',
       htmlTag: 'div',
       textContent: 'Good Morning World!',
     }),
     Component.create({
       title: 'H1 Component',
+      displayName: 'h1',
       htmlTag: 'h1',
       textContent: 'Welcome to InstaStack',
     }),
     Component.create({
       title: 'Img Component',
       htmlTag: 'img',
+      displayName: 'img',
       src:
         'https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&w=250&q=250',
     }),
     Component.create({
       title: 'Button Component',
+      displayName: 'button',
       htmlTag: 'button',
       textContent: 'Click Me!',
     }),
     Component.create({
       title: 'Footer Component',
+      displayName: 'footer',
       htmlTag: 'footer',
       textContent: `Posted by ${User.email}`,
     }),
     Component.create({
       title: 'List Component',
+      displayName: 'list',
       htmlTag: 'ul',
       children: ['First item', 'Second Item', 'Third Item'],
     }),
     Component.create({
       title: 'Paragraph Component',
+      displayName: 'para',
       htmlTag: 'p',
       textContent:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     }),
-    // Component.create({
-    //   title: 'Navbar Component',
-    //   htmlTag: 'navbar',
-    //   children: ['Contact info'],
-    // }),
+    Component.create({
+      title: 'Navbar Component',
+      displayName: 'nav',
+      htmlTag: 'navbar',
+      children: ['Contact info'],
+    }),
   ]);
 
   await users[0].addProjects(projects[0]);

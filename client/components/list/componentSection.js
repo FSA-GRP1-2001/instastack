@@ -23,7 +23,7 @@ class ListOfComponents extends Component {
                 component={component}
                 id={component.id}
               >
-                {component.title}
+                {component.displayName}
               </DragWrapper>
             );
           })}
