@@ -59,7 +59,9 @@ const styles = {
     background: 'white',
   },
   outerContainer: {
-    margin: '0 auto',
+    background: '#EDF1F1',
+    display: 'flex',
+    justifyContent: 'center',
   },
   center: {
     width: '25rem',
