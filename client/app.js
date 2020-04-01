@@ -18,7 +18,7 @@ const App = () => {
     <div>
       <div style={styles.appContainer}>
         <div className="app-logo">
-          <Link to="/home">
+          <Link to="/">
             <img className="logo" src="logo.png" />
           </Link>
         </div>
