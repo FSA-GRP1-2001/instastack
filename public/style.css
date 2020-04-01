@@ -108,6 +108,8 @@ form div {
 
 .component-selection-sidebar .preview-button {
   margin: 10px;
+  color: #56be96;
+  background-color: #303053;
 }
 
 .guest-homepage {
