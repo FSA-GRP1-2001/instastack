@@ -13,38 +13,20 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/mainPage">
             <Button
-              // onClick={this.handleAddContainer}
               label="New Project"
               icon="pi pi-plus"
               className="p-button-raised white-buttons"
-              // disabled={this.state.showPreview}
             />
           </Link>
-          <Link to="template">
-            <Button
-              // onClick={this.handleAddContainer}
-              label="Templates"
-              className="p-button-raised ui-button"
-              // disabled={this.state.showPreview}
-            />{' '}
+          <Link to="/template">
+            <Button label="Templates" className="p-button-raised ui-button" />
           </Link>
-
-          <a href="#" onClick={handleLogout}>
-            <Button
-              // onClick={this.handleAddContainer}
-              label="Log Out"
-              className="p-button-raised ui-button"
-              // disabled={this.state.showPreview}
-            />
-          </a>
           <Link to={`/users/${user.id}/profile`}>
-            <Button
-              // onClick={this.handleAddContainer}
-              label="Profile"
-              className="p-button-raised ui-button"
-              // disabled={this.state.showPreview}
-            />
+            <Button label="Profile" className="p-button-raised ui-button" />
           </Link>
+          <a href="#" onClick={handleLogout}>
+            <Button label="Log Out" className="p-button-raised ui-button" />
+          </a>
         </div>
       ) : (
         <div className="login-button-container">

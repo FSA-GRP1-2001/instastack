@@ -12,7 +12,7 @@ class ProfileSecurity extends Component {
     //console.log('here', this.props);
     // return users && users.name ? (
     return (
-      <div>
+      <div className="profile-background">
         <h2> Login and Security </h2>
 
         <ul key={user.id}>

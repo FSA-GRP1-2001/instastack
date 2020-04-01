@@ -11,7 +11,7 @@ class Profile extends Component {
     const { user } = this.props;
     // console.log('user', user);
     return (
-      <div>
+      <div className="profile-background">
         <Link to={`/users/${user.id}/projects`}>
           <h2>Your Projects</h2>
         </Link>
