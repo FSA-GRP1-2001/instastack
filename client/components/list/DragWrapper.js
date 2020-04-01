@@ -54,10 +54,7 @@ class DragWrapper extends Component {
         style={this.props.style}
         data-component={JSON.stringify(this.props.component)}
       >
-        <Button
-          label={this.props.children}
-          className="p-button-raised preview-button"
-        />
+        <div className="preview-button">{this.props.children}</div>
       </div>
     );
   }
