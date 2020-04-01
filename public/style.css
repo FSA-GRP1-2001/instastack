@@ -110,15 +110,15 @@ form div {
 .component-selection-sidebar .preview-button {
   margin: 10px;
   color: #56be96;
-  background-color: #303053;
-  border-color: #35b886d4;
+  background-color: #49497e;
+  border-color: #49497e;
 }
 
 .component-selection-sidebar .preview-button:hover {
   margin: 10px;
   color: #56be96 !important;
-  background-color: #303053 !important;
-  border-color: #641fc6 !important;
+  background-color: #49497ebd !important;
+  border-color: #49497e !important;
 }
 
 .component-selection-sidebar .preview-button:focus {
