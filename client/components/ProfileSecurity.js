@@ -15,7 +15,7 @@ class ProfileSecurity extends Component {
     return (
       <div className="profile-background">
         <h2> Login and Security </h2>
-        <div className="RGL-container">
+        <div className="RGL-container2">
           <ul key={user.id}>
             <Accordion multiple={true}>
               <AccordionTab header="Name">

@@ -27,9 +27,9 @@ class ProfileProjects extends Component {
     console.log('state1', this.props);
     return (
       <div className="profile-background">
-        <h2> Your Projects </h2>
-        <h4>{user.displayName}</h4>
-        <div className="RGL-container">
+        <div className="RGL-container2">
+          <h2> Your Projects </h2>
+          <h4>{user.displayName}</h4>
           {userProjects.length &&
             userProjects.map(p => {
               return (

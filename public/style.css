@@ -246,3 +246,10 @@ form div {
 .profile-bar-color {
   background-color: #333055;
 }
+
+.RGL-container2 {
+  /* border: 2px solid lightgray; */
+  border-radius: 6px;
+  margin: 0.8rem;
+  width: 920px;
+}
