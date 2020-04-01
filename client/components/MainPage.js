@@ -47,17 +47,11 @@ class MainPage extends Component {
   }
 
   render() {
-    const gridStyle = this.props.showCodeMirror
-      ? {
-          display: 'grid',
-          gridTemplateColumns: 'auto 2fr',
-          gridGap: 5,
-        }
-      : {
-          display: 'grid',
-          gridTemplateColumns: 'auto',
-          gridGap: 5,
-        };
+    const gridStyle = {
+      display: 'grid',
+      gridTemplateColumns: 'auto',
+      gridGap: 5,
+    };
     return (
       <div className="mainpage">
         <ButtonBar addContainer={this.handleAddContainer} />

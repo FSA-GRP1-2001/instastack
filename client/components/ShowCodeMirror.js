@@ -14,13 +14,12 @@ class ShowCodeMirror extends Component {
   }
 
   render() {
-    const label = this.props.showCodeMirror
-      ? 'Hide Code Mirror'
-      : 'Show Code Mirror';
+    const label = this.props.showCodeMirror ? 'Hide Code' : 'Show Code';
     return (
       <div>
         <Button
-          className="p-button-info p-button-raised p-button-rounded"
+          className="p-button-info p-button-raised"
+          icon="pi pi-chevron-left"
           label={label}
           onClick={this.toggleCode}
         />

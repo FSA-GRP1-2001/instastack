@@ -113,12 +113,29 @@ form div {
 .guest-homepage {
   background-color: #edf1f1;
 }
-.bottom-half {
-  background-color: #0c62c1;
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+.template-card {
+  width: 150px;
+  height: 190px;
 }
 
-.text {
-  text-align: right;
+.bottom-half {
+  background-color: #0c62c1;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.profile-grid {
+  width: 400px;
+}
+
+.about-text {
+  width: 400px;
 }
 
 .mainpage {
@@ -142,14 +159,21 @@ form div {
   height: 100%;
 }
 
-.loggedin-nav {
-  height: 100%;
-}
-
 .navbar .ui-button {
   color: #ffffff;
   background-color: #333055;
   border-color: #333055;
+}
+
+.white-buttons {
+  background-color: #ffffff !important;
+  color: #333055 !important;
+  border-color: #333055 !important;
+}
+
+.white-buttons:hover {
+  color: #56be96 !important;
+  border-color: #56be96 !important;
 }
 
 .navbar .ui-button-icon-only {
@@ -164,6 +188,13 @@ form div {
   border-color: #56be96 !important;
 }
 
+.login-button-container,
+.loggedin-nav {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* Logo and Left Bar */
 .logo {
   width: 100%;
@@ -176,4 +207,10 @@ form div {
 
 .navbar .ui-button:focus {
   box-shadow: none !important;
+}
+
+.RGL-container {
+  border: 2px solid lightgray;
+  border-radius: 6px;
+  margin: 0.8rem;
 }
