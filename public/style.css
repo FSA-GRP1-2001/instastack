@@ -233,3 +233,7 @@ form div {
   border-radius: 6px;
   margin: 0.8rem;
 }
+/* Top Menu User Button */
+.p-menuitem span {
+  color: white !important;
+}

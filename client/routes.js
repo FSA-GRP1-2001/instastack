@@ -37,18 +37,14 @@ class Routes extends Component {
         <Route path="/mainpage" component={MainPage} />
 
         {/* this is breaking the code for logged in users */}
-        <Route path="/" component={GuestHome} />
+        <Route exact path="/" component={GuestHome} />
 
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/users/:id/profile" component={Profile} />
-            <Route
-              exact
-              path="/users/:id/projects"
-              component={ProfileProjects}
-            />
+            <Route path="/users/:id/projects" component={ProfileProjects} />
             <Route
               exact
               path="/users/:id/security"
