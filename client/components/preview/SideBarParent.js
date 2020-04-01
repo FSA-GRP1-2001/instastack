@@ -47,7 +47,7 @@ class SideBarParent extends Component {
   }
 
   handleClose() {
-    this.handleCancel();
+    // this.handleCancel();
     this.props.closedSideBar();
   }
 
