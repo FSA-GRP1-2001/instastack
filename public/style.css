@@ -171,6 +171,7 @@ form div {
 }
 .component-selection-sidebar {
   background: linear-gradient(#333055, #060509) !important;
+  height: 1200px;
 }
 
 .navbar {
@@ -240,6 +241,7 @@ form div {
 /* Top Menu User Button */
 .p-menuitem span {
   color: white !important;
+}
 
 .profile-background {
   background: linear-gradient(to bottom, #56be96 0%, #0c62c1 100%);
