@@ -36,15 +36,19 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/mainpage" component={MainPage} />
-
+        {/* this is breaking the code for logged in users */}
+        <Route exact path="/" component={GuestHome} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
-            <Route path="/template" component={TemplateHome} />
-            <Route path="/users/:id/profile" component={Profile} />
+            <Route exact path="/home" component={UserHome} />
+            <Route exact path="/users/:id/profile" component={Profile} />
             <Route path="/users/:id/projects" component={ProfileProjects} />
-            <Route path="/users/:id/security" component={ProfileSecurity} />
+            <Route
+              exact
+              path="/users/:id/security"
+              component={ProfileSecurity}
+            />
             <Route
               path="/landingpagetemplate"
               component={LandingPageTemplate}
@@ -52,8 +56,6 @@ class Routes extends Component {
             <Route path="/blogtemplate" component={BlogTemplate} />
           </Switch>
         )}
-        {/* <Route exact path="/" component={GuestHome} /> */}
-
         {/* Displays our Login component as a fallback */}
         <Route component={Login} />
       </Switch>

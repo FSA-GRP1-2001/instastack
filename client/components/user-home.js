@@ -24,7 +24,6 @@ export const UserHome = props => {
           <Link to={`/users/${id}/projects`}>View Saved Projects</Link>
         </div>
       </section>
-      <GuestHome />
     </div>
   );
 };

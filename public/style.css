@@ -237,6 +237,10 @@ form div {
   margin: 0.8rem;
 }
 
+/* Top Menu User Button */
+.p-menuitem span {
+  color: white !important;
+
 .profile-background {
   background: linear-gradient(to bottom, #56be96 0%, #0c62c1 100%);
   width: 100%;
