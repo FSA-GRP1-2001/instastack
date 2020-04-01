@@ -31,14 +31,13 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        {/* <Route path="/lof" component={ListOfComponents} /> */}
-        <Route path="/mainpage" component={MainPage} />
-
-        {/* this is breaking the code for logged in users */}
         <Route exact path="/" component={GuestHome} />
 
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/mainpage" component={MainPage} />
+        {/* this is breaking the code for logged in users */}
+        <Route exact path="/" component={GuestHome} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -50,7 +49,6 @@ class Routes extends Component {
               path="/users/:id/security"
               component={ProfileSecurity}
             />
-            <Route path="/template" component={TemplateHome} />
             <Route
               path="/landingpagetemplate"
               component={LandingPageTemplate}

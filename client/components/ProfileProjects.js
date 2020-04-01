@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 // import { getAllProjects, getSingleProject } from '../store/projects';
 // import { getAllUsers, getSingleUser } from '../store/users';
 import { getSingleUser, getSavedProject } from '../store';
+import { Accordion, AccordionTab } from 'primereact/accordion';
+import { Link } from 'react-router-dom';
 
 class ProfileProjects extends Component {
   constructor(props) {
@@ -10,13 +12,7 @@ class ProfileProjects extends Component {
 
     this.handleOpenProject = this.handleOpenProject.bind(this);
   }
-  // componentDidMount() {
-  //   // this.props.getAllProjects(this.props.match.params.id);
-  //   // this.props.getSingleProject(this.props.match.params);
-  //   // this.props.getAllUsers(this.props.match.params.id);
-  //   this.props.getSingleUser(+this.props.match.params);
-  //   // console.log('test', this.props.match.params.id);
-  // }
+
   async componentDidMount() {
     await this.props.getSingleUser(this.props.match.params.id);
   }
@@ -30,50 +26,62 @@ class ProfileProjects extends Component {
     const { user, userProjects } = this.props;
     console.log('state1', this.props);
     return (
-      <div>
-        <h2> Your Projects </h2>
-        <h4>{user.displayName}</h4>
-        {userProjects.length &&
-          userProjects.map(p => {
-            return (
-              <ul key={p.id}>
-                <h3>Projects:</h3>
-                <h4>{p.title}</h4>
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  onClick={() => this.handleOpenProject(p.id)}
-                >
-                  OPEN
-                </button>
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  // onClick={}
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  // onClick={}
-                >
-                  Delete
-                </button>
-                <button
-                  type="button"
-                  size="small"
-                  color="primary"
-                  // onClick={}
-                >
-                  Save
-                </button>
-              </ul>
-            );
-          })}
+      <div className="profile-background">
+        <div className="RGL-container2">
+          <h2> Your Projects </h2>
+          <h4>{user.displayName}</h4>
+          {userProjects.length &&
+            userProjects.map(p => {
+              return (
+                <ul key={p.id}>
+                  <div className="profile-bar-color">
+                    <Accordion multiple={true}>
+                      <AccordionTab header={p.title}>
+                        <img src="/img/blog2.png" width="400" height="400" />
+                        <br></br>
+                        <button
+                          type="button"
+                          size="small"
+                          color="primary"
+                          onClick={() => this.handleOpenProject(p.id)}
+                        >
+                          Open
+                        </button>
+                        <button
+                          type="button"
+                          size="small"
+                          color="primary"
+                          // onClick={}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          size="small"
+                          color="primary"
+                          // onClick={}
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="button"
+                          size="small"
+                          color="primary"
+                          // onClick={}
+                        >
+                          Save
+                        </button>
+                      </AccordionTab>
+                    </Accordion>
+                  </div>
+                </ul>
+              );
+            })}
+        </div>
+
+        <Link to={`/users/${user.id}/profile`}>
+          <h2>Back to your profile</h2>
+        </Link>
       </div>
     );
   }
