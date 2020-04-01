@@ -40,8 +40,9 @@ const ClipButton = ({ code }) => {
         <div>
           <Button
             onClick={copyToClipboard}
-            label="Copy Code to Clipboard"
-            className="p-button-raised p-button-rounded"
+            icon="pi pi-file-o"
+            label="Copy Code"
+            className="p-button-raised"
           />
         </div>
       )}

@@ -40,9 +40,9 @@ const populateSavedComponents = arr => {
 // item and MyDragHandleClassName in css file
 const styles = {
   gridContainer: {
-    border: '1px solid black',
     minHeight: '800px',
     maxHeight: '800px',
+    margin: '0.7rem',
   },
   outerContainer: {
     display: 'grid',
@@ -188,31 +188,34 @@ class Preview extends Component {
 
   render() {
     return (
-      <div className="App" style={styles.gridContainer}>
+      <div className="preview-container">
         <SideBarParent />
         <DropWrapper>
-          <ReactGridLayout
-            style={styles.gridContainer}
-            rowHeight={60}
-            width={1200}
-            cols={12}
-            layout={this.props.usedContainers}
-            onLayoutChange={layout => this.handleLayoutChange(layout)}
-            draggableHandle=".MyDragHandleClassName"
-            draggableCancel=".MyDragCancel"
-          >
-            {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
-            {this.props.usedContainers.length
-              ? this.props.usedContainers.map(item => {
-                  return this.createContainer(item);
-                  // <div
-                  //   className="MyDragHandleClassName"
-                  //   key={idx + 1}
-                  //   data-grid={item}
-                  // />
-                })
-              : null}
-          </ReactGridLayout>
+          <div className="RGL-container">
+            <ReactGridLayout
+              style={styles.gridContainer}
+              minHeight={800}
+              rowHeight={67}
+              width={1200}
+              cols={12}
+              layout={this.props.usedContainers}
+              onLayoutChange={layout => this.handleLayoutChange(layout)}
+              draggableHandle=".MyDragHandleClassName"
+              draggableCancel=".MyDragCancel"
+            >
+              {/* ABove hard codes example dragable elements but we will ultimately get these from parts of our state */}
+              {this.props.usedContainers.length
+                ? this.props.usedContainers.map(item => {
+                    return this.createContainer(item);
+                    // <div
+                    //   className="MyDragHandleClassName"
+                    //   key={idx + 1}
+                    //   data-grid={item}
+                    // />
+                  })
+                : null}
+            </ReactGridLayout>
+          </div>
         </DropWrapper>
       </div>
     );

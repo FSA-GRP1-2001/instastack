@@ -9,9 +9,11 @@ import ShowCodeMirror from './ShowCodeMirror';
 import { InputText } from 'primereact/inputtext';
 
 const styling = {
-  container: {
+  toolBarOverride: {
     display: 'flex',
     justifyContent: 'space-between',
+    border: '1px solid transparent',
+    marginTop: '9px',
   },
   buttonContainer: {
     width: '75%',
@@ -75,10 +77,9 @@ class ButtonBar extends Component {
   }
 
   render() {
-    console.log('title is ', this.props.currentProject.title);
     return (
       <div className="content-section implementation">
-        <Toolbar style={styling.container}>
+        <Toolbar style={styling.toolBarOverride}>
           <div>
             <span className="p-float-label">
               <InputText
@@ -96,21 +97,22 @@ class ButtonBar extends Component {
             <Button
               onClick={this.handleAddContainer}
               label="Add Container"
-              className="p-button-raised ui-button p-button-rounded"
+              icon="pi pi-plus"
+              className="p-button-raised white-buttons"
               disabled={this.state.showPreview}
             />
             <Button
+              onClick={this.handlePreviewHtml}
+              className="p-button-raised white-buttons"
+              icon={this.state.showPreview ? 'pi pi-eye-slash' : 'pi pi-eye'}
+            />
+            <Button
               label="Save"
-              className="p-button-warning ui-button p-button-rounded"
+              className="p-button-raised white-buttons"
               onClick={this.handleProjectSave}
               disabled={this.props.currentProject.id === ''}
             />
-            <Button
-              onClick={this.handlePreviewHtml}
-              className="p-button-raised p-button-rounded"
-              icon={this.state.showPreview ? 'pi pi-eye-slash' : 'pi pi-eye'}
-            />
-            <div className="p-toolbar-group-right ui-button p-button-rounded">
+            <div className="p-toolbar-group-right ui-button">
               <ShowCodeMirror />
             </div>
 

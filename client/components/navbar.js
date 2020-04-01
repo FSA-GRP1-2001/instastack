@@ -14,8 +14,9 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
           <Link to="/mainPage">
             <Button
               // onClick={this.handleAddContainer}
-              label="Main Page"
-              className="p-button-raised ui-button p-button-rounded"
+              label="New Project"
+              icon="pi pi-plus"
+              className="p-button-raised white-buttons"
               // disabled={this.state.showPreview}
             />
           </Link>
@@ -23,7 +24,7 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
             <Button
               // onClick={this.handleAddContainer}
               label="Templates"
-              className="p-button-raised ui-button p-button-rounded"
+              className="p-button-raised ui-button"
               // disabled={this.state.showPreview}
             />{' '}
           </Link>
@@ -32,7 +33,7 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
             <Button
               // onClick={this.handleAddContainer}
               label="Log Out"
-              className="p-button-raised ui-button p-button-rounded"
+              className="p-button-raised ui-button"
               // disabled={this.state.showPreview}
             />
           </a>
@@ -40,35 +41,19 @@ const Navbar = ({ handleLogout, isLoggedIn, user }) => (
             <Button
               // onClick={this.handleAddContainer}
               label="Profile"
-              className="p-button-raised ui-button p-button-rounded"
+              className="p-button-raised ui-button"
               // disabled={this.state.showPreview}
             />
           </Link>
         </div>
       ) : (
-        <div>
+        <div className="login-button-container">
           {/* The navbar will show these links before you log in */}
-          <Link to="/">
-            <h1>InstaStack</h1>
-          </Link>
-
-          <Link to="/mainPage">
-            <Button
-              label="Main Page"
-              className="p-button-raised ui-button p-button-rounded"
-            />
-          </Link>
           <Link to="/login">
-            <Button
-              label="Log In"
-              className="p-button-raised ui-button p-button-rounded"
-            />
+            <Button label="Sign In" className="p-button-raised white-buttons" />
           </Link>
           <Link to="/signup">
-            <Button
-              label="Sign Up"
-              className="p-button-raised ui-button p-button-rounded"
-            />
+            <Button label="Register" className="p-button-raised ui-button" />
           </Link>
         </div>
       )}
