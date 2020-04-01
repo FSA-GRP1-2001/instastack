@@ -66,7 +66,9 @@ class Navbar extends Component {
                   style={{ background: '#333055' }}
                 />
                 <Button
-                  label={user.displayName.toUpperCase()}
+                  label={
+                    user.displayName ? user.displayName.toUpperCase() : 'GUEST'
+                  }
                   onClick={event => this.menu.toggle(event)}
                   aria-controls="popup_menu"
                   aria-haspopup={true}
@@ -99,7 +101,6 @@ class Navbar extends Component {
     );
   }
 }
-
 
 /**
  * CONTAINER
