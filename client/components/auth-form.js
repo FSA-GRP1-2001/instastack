@@ -7,18 +7,14 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import stack from '../../public/stack.png';
 import github from '../../public/github.png';
 import google from '../../public/google.png';
-// import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
 
 function Copyright() {
   return (
@@ -52,119 +48,160 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const styles = {
+  signUpButton: {
+    borderRadius: 20,
+  },
+  github: {
+    background: 'black',
+  },
+  google: {
+    background: 'white',
+  },
+  outerContainer: {
+    margin: '0 auto',
+  },
+  center: {
+    width: '25rem',
+  },
+  top: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 1.5rem',
+    height: '18rem',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  bottom: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 1.5rem',
+    height: '18rem',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  textInput: {
+    margin: 0,
+  },
+  form: {
+    width: '70%',
+    height: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  textInputs: {
+    width: 200,
+  },
+  authButton: {
+    width: 200,
+    background: 'black',
+    color: 'white',
+  },
+  fontBlue: {
+    color: '#0C62C1',
+  },
+};
+
 /**
  * COMPONENT
  */
 const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
   const classes = useStyles();
-
+  const authMessage =
+    displayName === 'Sign Up'
+      ? 'Create Your Account'
+      : 'Sign In To Your Account';
   return (
-    <div className="signinbackground">
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          {/* <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-          <Typography component="h1" variant="h5">
-            <img src={stack} width="40" height="40" />
-            InstaStack
-          </Typography>
-
-          <Button fullWidth variant="contained">
-            <img src={github} width="15" height="15" />
-            {''} {''} {''}
-            {''} {''} {''}
-            <Link href="/auth/github">{displayName} with GitHub</Link>
+    <section style={styles.outerContainer}>
+      <div style={styles.center}>
+        <div style={styles.top}>
+          <p style={{ ...styles.fontBlue, marginBottom: 0 }}>WELCOME TO</p>
+          <img src="logo_for_forms.png" />
+          <Button
+            fullWidth
+            variant="contained"
+            style={{ ...styles.signUpButton, ...styles.github }}
+          >
+            <img
+              src="github_dark.png"
+              style={{ marginRight: 10, width: 15, height: 15 }}
+            />
+            <Link href="/auth/github" style={{ color: 'white' }}>
+              {displayName} with GitHub
+            </Link>
           </Button>
-          <Button fullWidth variant="contained">
-            <img src={google} width="13" height="13" />
-            {''} {''} {''}
-            {''} {''} {''}
-            <Link href="/auth/google">{displayName} with Google</Link>
+          <Button
+            fullWidth
+            variant="contained"
+            style={{ ...styles.signUpButton, ...styles.google }}
+          >
+            <img
+              src="google_icon.png"
+              style={{ marginRight: 10, width: 15, height: 15 }}
+            />
+            <Link href="/auth/google" style={{ color: 'black' }}>
+              {displayName} with Google
+            </Link>
           </Button>
-
-          {/* <a href="/auth/google">{displayName} with Google</a>
-
-          <a href="/auth/github">{displayName} with Github</a> */}
-
+        </div>
+        <div style={{ display: 'flex' }}>
           <hr
             style={{
-              color: '#000000',
-              backgroundColor: '#000000',
-              width: 400,
-              borderColor: '#000000',
+              width: 130,
+              borderColor: '#0C62C1',
+              display: 'inline-block',
+            }}
+          />{' '}
+          <span style={styles.fontBlue}>OR</span>
+          <hr
+            style={{
+              width: 130,
+              borderColor: '#0C62C1',
+              display: 'inline-block',
             }}
           />
+        </div>
 
-          <h2>{displayName}</h2>
-
-          <form onSubmit={handleSubmit} name={name}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <center>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value="remember"
-                    // color="primary"
-                  />
-                }
-                label="Remember me"
+        <div style={styles.bottom}>
+          <form onSubmit={handleSubmit} name={name} style={styles.form}>
+            <p style={styles.fontBlue}>{authMessage}</p>
+            <span className="p-float-label">
+              <InputText
+                id="email"
+                name="email"
+                type="email"
+                required
+                style={styles.textInputs}
               />
-            </center>
-
+              <label htmlFor="email">Email</label>
+            </span>
+            <span className="p-float-label">
+              <InputText
+                id="password"
+                name="password"
+                type="password"
+                required
+                style={styles.textInputs}
+              />
+              <label htmlFor="password">Password</label>
+            </span>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              // color="Inprimary"
+              style={styles.authButton}
               className={classes.submit}
             >
               {displayName}
             </Button>
             {error && error.response && <div> {error.response.data} </div>}
-
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  Don't have an account? Sign Up
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </div>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
-      </Container>
-    </div>
+      </div>
+    </section>
   );
 };
 
@@ -175,6 +212,7 @@ const AuthForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
+
 const mapLogin = state => {
   return {
     name: 'login',
