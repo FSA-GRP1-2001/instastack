@@ -4,29 +4,37 @@ import DragWrapper from './DragWrapper';
 import { getAllComponents } from '../../store';
 import { Card } from 'primereact/card';
 
+// I had to do this. I am sorry. A rewrite was not within scope.
+// ideally, all routing would be done in routes.js
+import { Route, Switch } from 'react-router-dom';
+
 class ListOfComponents extends Component {
   componentDidMount() {
     this.props.getAllComponents();
   }
   render() {
-    console.log('in lof', this.props);
     const { components } = this.props;
     const haveComponents = components.length > 0;
     return (
       // <div className="component-selection-sidebar">
       <Card className="component-selection-sidebar">
-        {haveComponents &&
-          [...components].map(component => {
-            return (
-              <DragWrapper
-                key={component.id}
-                component={component}
-                id={component.id}
-              >
-                {component.displayName}
-              </DragWrapper>
-            );
-          })}
+        {/* ideally, this would not happen here. */}
+        <Switch>
+          <Route exact path="/mainPage">
+            {haveComponents &&
+              [...components].map(component => {
+                return (
+                  <DragWrapper
+                    key={component.id}
+                    component={component}
+                    id={component.id}
+                  >
+                    {component.displayName}
+                  </DragWrapper>
+                );
+              })}
+          </Route>
+        </Switch>
       </Card>
       // </div>
     );
