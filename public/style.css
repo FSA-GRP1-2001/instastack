@@ -236,3 +236,20 @@ form div {
   border-radius: 6px;
   margin: 0.8rem;
 }
+
+.profile-background {
+  background: linear-gradient(to bottom, #56be96 0%, #0c62c1 100%);
+  width: 100%;
+  border: 1px solid red;
+}
+
+.profile-bar-color {
+  background-color: #333055;
+}
+
+.RGL-container2 {
+  /* border: 2px solid lightgray; */
+  border-radius: 6px;
+  margin: 0.8rem;
+  width: 920px;
+}
