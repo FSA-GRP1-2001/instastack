@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 // import { getAllProjects, getSingleProject } from '../store/projects';
 // import { getAllUsers, getSingleUser } from '../store/users';
 import { getSingleUser, getSavedProject } from '../store';
-import { Button } from 'primereact/button';
 
 class ProfileProjects extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      displayMenu: false,
-    };
 
     this.handleOpenProject = this.handleOpenProject.bind(this);
-    this.showDropDownMenu = this.showDropDownMenu.bind(this);
-    this.hideDropDownMenu = this.hideDropDownMenu.bind(this);
   }
-
+  // componentDidMount() {
+  //   // this.props.getAllProjects(this.props.match.params.id);
+  //   // this.props.getSingleProject(this.props.match.params);
+  //   // this.props.getAllUsers(this.props.match.params.id);
+  //   this.props.getSingleUser(+this.props.match.params);
+  //   // console.log('test', this.props.match.params.id);
+  // }
   async componentDidMount() {
     await this.props.getSingleUser(this.props.match.params.id);
   }
@@ -26,148 +26,54 @@ class ProfileProjects extends Component {
     await this.props.getSavedProject(projId);
   }
 
-  showDropDownMenu(event) {
-    event.preventDefault();
-    this.setState({ displayMenu: true }, () => {
-      document.addEventListener('click', this.hideDropDownMenu);
-    });
-  }
-
-  hideDropDownMenu() {
-    this.setState({ displayMenu: false }, () => {
-      document.removeEventListener('click', this.hideDropDownMenu);
-    });
-  }
-
-  //   render() {
-  //     const { user, userProjects } = this.props;
-  //     console.log('state1', this.props);
-  //     return (
-  //       <div className="profile-background">
-  //         <h2> Your Projects </h2>
-  //         <br></br>
-  //         <h4>{user.displayName}</h4>
-  //         <br></br>
-  //         <div style={{ display: 'flex', justifyContent: 'center' }}>
-  //           <div
-  //             className="dropdown"
-  //             style={{ background: '#333055', width: '600px' }}
-  //           >
-  //             {userProjects.length &&
-  //               userProjects.map(p => {
-  //                 return (
-  //                   <ul key={p.id}>
-  //                     <div className="button" onClick={this.showDropdownMenu}>
-  //                       {p.title}
-  //                     </div>
-
-  //                     <ul>
-  //                       <div className="active">
-  //                         <h4>{p.title}</h4>
-  //                         <button
-  //                           type="button"
-  //                           size="small"
-  //                           color="primary"
-  //                           onClick={() => this.handleOpenProject(p.id)}
-  //                         >
-  //                           Open
-  //                         </button>
-  //                         <button
-  //                           type="button"
-  //                           size="small"
-  //                           color="primary"
-  //                           // onClick={}
-  //                         >
-  //                           Edit
-  //                         </button>
-  //                         <button
-  //                           type="button"
-  //                           size="small"
-  //                           color="primary"
-  //                           // onClick={}
-  //                         >
-  //                           Delete
-  //                         </button>
-  //                         <button
-  //                           type="button"
-  //                           size="small"
-  //                           color="primary"
-  //                           // onClick={}
-  //                         >
-  //                           Save
-  //                         </button>
-  //                       </div>
-  //                     </ul>
-  //                     {/* </div> */}
-  //                   </ul>
-  //                 );
-  //               })}
-  //           </div>
-  //         </div>
-  //       </div>
-  //     );
-  //   }
-  // }
-
   render() {
     const { user, userProjects } = this.props;
     console.log('state1', this.props);
     return (
-      <div className="profile-background">
-        <div>
-          <h2> Your Projects </h2>
-          <h4>{user.displayName}</h4>
-          {// userProjects.length &&
+      <div>
+        <h2> Your Projects </h2>
+        <h4>{user.displayName}</h4>
+        {userProjects.length &&
           userProjects.map(p => {
             return (
               <ul key={p.id}>
-                {/* <h3>Projects:</h3> */}
-                <div
-                  className="dropdown"
-                  style={{ background: '#333055', width: '200px' }}
+                <h3>Projects:</h3>
+                <h4>{p.title}</h4>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  onClick={() => this.handleOpenProject(p.id)}
                 >
-                  <div className="button" onClick={this.showDropdownMenu}>
-                    <h4>{p.title}</h4>
-                  </div>
-                  {/* <h4>{p.title}</h4> */}
-
-                  <button
-                    type="button"
-                    size="small"
-                    color="primary"
-                    onClick={() => this.handleOpenProject(p.id)}
-                  >
-                    OPEN
-                  </button>
-                  <button
-                    type="button"
-                    size="small"
-                    color="primary"
-                    // onClick={}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    size="small"
-                    color="primary"
-                    // onClick={}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    type="button"
-                    size="small"
-                    color="primary"
-                    // onClick={}
-                  >
-                    Save
-                  </button>
-                </div>
+                  OPEN
+                </button>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  // onClick={}
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  // onClick={}
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  size="small"
+                  color="primary"
+                  // onClick={}
+                >
+                  Save
+                </button>
               </ul>
             );
           })}
-        </div>
       </div>
     );
   }
