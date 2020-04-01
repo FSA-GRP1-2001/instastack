@@ -106,8 +106,27 @@ form div {
   margin-right: 10px;
 }
 
+/* Preview Buttons  for DnD */
 .component-selection-sidebar .preview-button {
-  margin: 10px;
+  margin: 20px;
+  padding: 25px 32px;
+  color: #56be96;
+  background-color: #49497e;
+  border-color: #49497e;
+  text-align: center;
+  border-radius: 10px;
+  height: 5em;
+  width: 8em;
+}
+
+.component-selection-sidebar .preview-button:hover {
+  color: #56be96 !important;
+  background-color: #49497ebd !important;
+  border-color: #49497e !important;
+}
+
+.component-selection-sidebar .preview-button:focus {
+  box-shadow: none !important;
 }
 
 .guest-homepage {
