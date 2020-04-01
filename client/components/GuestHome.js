@@ -15,10 +15,12 @@ export default class GuestHome extends Component {
     //<h1>{display}</h1>
     return (
       <div className="mainpage">
-        <center>
+        <div className="center-image">
           <img src="/img/text-621x103.png" width="621" height="103" />
-        </center>
-        <h3>Choose a template to get started:</h3>
+        </div>
+        <div className="center-text">
+          <h4>Choose a template to get started:</h4>
+        </div>
         <div className="templates-grid">
           <Card className="template-card" footer="go to template">
             Content
@@ -39,32 +41,32 @@ export default class GuestHome extends Component {
             <Grid fluid>
               <Row around="xs">
                 <Col md>
-                  <img src="/headshots/Tina.jpg" width="100" height="100" />
-                  <div>Amantina Sosa</div>
+                  <img src="/headshots/Tina.jpg" width="130" height="130" />
+                  <div className="names">Amantina Sosa</div>
                 </Col>
                 <Col md>
-                  <img src="/headshots/Max.jpg" width="100" height="100" />
-                  <div>Maxwell Han</div>
+                  <img src="/headshots/Max.jpg" width="130" height="130" />
+                  <div className="names">Maxwell Han</div>
                 </Col>
               </Row>
               <Row around="xs">
                 <Col md>
-                  <img src="/headshots/Mercedes.jpg" width="100" height="100" />
-                  <div>Mercedes Madanire</div>
+                  <img src="/headshots/Mercedes.jpg" width="130" height="130" />
+                  <div className="names">Mercedes Madanire</div>
                 </Col>
                 <Col md>
-                  <img src="/headshots/Josh.jpg" width="100" height="100" />
-                  <div>Joshua Skootsky</div>
+                  <img src="/headshots/Josh.jpg" width="130" height="130" />
+                  <div className="names">Joshua Skootsky</div>
                 </Col>
               </Row>
             </Grid>
           </div>
           <div className="about-text">
             <h5>ABOUT INSTASTACK</h5>
-            <h1>
+            <h3>
               Instastack is a rapid prototyping tool to build a project in less
               than 5 mins. with a custom look & feel.
-            </h1>
+            </h3>
             <p>
               InstaStack was created for the Capstone project at Fullstack
               Academy by Tina Sosa, Max Han, Mercedes Madanire, and Joshua
@@ -75,7 +77,17 @@ export default class GuestHome extends Component {
               Express, React, and Redux. The front-end style is built with CSS
               and the PrimeReact library.
             </p>
-            <p>You can learn more about the InstaStack applicaion on Github.</p>
+            <p>
+              You can learn more about the InstaStack application on{' '}
+              <a
+                className="github-link"
+                href="https://github.com/FSA-GRP1-2001/instastack"
+                target="blank"
+              >
+                Github
+              </a>
+              .
+            </p>
           </div>
         </div>
       </div>
