@@ -9,6 +9,10 @@ const Component = db.define('component', {
       notEmpty: true,
     },
   },
+  displayName: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+  },
   htmlTag: {
     type: Sequelize.TEXT,
     allowNull: false,
