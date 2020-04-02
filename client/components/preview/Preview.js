@@ -43,7 +43,7 @@ const populateSavedComponents = arr => {
     }
     node.id = component.domId;
     let container = grid.querySelector(`#\\3${i}`);
-    container.appendChild(node);
+    if (container) container.appendChild(node);
   });
 };
 

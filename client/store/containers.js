@@ -1,6 +1,15 @@
 /* eslint-disable no-shadow */
 import { removedUsedComponents } from './usedComponents';
 
+const templates = {
+  landing: [
+    { i: '0', x: 0, y: 0, w: 12, h: 4 },
+    { i: '1', x: 0, y: 4, w: 12, h: 1 },
+    { i: '2', x: 0, y: 5, w: 5, h: 4 },
+    { i: '3', x: 7, y: 5, w: 5, h: 4 },
+  ],
+};
+
 /**
  * ACTION TYPES
  */
@@ -10,6 +19,7 @@ const GOT_SAVED_CONTAINERS = 'GOT_SAVED_CONTAINERS';
 const CLEAR_CONTAINERS = 'CLEAR_CONTAINERS';
 const REMOVE_CONTAINER = 'REMOVE_CONTAINER';
 const RESIZE_CONTAINER = 'RESIZE_CONTAINER';
+const LOAD_TEMPLATE_CONTAINERS = 'LOAD_TEMPLATE_CONTAINERS';
 /**
  * ACTION CREATORS
  */
@@ -38,6 +48,11 @@ export const clearedContainers = () => ({ type: CLEAR_CONTAINERS });
 export const gotSavedContainers = containers => ({
   type: GOT_SAVED_CONTAINERS,
   containers,
+});
+
+export const loadTemplateContainers = template => ({
+  type: LOAD_TEMPLATE_CONTAINERS,
+  template,
 });
 
 /**
@@ -96,6 +111,8 @@ export default function containers(containers = [], action) {
           return c;
         }
       });
+    case LOAD_TEMPLATE_CONTAINERS:
+      return templates[action.template];
     default:
       return containers;
   }
