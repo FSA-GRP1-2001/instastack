@@ -160,6 +160,7 @@ form div {
   font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 200px;
 }
 
 /* .templates-grid {
@@ -181,7 +182,7 @@ form div {
   background-color: #0c62c1;
   display: flex;
   justify-content: space-evenly;
-  height: 100%;
+  height: 583px;
   margin-top: 20;
 }
 
@@ -245,7 +246,6 @@ form div {
 .mainpage {
   width: 100%;
   background: #edf1f1;
-  height: 722px;
 }
 
 .app-logo {
