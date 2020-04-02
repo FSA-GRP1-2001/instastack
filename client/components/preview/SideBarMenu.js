@@ -59,6 +59,7 @@ class SideBarMenu extends Component {
       borderColor: '',
       borderRadius: '',
       alignSelf: '',
+      listItems: {},
       prevStyles: {},
     };
     this.handleTextContent = this.handleTextContent.bind(this);
@@ -75,6 +76,7 @@ class SideBarMenu extends Component {
     this.handleImageSrc = this.handleImageSrc.bind(this);
     this.handleImageWidth = this.handleImageWidth.bind(this);
     this.handleAlignment = this.handleAlignment.bind(this);
+    this.handleListItem = this.handleListItem.bind(this);
   }
 
   componentDidMount() {
@@ -94,6 +96,18 @@ class SideBarMenu extends Component {
     if (node.tagName === 'IMG') {
       startingProps.src = node.src;
     }
+    if (node.tagName === 'UL') {
+      console.log('we have a list!!');
+      console.log('the childrent are ', node.children);
+      const children = [...node.children];
+      let listItems = {};
+      children.forEach(
+        (child, i) => (listItems[`item ${i}`] = child.textContent)
+      );
+      this.setState({
+        listItems,
+      });
+    }
     this.setState({
       node: node,
       tagName: node.tagName,
@@ -110,6 +124,16 @@ class SideBarMenu extends Component {
     this.setState({ textContent: e.target.value });
     const node = this.state.node;
     node.textContent = e.target.value;
+    this.setState({ node });
+    this.props.updateCode(getPreviewHtml());
+  }
+
+  handleListItem(e, i) {
+    const newItems = { ...this.state.listItems };
+    newItems[`item ${i}`] = e.target.value;
+    this.setState({ listItems: newItems });
+    const node = this.state.node;
+    node.children[i].textContent = e.target.value;
     this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
@@ -190,8 +214,13 @@ class SideBarMenu extends Component {
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
     let updateObj = {
       domId: this.state.domId,
+      tagName: this.state.tagName,
       content: this.state.textContent,
     };
+    if (this.state.tagName === 'UL') {
+      let listItems = { ...this.state.listItems };
+      updateObj.listItems = listItems;
+    }
     this.props.updatedComponent(updateObj);
   }
 
@@ -253,7 +282,40 @@ class SideBarMenu extends Component {
             />
           </Fieldset>
         )}
-        {['DIV', 'H1'].includes(this.state.tagName) && (
+        {this.state.tagName === 'UL' && (
+          <Fieldset legend="List Properites">
+            <label htmlFor="List Items">List Items</label>
+            {Object.keys(this.state.listItems).map((item, i) => {
+              let itemName = `Item ${i + 1}`;
+              return (
+                <div key={itemName}>
+                  <label>{itemName}</label>
+                  <InputText
+                    value={this.state.listItems[`item ${i}`]}
+                    onChange={e => this.handleListItem(e, i)}
+                  />
+                </div>
+              );
+            })}
+            <div style={colorPickerBox}>
+              <label style={colorLabel}>Font Color </label>
+              <ColorPicker
+                value={this.state.color}
+                onChange={this.handleColor}
+              />
+            </div>
+            <label>Font Size</label>
+            <Spinner
+              min={10}
+              max={44}
+              value={this.state.fontSize}
+              onChange={this.handleFontSize}
+            />
+          </Fieldset>
+        )}
+        {['DIV', 'H1', 'BUTTON', 'FOOTER', 'NAVBAR'].includes(
+          this.state.tagName
+        ) && (
           <Fieldset legend="Text Properites">
             <label htmlFor="Text Content">Text Content</label>
             <InputText
