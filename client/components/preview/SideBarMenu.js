@@ -76,6 +76,7 @@ class SideBarMenu extends Component {
     this.handleImageSrc = this.handleImageSrc.bind(this);
     this.handleImageWidth = this.handleImageWidth.bind(this);
     this.handleAlignment = this.handleAlignment.bind(this);
+    this.handleListItem = this.handleListItem.bind(this);
   }
 
   componentDidMount() {
@@ -123,6 +124,16 @@ class SideBarMenu extends Component {
     this.setState({ textContent: e.target.value });
     const node = this.state.node;
     node.textContent = e.target.value;
+    this.setState({ node });
+    this.props.updateCode(getPreviewHtml());
+  }
+
+  handleListItem(e, i) {
+    const newItems = { ...this.state.listItems };
+    newItems[`item ${i}`] = e.target.value;
+    this.setState({ listItems: newItems });
+    const node = this.state.node;
+    node.children[i].textContent = e.target.value;
     this.setState({ node });
     this.props.updateCode(getPreviewHtml());
   }
@@ -270,18 +281,17 @@ class SideBarMenu extends Component {
           <Fieldset legend="List Properites">
             <label htmlFor="List Items">List Items</label>
             {Object.keys(this.state.listItems).map((item, i) => {
-              let itemName = `Item ${i + 1}:`;
+              let itemName = `Item ${i + 1}`;
               return (
                 <div key={itemName}>
                   <label>{itemName}</label>
                   <InputText
-                    value={this.state.textContent}
-                    onChange={this.handleTextContent}
+                    value={this.state.listItems[`item ${i}`]}
+                    onChange={e => this.handleListItem(e, i)}
                   />
                 </div>
               );
             })}
-            )}
             <div style={colorPickerBox}>
               <label style={colorLabel}>Font Color </label>
               <ColorPicker
