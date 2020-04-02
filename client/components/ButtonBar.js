@@ -94,17 +94,17 @@ class ButtonBar extends Component {
               onClick={this.handleAddContainer}
               label="Add Container"
               icon="pi pi-plus"
-              className="p-button-raised white-buttons"
+              className="p-button-raised white-buttons ui-button"
               disabled={this.state.showPreview}
             />
             <Button
               onClick={this.handlePreviewHtml}
-              className="p-button-raised white-buttons"
+              className="p-button-raised white-buttons ui-button"
               icon={this.state.showPreview ? 'pi pi-eye-slash' : 'pi pi-eye'}
             />
             <Button
               label="Save"
-              className="p-button-raised white-buttons"
+              className="p-button-raised white-buttons ui-button"
               onClick={this.handleProjectSave}
               disabled={this.props.currentProject.id === ''}
             />

@@ -27,9 +27,10 @@ class ProfileProjects extends Component {
     console.log('state1', this.props);
     return (
       <div className="profile-background">
+        {/* <div className="align-container"> */}
         <div className="RGL-container2">
-          <h2> Your Projects </h2>
-          <h4>{user.displayName}</h4>
+          <h2 className="color"> Your Projects </h2>
+          <h3 className="color">{user.displayName}</h3>
           {userProjects.length &&
             userProjects.map(p => {
               return (
@@ -37,8 +38,6 @@ class ProfileProjects extends Component {
                   <div className="profile-bar-color">
                     <Accordion multiple={true}>
                       <AccordionTab header={p.title}>
-                        <img src="/img/blog2.png" width="400" height="400" />
-                        <br></br>
                         <button
                           type="button"
                           size="small"
@@ -71,6 +70,8 @@ class ProfileProjects extends Component {
                         >
                           Save
                         </button>
+                        <br></br>
+                        <img src="/img/blog2.png" width="400" height="400" />
                       </AccordionTab>
                     </Accordion>
                   </div>
@@ -79,10 +80,11 @@ class ProfileProjects extends Component {
             })}
         </div>
 
-        <Link to={`/users/${user.id}/profile`}>
-          <h2>Back to your profile</h2>
+        <Link to={`/users/${user.id}/security`}>
+          <h2 className="color">Back to your settings</h2>
         </Link>
       </div>
+      // </div>
     );
   }
 }

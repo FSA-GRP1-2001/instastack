@@ -357,6 +357,10 @@ form div {
   width: 920px;
 }
 
+.color {
+  color: white;
+  margin-left: 47px;
+}
 .footer {
   background: linear-gradient(to right, black, #0c62c1);
 }
