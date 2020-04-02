@@ -232,10 +232,11 @@ form div {
 
 /* End Home Page */
 
+/* This is the size of the blue field */
 .mainpage {
   width: 100%;
   background: #edf1f1;
-  height: 845px;
+  height: 722px;
 }
 
 .app-logo {
