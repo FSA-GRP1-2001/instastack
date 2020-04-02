@@ -36,13 +36,15 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/mainpage" component={MainPage} />
+        <Route path="/template" component={Templates} />
         {/* this is breaking the code for logged in users */}
         <Route exact path="/" component={GuestHome} />
-        <Route exact path="/template" component={Templates} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={UserHome} />
+            <Route path="/template" component={Templates} />
             <Route exact path="/users/:id/profile" component={Profile} />
             <Route path="/users/:id/projects" component={ProfileProjects} />
             <Route
