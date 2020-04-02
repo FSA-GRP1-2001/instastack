@@ -59,6 +59,7 @@ class SideBarMenu extends Component {
       borderColor: '',
       borderRadius: '',
       alignSelf: '',
+      listItems: {},
       prevStyles: {},
     };
     this.handleTextContent = this.handleTextContent.bind(this);
@@ -93,6 +94,18 @@ class SideBarMenu extends Component {
     };
     if (node.tagName === 'IMG') {
       startingProps.src = node.src;
+    }
+    if (node.tagName === 'UL') {
+      console.log('we have a list!!');
+      console.log('the childrent are ', node.children);
+      const children = [...node.children];
+      let listItems = {};
+      children.forEach(
+        (child, i) => (listItems[`item ${i}`] = child.textContent)
+      );
+      this.setState({
+        listItems,
+      });
     }
     this.setState({
       node: node,
