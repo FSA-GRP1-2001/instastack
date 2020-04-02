@@ -26,7 +26,7 @@ const App = () => {
         <Routes />
       </div>
       <div className="footer">
-        <img className="logo" src="footer.png" />
+        <img className="logo" src="footer.svg" />
       </div>
     </>
   );

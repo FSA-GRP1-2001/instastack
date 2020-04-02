@@ -7,6 +7,7 @@ import ClipButton from './ClipButton';
 import { Button } from 'primereact/button';
 import ShowCodeMirror from './ShowCodeMirror';
 import { InputText } from 'primereact/inputtext';
+import { Growl } from 'primereact/growl';
 
 const styling = {
   toolBarOverride: {
@@ -34,6 +35,15 @@ class ButtonBar extends Component {
     this.handlePreviewHtml = this.handlePreviewHtml.bind(this);
   }
 
+  // componentDidMount() {
+  //   this.growl.show({
+  //     severity: 'info',
+  //     summary: 'Give project a name',
+  //     detail: "Press 'Enter' key  to save project name",
+  //     sticky: true,
+  //   });
+  // }
+
   handleAddContainer() {
     this.props.addContainer();
   }
@@ -51,7 +61,9 @@ class ButtonBar extends Component {
   }
 
   handleKeyDown(e) {
-    this.props.createProject(this.state.title, this.props.userId);
+    if (e.key === 'Enter') {
+      this.props.createProject(this.state.title, this.props.userId);
+    }
   }
 
   handlePreviewHtml() {
@@ -77,6 +89,7 @@ class ButtonBar extends Component {
       <div className="content-section implementation">
         <Toolbar style={styling.toolBarOverride}>
           <div>
+            {/* <Growl ref={el => (this.growl = el)} position="topright" /> */}
             <span className="p-float-label">
               <InputText
                 value={this.state.title}
@@ -94,17 +107,17 @@ class ButtonBar extends Component {
               onClick={this.handleAddContainer}
               label="Add Container"
               icon="pi pi-plus"
-              className="p-button-raised white-buttons ui-button"
+              className="p-button-raised white-buttons"
               disabled={this.state.showPreview}
             />
             <Button
               onClick={this.handlePreviewHtml}
-              className="p-button-raised white-buttons ui-button"
+              className="p-button-raised white-buttons"
               icon={this.state.showPreview ? 'pi pi-eye-slash' : 'pi pi-eye'}
             />
             <Button
               label="Save"
-              className="p-button-raised white-buttons ui-button"
+              className="p-button-raised white-buttons"
               onClick={this.handleProjectSave}
               disabled={this.props.currentProject.id === ''}
             />
