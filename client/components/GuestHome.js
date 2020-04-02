@@ -49,7 +49,7 @@ export default class GuestHome extends Component {
                   <Link to="/mainPage">
                     <img
                       className="img-fade"
-                      src="/templates/t1.png"
+                      src="img/templates/t1.png"
                       width="130"
                       height="130"
                     />
@@ -59,7 +59,7 @@ export default class GuestHome extends Component {
                   <Link to="/blogtemplate">
                     <img
                       className="img-fade"
-                      src="/templates/t2.png"
+                      src="img/templates/t2.png"
                       width="130"
                       height="130"
                     />
@@ -69,7 +69,7 @@ export default class GuestHome extends Component {
                   <Link to="/landingpagetemplate">
                     <img
                       className="img-fade"
-                      src="/templates/t3.png"
+                      src="img/templates/t3.png"
                       width="130"
                       height="130"
                     />
@@ -79,7 +79,7 @@ export default class GuestHome extends Component {
                   <Link to="#">
                     <img
                       className="img-fade"
-                      src="/templates/t4.png"
+                      src="img/templates/t4.png"
                       width="130"
                       height="130"
                     />
@@ -121,7 +121,11 @@ export default class GuestHome extends Component {
                     href="https://www.linkedin.com/in/amantina-sosa/"
                     target="blank"
                   >
-                    <img src="/headshots/Tina.jpg" width="130" height="130" />
+                    <img
+                      src="img/headshots/Tina.jpg"
+                      width="130"
+                      height="130"
+                    />
                   </a>
                   <div className="names-top">
                     <a
@@ -138,7 +142,7 @@ export default class GuestHome extends Component {
                     href="https://www.linkedin.com/in/maxwellhan"
                     target="blank"
                   >
-                    <img src="/headshots/Max.jpg" width="130" height="130" />
+                    <img src="img/headshots/Max.jpg" width="130" height="130" />
                   </a>
                   <div className="names-top">
                     <a
@@ -158,7 +162,7 @@ export default class GuestHome extends Component {
                     target="blank"
                   >
                     <img
-                      src="/headshots/Mercedes.jpg"
+                      src="img/headshots/Mercedes.jpg"
                       width="130"
                       height="130"
                     />
@@ -180,7 +184,7 @@ export default class GuestHome extends Component {
                   >
                     <img
                       className="text-link"
-                      src="/headshots/Josh.jpg"
+                      src="img/headshots/Josh.jpg"
                       width="130"
                       height="130"
                     />

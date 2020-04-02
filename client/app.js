@@ -18,7 +18,7 @@ const App = () => {
       <div style={styles.appContainer}>
         <div className="app-logo">
           <Link to="/">
-            <img className="logo" src="logo.png" />
+            <img className="logo" src="logos/instaStack-logo.svg" />
           </Link>
         </div>
         <Navbar />
@@ -26,7 +26,8 @@ const App = () => {
         <Routes />
       </div>
       <div className="footer">
-        <img className="logo" src="footer.svg" />
+        <img className="logo" src="logos/instaStack-icon.svg" />
+        <h7>instaStack © 2020</h7>
       </div>
     </>
   );

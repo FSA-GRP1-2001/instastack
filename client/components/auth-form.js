@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import github from '../../public/github.png';
-import google from '../../public/google.png';
+import github from '../../public/logos/github.png';
+import google from '../../public/logos/google.png';
 import { InputText } from 'primereact/inputtext';
 
 const useStyles = makeStyles(theme => ({
@@ -103,14 +103,14 @@ const AuthForm = props => {
       <div style={styles.center}>
         <div style={styles.top}>
           <p style={{ ...styles.fontBlue, marginBottom: 0 }}>WELCOME TO</p>
-          <img src="logo_for_forms.png" />
+          <img src="logos/logo_for_forms.png" />
           <Button
             fullWidth
             variant="contained"
             style={{ ...styles.signUpButton, ...styles.github }}
           >
             <img
-              src="github_dark.png"
+              src="/logos/github_dark.png"
               style={{ marginRight: 10, width: 15, height: 15 }}
             />
             <Link href="/auth/github" style={{ color: 'white' }}>
@@ -123,7 +123,7 @@ const AuthForm = props => {
             style={{ ...styles.signUpButton, ...styles.google }}
           >
             <img
-              src="google_icon.png"
+              src="logos/google_icon.png"
               style={{ marginRight: 10, width: 15, height: 15 }}
             />
             <Link href="/auth/google" style={{ color: 'black' }}>
