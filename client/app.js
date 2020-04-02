@@ -6,7 +6,6 @@ import ListOfComponents from './components/list/componentSection';
 
 const styles = {
   appContainer: {
-    border: '1px solid yellow',
     display: 'grid',
     gridTemplateColumns: '200px auto',
     gridTemplateRows: '60px auto',
@@ -15,7 +14,7 @@ const styles = {
 
 const App = () => {
   return (
-    <div>
+    <>
       <div style={styles.appContainer}>
         <div className="app-logo">
           <Link to="/">
@@ -26,7 +25,10 @@ const App = () => {
         <ListOfComponents />
         <Routes />
       </div>
-    </div>
+      <div className="footer">
+        <img className="logo" src="footer.png" />
+      </div>
+    </>
   );
 };
 

@@ -33,14 +33,21 @@ form div {
   border-radius: 6px;
 }
 
-/* COMPONENT SELECTION SIDEBAR */
-.component-selection-sidebar {
+.components-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  border: 1px solid gray;
-  width: 100%;
-  text-align: center;
+  height: 35%;
+  margin-top: 4rem;
+}
+.components-container p {
+  color: white;
+  font-size: 11px;
+}
+.components-container span {
+  color: #56be96;
+  font-size: 12px;
 }
 
 /* PREVEW AREA */
@@ -53,10 +60,10 @@ form div {
   grid-row-gap: 2rem;
   padding: 1rem;
 }
-
-.drop-area {
+/* this is only for testing */
+/* .drop-area {
   border: 1.5px dotted gray;
-}
+} */
 
 /* RGL Preview Items */
 .item {
@@ -108,15 +115,17 @@ form div {
 
 /* Preview Buttons  for DnD */
 .component-selection-sidebar .preview-button {
-  margin: 20px;
-  padding: 25px 32px;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #56be96;
   background-color: #49497e;
   border-color: #49497e;
-  text-align: center;
   border-radius: 10px;
   height: 5em;
-  width: 8em;
+  width: 5em;
+  cursor: pointer;
 }
 
 .component-selection-sidebar .preview-button:hover {
@@ -151,6 +160,7 @@ form div {
   font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 200px;
 }
 
 /* .templates-grid {
@@ -172,7 +182,7 @@ form div {
   background-color: #0c62c1;
   display: flex;
   justify-content: space-evenly;
-  height: 100%;
+  height: 583px;
   margin-top: 20;
 }
 
@@ -236,7 +246,6 @@ form div {
 .mainpage {
   width: 100%;
   background: #edf1f1;
-  height: 722px;
 }
 
 .app-logo {
@@ -338,4 +347,13 @@ form div {
 .color {
   color: white;
   margin-left: 47px;
+}
+.footer {
+  background: linear-gradient(to right, black, #0c62c1);
+}
+
+.footer img {
+  max-width: 8%;
+  height: auto;
+  margin-left: 5%;
 }

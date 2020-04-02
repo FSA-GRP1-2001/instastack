@@ -17,25 +17,30 @@ class ListOfComponents extends Component {
     const haveComponents = components.length > 0;
     return (
       // <div className="component-selection-sidebar">
-      <Card className="component-selection-sidebar">
+      <section className="component-selection-sidebar">
         {/* ideally, this would not happen here. */}
         <Switch>
           <Route exact path="/mainPage">
-            {haveComponents &&
-              [...components].map(component => {
-                return (
-                  <DragWrapper
-                    key={component.id}
-                    component={component}
-                    id={component.id}
-                  >
-                    {component.displayName}
-                  </DragWrapper>
-                );
-              })}
+            <div className="components-container">
+              <p>
+                DRAG & DROP COMPONENTS &ensp;<span>></span>
+              </p>
+              {haveComponents &&
+                [...components].map(component => {
+                  return (
+                    <DragWrapper
+                      key={component.id}
+                      component={component}
+                      id={component.id}
+                    >
+                      {component.displayName}
+                    </DragWrapper>
+                  );
+                })}
+            </div>
           </Route>
         </Switch>
-      </Card>
+      </section>
       // </div>
     );
   }
