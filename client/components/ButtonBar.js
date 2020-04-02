@@ -35,14 +35,14 @@ class ButtonBar extends Component {
     this.handlePreviewHtml = this.handlePreviewHtml.bind(this);
   }
 
-  componentDidMount() {
-    this.growl.show({
-      severity: 'info',
-      summary: 'Give project a name',
-      detail: "Press 'Enter' key  to save project name",
-      sticky: true,
-    });
-  }
+  // componentDidMount() {
+  //   this.growl.show({
+  //     severity: 'info',
+  //     summary: 'Give project a name',
+  //     detail: "Press 'Enter' key  to save project name",
+  //     sticky: true,
+  //   });
+  // }
 
   handleAddContainer() {
     this.props.addContainer();
