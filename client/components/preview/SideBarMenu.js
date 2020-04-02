@@ -313,7 +313,9 @@ class SideBarMenu extends Component {
             />
           </Fieldset>
         )}
-        {['DIV', 'H1'].includes(this.state.tagName) && (
+        {['DIV', 'H1', 'BUTTON', 'FOOTER', 'NAVBAR'].includes(
+          this.state.tagName
+        ) && (
           <Fieldset legend="Text Properites">
             <label htmlFor="Text Content">Text Content</label>
             <InputText
