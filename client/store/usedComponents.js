@@ -67,7 +67,6 @@ export default function usedComponents(components = [], action) {
       console.log('updateObj is ', action.updateObj);
       if (action.updateObj.tagName === 'UL') {
         currentComponent.component.children.forEach((child, i) => {
-          console.log(child.content, action.updateObj.listItems);
           child.content =
             action.updateObj.listItems[
               Object.keys(action.updateObj.listItems)[i]

@@ -93,9 +93,6 @@ class ProfileSecurity extends Component {
             </Accordion>
           </ul>
         </div>
-        <Link to={`/users/${user.id}/security`}>
-          <h2 className="color">Back to your settings</h2>
-        </Link>
       </div>
       // ) : (
       //   <div>
