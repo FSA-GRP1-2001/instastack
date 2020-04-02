@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
+import store, { loadTemplateContainers } from '../store';
 // import { Card } from 'primereact/card';
 
 import {
@@ -10,6 +11,11 @@ import {
   getRowProps,
   getColumnProps,
 } from 'react-flexbox-grid';
+
+const handleTemplate = templateType => {
+  console.log('loading a template');
+  store.dispatch(loadTemplateContainers(templateType));
+};
 
 const userButton = {
   color: '#333055',
@@ -66,7 +72,10 @@ export default class GuestHome extends Component {
                   </Link>
                 </Col>
                 <Col md>
-                  <Link to="/landingpagetemplate">
+                  <Link
+                    to="/mainPage"
+                    onClick={() => handleTemplate('landing')}
+                  >
                     <img
                       className="img-fade"
                       src="img/templates/t3.png"
