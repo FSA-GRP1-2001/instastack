@@ -1,22 +1,14 @@
 diff a/client/components/GuestHome.js b/client/components/GuestHome.js	(rejected hunks)
-@@ -54,2 +54,18 @@ export default class GuestHome extends Component {
--                  <a href="https://www.linkedin.com/in/mercedesmadanire/" target="blank"><img src="/headshots/Mercedes.jpg" width="130" height="130" /></a>
--                  <div className="names"><a href="https://www.linkedin.com/in/mercedesmadanire/" target="blank">Mercedes Madanire</a></div>
+@@ -95 +95,4 @@ export default class GuestHome extends Component {
+-                  <a href="https://www.linkedin.com/in/maxwellhan" target="blank">
 +                  <a
-+                    href="https://www.linkedin.com/in/mercedesmadanire/"
++                    href="https://www.linkedin.com/in/maxwellhan"
 +                    target="blank"
 +                  >
-+                    <img
-+                      src="/headshots/Mercedes.jpg"
-+                      width="130"
-+                      height="130"
-+                    />
-+                  </a>
-+                  <div className="names">
+@@ -99 +102,5 @@ export default class GuestHome extends Component {
+-                    <a className="text-link" href="https://www.linkedin.com/in/maxwellhan" target="blank">
 +                    <a
-+                      href="https://www.linkedin.com/in/mercedesmadanire/"
++                      className="text-link"
++                      href="https://www.linkedin.com/in/maxwellhan"
 +                      target="blank"
 +                    >
-+                      Mercedes Madanire
-+                    </a>
-+                  </div>
