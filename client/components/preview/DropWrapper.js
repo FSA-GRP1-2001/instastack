@@ -79,8 +79,12 @@ class DropWrapper extends Component {
     if (data && !e.target.classList.contains('react-grid-layout')) {
       e.target.appendChild(document.getElementById(data));
       this.props.updateCode(getPreviewHtml());
+      this.handleResizeContainer(containerIdx, component.tagName);
+    } else {
+      const recent = document.body.lastChild;
+      const parent = recent.parentNode; // get its ID
+      parent.removeChild(recent); // delete by ID
     }
-    this.handleResizeContainer(containerIdx, component.tagName);
   };
 
   allowDrop = e => {
