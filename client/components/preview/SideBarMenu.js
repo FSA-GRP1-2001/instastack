@@ -13,6 +13,7 @@ import { Spinner } from 'primereact/spinner';
 import { Slider } from 'primereact/slider';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
+import { InputTextarea } from 'primereact/inputtextarea';
 import { getPreviewHtml } from './DropWrapper';
 
 const borderStyles = [
@@ -238,7 +239,7 @@ class SideBarMenu extends Component {
   render() {
     return (
       <section>
-        {this.state.tagName === 'IMG' ? (
+        {this.state.tagName === 'IMG' && (
           <Fieldset legend="Image Properites">
             <label htmlFor="Image Src">Image Src</label>
             <InputText value={this.state.src} onChange={this.handleImageSrc} />
@@ -251,10 +252,37 @@ class SideBarMenu extends Component {
               onChange={this.handleImageWidth}
             />
           </Fieldset>
-        ) : (
+        )}
+        {['DIV', 'H1'].includes(this.state.tagName) && (
           <Fieldset legend="Text Properites">
             <label htmlFor="Text Content">Text Content</label>
             <InputText
+              value={this.state.textContent}
+              onChange={this.handleTextContent}
+            />
+            <div style={colorPickerBox}>
+              <label style={colorLabel}>Font Color </label>
+              <ColorPicker
+                value={this.state.color}
+                onChange={this.handleColor}
+              />
+            </div>
+
+            <label>Font Size</label>
+            <Spinner
+              min={10}
+              max={44}
+              value={this.state.fontSize}
+              onChange={this.handleFontSize}
+            />
+          </Fieldset>
+        )}
+        {this.state.tagName === 'P' && (
+          <Fieldset legend="Text Properites">
+            <label htmlFor="Text Content">Text Content</label>
+            <InputTextarea
+              rows={3}
+              cols={25}
               value={this.state.textContent}
               onChange={this.handleTextContent}
             />

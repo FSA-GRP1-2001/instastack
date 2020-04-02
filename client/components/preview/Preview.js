@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropWrapper, { getPreviewHtml } from './DropWrapper';
