@@ -54,7 +54,7 @@ class Navbar extends Component {
                   // disabled={this.state.showPreview}
                 />
               </Link>
-              <Link to="template">
+              <Link to="/">
                 <Button
                   // onClick={this.handleAddContainer}
                   label="Templates"
