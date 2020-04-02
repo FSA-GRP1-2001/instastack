@@ -10,7 +10,7 @@ import {
   Profile,
   ProfileProjects,
   ProfileSecurity,
-  TemplateHome,
+  Templates,
   LandingPageTemplate,
   BlogTemplate,
   GuestHome,
@@ -38,6 +38,7 @@ class Routes extends Component {
         <Route path="/mainpage" component={MainPage} />
         {/* this is breaking the code for logged in users */}
         <Route exact path="/" component={GuestHome} />
+        <Route exact path="/template" component={Templates} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

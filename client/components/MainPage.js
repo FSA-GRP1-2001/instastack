@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addContainer } from '../store';
 import Preview from './preview/Preview';
-import CodeBox from './CodeBox';
-import ListOfComponents from './list/componentSection';
 import ButtonBar from './ButtonBar';
 import SlidingCodePane from './CodeBox/SlidingCodePane';
 

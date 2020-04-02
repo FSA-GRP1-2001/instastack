@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
-// import { Card } from 'primereact/card';
-
-import {
-  Grid,
-  Row,
-  Col,
-  getRowProps,
-  getColumnProps,
-} from 'react-flexbox-grid';
+import Templates from './Templates';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 const userButton = {
   color: '#333055',
@@ -38,79 +31,8 @@ export default class GuestHome extends Component {
             </Link>
           </center>
         </div>
-        <div className="center-text">
-          <h4>Choose a template:</h4>
-        </div>
-        <div className="templates">
-          <div className="template-grid">
-            <Grid fluid>
-              <Row around="xs">
-                <Col md>
-                  <Link to="/mainPage">
-                    <img
-                      className="img-fade"
-                      src="/templates/t1.png"
-                      width="130"
-                      height="130"
-                    />
-                  </Link>
-                </Col>
-                <Col md>
-                  <Link to="/blogtemplate">
-                    <img
-                      className="img-fade"
-                      src="/templates/t2.png"
-                      width="130"
-                      height="130"
-                    />
-                  </Link>
-                </Col>
-                <Col md>
-                  <Link to="/landingpagetemplate">
-                    <img
-                      className="img-fade"
-                      src="/templates/t3.png"
-                      width="130"
-                      height="130"
-                    />
-                  </Link>
-                </Col>
-                <Col md>
-                  <Link to="#">
-                    <img
-                      className="img-fade"
-                      src="/templates/t4.png"
-                      width="130"
-                      height="130"
-                    />
-                  </Link>
-                </Col>
-              </Row>
-            </Grid>
-          </div>
-        </div>
-        {/* <div className="templates-grid">
-          <Card className="template-card">
-            <a href="#" target="blank">
-                  <img src="/templates/t1.png" width="130" height="130" />
-            </a>
-          </Card>
-          <Card className="template-card">
-            <a href="#" target="blank">
-                  <img src="/templates/t2.png" width="130" height="130" />
-            </a>
-          </Card>
-          <Card className="template-card">
-            <a href="#" target="blank">
-                  <img src="/templates/t3.png" width="130" height="130" />
-            </a>
-          </Card>
-          <Card className="template-card">
-            <a href="#" target="blank">
-                  <img src="/templates/t4.png" width="130" height="130" />
-            </a>
-          </Card>
-        </div> */}
+        {/* BTW Templates are here :)  */}
+        <Templates />
 
         <div className="about">
           <div className="profile-grid">
