@@ -25,6 +25,11 @@ class Navbar extends Component {
           command: () => this.props.handleLogout(),
         },
         {
+          label: 'Your Projects',
+          icon: 'pi pi-user',
+          command: () => history.push(`/users/${this.props.user.id}/projects`),
+        },
+        {
           label: 'Your Profile',
           icon: 'pi pi-user',
           command: () => history.push(`/users/${this.props.user.id}/profile`),
