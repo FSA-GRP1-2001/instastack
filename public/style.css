@@ -334,3 +334,7 @@ form div {
   margin: 0.8rem;
   width: 920px;
 }
+
+.footer {
+  background: linear-gradient(to right, black, #0c62c1);
+}

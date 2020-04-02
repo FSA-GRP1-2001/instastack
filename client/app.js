@@ -14,7 +14,7 @@ const styles = {
 
 const App = () => {
   return (
-    <div>
+    <>
       <div style={styles.appContainer}>
         <div className="app-logo">
           <Link to="/">
@@ -25,7 +25,10 @@ const App = () => {
         <ListOfComponents />
         <Routes />
       </div>
-    </div>
+      <div className="footer">
+        <img className="logo" src="footer.png" />
+      </div>
+    </>
   );
 };
 
