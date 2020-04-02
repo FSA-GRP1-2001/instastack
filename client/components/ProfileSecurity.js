@@ -12,9 +12,10 @@ class ProfileSecurity extends Component {
     const { user } = this.props;
     //console.log('here', this.props);
     // return users && users.name ? (
+
     return (
       <div className="profile-background">
-        <h2> Login and Security </h2>
+        <h2 className="color"> Login and Security </h2>
         <div className="RGL-container2">
           <ul key={user.id}>
             <Accordion multiple={true}>
@@ -89,8 +90,8 @@ class ProfileSecurity extends Component {
             </Accordion>
           </ul>
         </div>
-        <Link to={`/users/${user.id}/profile`}>
-          <h2>Back to your profile</h2>
+        <Link to={`/users/${user.id}/security`}>
+          <h2 className="color">Back to your settings</h2>
         </Link>
       </div>
       // ) : (
