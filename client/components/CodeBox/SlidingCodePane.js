@@ -14,6 +14,7 @@ class SlidingCodePane extends Component {
         className="some-custom-class"
         overlayClassName="some-custom-overlay-class"
         isOpen={this.props.showCodeMirror}
+        width="60%"
         title={<TopCodeMenu />}
         onRequestClose={() => {
           // triggered on "<" on left top click or on outside click
