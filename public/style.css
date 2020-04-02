@@ -139,7 +139,7 @@ form div {
   align-items: center;
   justify-content: center;
   margin-top: 80px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .center-text {
@@ -153,7 +153,7 @@ form div {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.templates-grid {
+/* .templates-grid {
   align-items: center;
   justify-content: center;
   display: grid;
@@ -162,39 +162,53 @@ form div {
 }
 
 .template-card {
-  width: 150px;
-  height: 190px;
+  width: 157px;
+  height: 183px;
   margin-left: 10px;
   margin-right: 10px;
-}
+} */
 
 .about {
   background-color: #0c62c1;
   display: flex;
   justify-content: space-evenly;
   height: 100%;
+  margin-top: 20;
+}
+
+.templates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.template-grid {
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .profile-grid {
   margin-top: 90px;
   color: #edf1f1;
   font-size: smaller;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 40px;
+  margin-left: 40px;
 }
 
 .names {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  color: #edf1f1 !important;
-  text-decoration: underline !important;
+  padding: 5px;
 }
 
-.names-link:hover {
-  color: #56be96 !important;
-  text-decoration: none !important;
+.names-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-bottom: 20px;
 }
 
 .about-text {
