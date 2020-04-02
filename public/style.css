@@ -38,7 +38,6 @@ form div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid gray;
   width: 100%;
   text-align: center;
 }
@@ -53,10 +52,10 @@ form div {
   grid-row-gap: 2rem;
   padding: 1rem;
 }
-
-.drop-area {
+/* this is only for testing */
+/* .drop-area {
   border: 1.5px dotted gray;
-}
+} */
 
 /* RGL Preview Items */
 .item {
@@ -333,4 +332,14 @@ form div {
   border-radius: 6px;
   margin: 0.8rem;
   width: 920px;
+}
+
+.footer {
+  background: linear-gradient(to right, black, #0c62c1);
+}
+
+.footer img {
+  max-width: 8%;
+  height: auto;
+  margin-left: 5%;
 }
