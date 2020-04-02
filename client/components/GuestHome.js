@@ -31,12 +31,12 @@ export default class GuestHome extends Component {
                   </Link>
                 </Col>
                 <Col md>
-                  <Link to="blogtemplate">
+                  <Link to="/blogtemplate">
                     <img src="/templates/t2.png" width="130" height="130" />
                   </Link>
                 </Col>
                 <Col md>
-                  <Link to="landingpagetemplate">
+                  <Link to="/landingpagetemplate">
                     <img src="/templates/t3.png" width="130" height="130" />
                   </Link>
                 </Col>

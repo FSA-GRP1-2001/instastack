@@ -67,7 +67,9 @@ class Navbar extends Component {
                 />
                 <Button
                   label={
-                    user.displayName ? user.displayName.toUpperCase() : 'GUEST'
+                    user.displayName
+                      ? user.displayName.toUpperCase()
+                      : 'Well, hello there!'
                   }
                   onClick={event => this.menu.toggle(event)}
                   aria-controls="popup_menu"
