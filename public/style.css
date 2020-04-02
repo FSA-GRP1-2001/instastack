@@ -189,7 +189,8 @@ form div {
   background-color: #0c62c1;
   display: flex;
   justify-content: space-evenly;
-  height: 583px;
+  /* This is the size of the blue field */
+  height: 522px;
   margin-top: 20;
 }
 
@@ -254,8 +255,6 @@ form div {
 }
 
 /* End Home Page */
-
-/* This is the size of the blue field */
 .mainpage {
   width: 100%;
   background: #edf1f1;
@@ -361,12 +360,19 @@ form div {
   color: white;
   margin-left: 47px;
 }
+
 .footer {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: smaller;
+  font-weight: lighter;
   background: linear-gradient(to right, black, #0c62c1);
 }
 
 .footer img {
   max-width: 8%;
-  height: auto;
-  margin-left: 5%;
+  width: 44px;
+  margin-left: 20px;
+  /* margin-left: 5%; */
 }
