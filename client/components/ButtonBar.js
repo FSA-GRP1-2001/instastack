@@ -51,11 +51,7 @@ class ButtonBar extends Component {
   }
 
   handleKeyDown(e) {
-    if (e.key === 'Enter') {
-      console.log('enter', this.state);
-      this.props.createProject(this.state.title, this.props.userId);
-      console.log('new id is ', this.props.currentProject.id);
-    }
+    this.props.createProject(this.state.title, this.props.userId);
   }
 
   handlePreviewHtml() {
