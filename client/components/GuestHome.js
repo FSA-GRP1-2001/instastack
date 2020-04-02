@@ -92,11 +92,18 @@ export default class GuestHome extends Component {
                   </div>
                 </Col>
                 <Col md>
-                  <a href="#" target="blank">
+                  <a
+                    href="https://www.linkedin.com/in/maxwellhan"
+                    target="blank"
+                  >
                     <img src="/headshots/Max.jpg" width="130" height="130" />
                   </a>
                   <div className="names-top">
-                    <a className="text-link" href="#" target="blank">
+                    <a
+                      className="text-link"
+                      href="https://www.linkedin.com/in/maxwellhan"
+                      target="blank"
+                    >
                       Maxwell Han
                     </a>
                   </div>
