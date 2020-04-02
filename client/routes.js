@@ -5,12 +5,10 @@ import PropTypes from 'prop-types';
 import {
   Login,
   Signup,
-  UserHome,
   MainPage,
   Profile,
   ProfileProjects,
   ProfileSecurity,
-  TemplateHome,
   LandingPageTemplate,
   BlogTemplate,
   GuestHome,
