@@ -19,5 +19,6 @@ export { default as ShowCodeMirror } from './ShowCodeMirror';
 export { default as BlogTemplate } from './BlogTemplate';
 export { default as BlogTemplatePreview } from './BlogTemplatePreview';
 export { default as GuestHome } from './GuestHome';
+export { default as Templates } from './Templates';
 
 export { Login, Signup } from './auth-form';
