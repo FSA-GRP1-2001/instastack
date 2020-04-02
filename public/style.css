@@ -360,12 +360,19 @@ form div {
   color: white;
   margin-left: 47px;
 }
+
 .footer {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: smaller;
+  font-weight: lighter;
   background: linear-gradient(to right, black, #0c62c1);
 }
 
 .footer img {
   max-width: 8%;
-  height: auto;
-  margin-left: 5%;
+  width: 44px;
+  margin-left: 20px;
+  /* margin-left: 5%; */
 }
