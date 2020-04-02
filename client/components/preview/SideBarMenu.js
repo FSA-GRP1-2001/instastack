@@ -266,6 +266,38 @@ class SideBarMenu extends Component {
             />
           </Fieldset>
         )}
+        {this.state.tagName === 'UL' && (
+          <Fieldset legend="List Properites">
+            <label htmlFor="List Items">List Items</label>
+            {Object.keys(this.state.listItems).map((item, i) => {
+              let itemName = `Item ${i + 1}:`;
+              return (
+                <div key={itemName}>
+                  <label>{itemName}</label>
+                  <InputText
+                    value={this.state.textContent}
+                    onChange={this.handleTextContent}
+                  />
+                </div>
+              );
+            })}
+            )}
+            <div style={colorPickerBox}>
+              <label style={colorLabel}>Font Color </label>
+              <ColorPicker
+                value={this.state.color}
+                onChange={this.handleColor}
+              />
+            </div>
+            <label>Font Size</label>
+            <Spinner
+              min={10}
+              max={44}
+              value={this.state.fontSize}
+              onChange={this.handleFontSize}
+            />
+          </Fieldset>
+        )}
         {['DIV', 'H1'].includes(this.state.tagName) && (
           <Fieldset legend="Text Properites">
             <label htmlFor="Text Content">Text Content</label>
