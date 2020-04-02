@@ -33,13 +33,21 @@ form div {
   border-radius: 6px;
 }
 
-/* COMPONENT SELECTION SIDEBAR */
-.component-selection-sidebar {
+.components-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  text-align: center;
+  height: 35%;
+  margin-top: 4rem;
+}
+.components-container p {
+  color: white;
+  font-size: 11px;
+}
+.components-container span {
+  color: #56be96;
+  font-size: 12px;
 }
 
 /* PREVEW AREA */
@@ -107,15 +115,17 @@ form div {
 
 /* Preview Buttons  for DnD */
 .component-selection-sidebar .preview-button {
-  margin: 20px;
-  padding: 25px 32px;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #56be96;
   background-color: #49497e;
   border-color: #49497e;
-  text-align: center;
   border-radius: 10px;
   height: 5em;
-  width: 8em;
+  width: 5em;
+  cursor: pointer;
 }
 
 .component-selection-sidebar .preview-button:hover {
