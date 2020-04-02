@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'primereact/button';
+// import { Card } from 'primereact/card';
 
 import {
   Grid,
@@ -8,7 +10,13 @@ import {
   getRowProps,
   getColumnProps,
 } from 'react-flexbox-grid';
-// import { Card } from 'primereact/card';
+
+const userButton = {
+  color: '#333055',
+  background: 'transparent',
+  border: 'transparent',
+  fontWeight: 'bolder',
+};
 export default class GuestHome extends Component {
   render() {
     //let display = '(!instaChallenge) => {build your HTML view in < 5 mins);';
@@ -18,8 +26,20 @@ export default class GuestHome extends Component {
         <div className="center-image">
           <img src="/img/text-621x103.png" width="621" height="103" />
         </div>
+        <div className="get-started">
+          <center>
+            <h2>Get started Now! </h2>
+            <Link to="/mainPage">
+              <Button
+                label="New Project"
+                icon="pi pi-plus"
+                className="p-button-raised white-buttons"
+              />
+            </Link>
+          </center>
+        </div>
         <div className="center-text">
-          <h4>Choose a template to get started:</h4>
+          <h4>Choose a template:</h4>
         </div>
         <div className="templates">
           <div className="template-grid">
@@ -27,21 +47,43 @@ export default class GuestHome extends Component {
               <Row around="xs">
                 <Col md>
                   <Link to="/mainPage">
-                    <img src="/templates/t1.png" width="130" height="130" />
+                    <img
+                      className="img-fade"
+                      src="/templates/t1.png"
+                      width="130"
+                      height="130"
+                    />
                   </Link>
                 </Col>
                 <Col md>
                   <Link to="/blogtemplate">
-                    <img src="/templates/t2.png" width="130" height="130" />
+                    <img
+                      className="img-fade"
+                      src="/templates/t2.png"
+                      width="130"
+                      height="130"
+                    />
                   </Link>
                 </Col>
                 <Col md>
                   <Link to="/landingpagetemplate">
-                    <img src="/templates/t3.png" width="130" height="130" />
+                    <img
+                      className="img-fade"
+                      src="/templates/t3.png"
+                      width="130"
+                      height="130"
+                    />
                   </Link>
                 </Col>
                 <Col md>
-                  <img src="/templates/t4.png" width="130" height="130" />
+                  <Link to="#">
+                    <img
+                      className="img-fade"
+                      src="/templates/t4.png"
+                      width="130"
+                      height="130"
+                    />
+                  </Link>
                 </Col>
               </Row>
             </Grid>

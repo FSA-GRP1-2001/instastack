@@ -140,8 +140,13 @@ form div {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+.get-started {
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 .center-text {
@@ -175,7 +180,7 @@ form div {
   display: flex;
   justify-content: space-evenly;
   height: 100%;
-  margin-top: 20;
+  margin-top: 0;
 }
 
 .templates {
@@ -185,13 +190,19 @@ form div {
   margin-bottom: 50px;
 }
 
+.img-fade:hover {
+  opacity: 0.8;
+  border: 1px #c4c4c4;
+}
+
 .template-grid {
+  margin-top: 0;
   margin-right: 5px;
   margin-left: 5px;
 }
 
 .profile-grid {
-  margin-top: 90px;
+  margin-top: 80px;
   color: #edf1f1;
   font-size: smaller;
   margin-right: 40px;
