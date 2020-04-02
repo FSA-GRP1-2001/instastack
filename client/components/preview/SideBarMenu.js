@@ -214,8 +214,13 @@ class SideBarMenu extends Component {
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
     let updateObj = {
       domId: this.state.domId,
+      tagName: this.state.tagName,
       content: this.state.textContent,
     };
+    if (this.state.tagName === 'UL') {
+      let listItems = { ...this.state.listItems };
+      updateObj.listItems = listItems;
+    }
     this.props.updatedComponent(updateObj);
   }
 

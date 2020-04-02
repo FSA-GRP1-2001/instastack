@@ -64,6 +64,16 @@ export default function usedComponents(components = [], action) {
         c => c.component.domId === action.updateObj.domId
       )[0];
       currentComponent.component.content = action.updateObj.content;
+      console.log('updateObj is ', action.updateObj);
+      if (action.updateObj.tagName === 'UL') {
+        currentComponent.component.children.forEach((child, i) => {
+          console.log(child.content, action.updateObj.listItems);
+          child.content =
+            action.updateObj.listItems[
+              Object.keys(action.updateObj.listItems)[i]
+            ];
+        });
+      }
       updatedComponents.push(currentComponent);
       return updatedComponents;
     }
