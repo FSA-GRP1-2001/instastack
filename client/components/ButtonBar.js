@@ -89,7 +89,7 @@ class ButtonBar extends Component {
       <div className="content-section implementation">
         <Toolbar style={styling.toolBarOverride}>
           <div>
-            <Growl ref={el => (this.growl = el)} position="topleft" />
+            <Growl ref={el => (this.growl = el)} position="topright" />
             <span className="p-float-label">
               <InputText
                 value={this.state.title}
