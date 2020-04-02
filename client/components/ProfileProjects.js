@@ -38,8 +38,6 @@ class ProfileProjects extends Component {
                   <div className="profile-bar-color">
                     <Accordion multiple={true}>
                       <AccordionTab header={p.title}>
-                        <img src="/img/blog2.png" width="400" height="400" />
-                        <br></br>
                         <button
                           type="button"
                           size="small"
@@ -72,6 +70,8 @@ class ProfileProjects extends Component {
                         >
                           Save
                         </button>
+                        <br></br>
+                        <img src="/img/blog2.png" width="400" height="400" />
                       </AccordionTab>
                     </Accordion>
                   </div>

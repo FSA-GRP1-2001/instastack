@@ -23,6 +23,9 @@ class ProfileSecurity extends Component {
                 {user.displayName}
                 <br></br>
                 <button type="button" size="small" color="primary">
+                  Add
+                </button>
+                <button type="button" size="small" color="primary">
                   Edit
                 </button>
               </AccordionTab>
