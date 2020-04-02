@@ -189,7 +189,8 @@ form div {
   background-color: #0c62c1;
   display: flex;
   justify-content: space-evenly;
-  height: 583px;
+  /* This is the size of the blue field */
+  height: 522px;
   margin-top: 20;
 }
 
@@ -254,8 +255,6 @@ form div {
 }
 
 /* End Home Page */
-
-/* This is the size of the blue field */
 .mainpage {
   width: 100%;
   background: #edf1f1;
