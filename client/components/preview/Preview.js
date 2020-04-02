@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DropWrapper, { getPreviewHtml } from './DropWrapper';
@@ -30,6 +32,14 @@ const populateSavedComponents = arr => {
     node.textContent = component.content;
     if (component.tag.toLowerCase() === 'img') {
       node.src = component.src;
+    }
+    if (component.tag.toLowerCase() === 'ul') {
+      let htmlText = component.children
+        .map(child => {
+          return '<li>' + child.content + '</li>';
+        })
+        .join('');
+      node.innerHTML = htmlText;
     }
     node.id = component.domId;
     let container = grid.querySelector(`#\\3${i}`);

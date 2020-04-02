@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { closedSideBar, updateCode, saveStyles } from '../../store';
+import {
+  closedSideBar,
+  updateCode,
+  saveStyles,
+  updatedComponent,
+} from '../../store';
 import { InputText } from 'primereact/inputtext';
 import { ColorPicker } from 'primereact/colorpicker';
 import { Fieldset } from 'primereact/fieldset';
@@ -8,6 +13,7 @@ import { Spinner } from 'primereact/spinner';
 import { Slider } from 'primereact/slider';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
+import { InputTextarea } from 'primereact/inputtextarea';
 import { getPreviewHtml } from './DropWrapper';
 
 const borderStyles = [
@@ -182,6 +188,11 @@ class SideBarMenu extends Component {
     };
     console.log('saving styles ', styleObj);
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
+    let updateObj = {
+      domId: this.state.domId,
+      content: this.state.textContent,
+    };
+    this.props.updatedComponent(updateObj);
   }
 
   handleCancel() {
@@ -228,7 +239,7 @@ class SideBarMenu extends Component {
   render() {
     return (
       <section>
-        {this.state.tagName === 'IMG' ? (
+        {this.state.tagName === 'IMG' && (
           <Fieldset legend="Image Properites">
             <label htmlFor="Image Src">Image Src</label>
             <InputText value={this.state.src} onChange={this.handleImageSrc} />
@@ -241,10 +252,37 @@ class SideBarMenu extends Component {
               onChange={this.handleImageWidth}
             />
           </Fieldset>
-        ) : (
+        )}
+        {['DIV', 'H1'].includes(this.state.tagName) && (
           <Fieldset legend="Text Properites">
             <label htmlFor="Text Content">Text Content</label>
             <InputText
+              value={this.state.textContent}
+              onChange={this.handleTextContent}
+            />
+            <div style={colorPickerBox}>
+              <label style={colorLabel}>Font Color </label>
+              <ColorPicker
+                value={this.state.color}
+                onChange={this.handleColor}
+              />
+            </div>
+
+            <label>Font Size</label>
+            <Spinner
+              min={10}
+              max={44}
+              value={this.state.fontSize}
+              onChange={this.handleFontSize}
+            />
+          </Fieldset>
+        )}
+        {this.state.tagName === 'P' && (
+          <Fieldset legend="Text Properites">
+            <label htmlFor="Text Content">Text Content</label>
+            <InputTextarea
+              rows={3}
+              cols={25}
               value={this.state.textContent}
               onChange={this.handleTextContent}
             />
@@ -340,6 +378,7 @@ const mapDispatchToProps = dispatch => {
     closedSideBar: () => dispatch(closedSideBar()),
     updateCode: code => dispatch(updateCode(code)),
     saveStyles: (styles, domId, i) => dispatch(saveStyles(styles, domId, i)),
+    updatedComponent: updateObj => dispatch(updatedComponent(updateObj)),
   };
 };
 
