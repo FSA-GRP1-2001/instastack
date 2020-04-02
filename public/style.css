@@ -188,6 +188,13 @@ form div {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  color: #edf1f1 !important;
+  text-decoration: underline !important;
+}
+
+.names-link:hover {
+  color: #56be96 !important;
+  text-decoration: none !important;
 }
 
 .about-text {
@@ -199,14 +206,14 @@ form div {
   line-height: 1.6em;
 }
 
-.github-link {
-  color: #edf1f1 !important;
-  text-decoration: underline !important;
-}
-
-.github-link:hover {
+.text-link {
   color: #56be96 !important;
   text-decoration: none !important;
+}
+
+.text-link:hover {
+  color: #56be96 !important;
+  text-decoration: underline !important;
 }
 
 /* End Home Page */

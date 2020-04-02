@@ -51,8 +51,24 @@ export default class GuestHome extends Component {
               </Row>
               <Row around="xs">
                 <Col md>
-                  <img src="/headshots/Mercedes.jpg" width="130" height="130" />
-                  <div className="names">Mercedes Madanire</div>
+                  <a
+                    href="https://www.linkedin.com/in/mercedesmadanire/"
+                    target="blank"
+                  >
+                    <img
+                      src="/headshots/Mercedes.jpg"
+                      width="130"
+                      height="130"
+                    />
+                  </a>
+                  <div className="names">
+                    <a
+                      href="https://www.linkedin.com/in/mercedesmadanire/"
+                      target="blank"
+                    >
+                      Mercedes Madanire
+                    </a>
+                  </div>
                 </Col>
                 <Col md>
                   <img src="/headshots/Josh.jpg" width="130" height="130" />
@@ -80,7 +96,7 @@ export default class GuestHome extends Component {
             <p>
               You can learn more about the InstaStack application on{' '}
               <a
-                className="github-link"
+                className="text-link"
                 href="https://github.com/FSA-GRP1-2001/instastack"
                 target="blank"
               >
