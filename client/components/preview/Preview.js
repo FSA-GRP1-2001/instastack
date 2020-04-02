@@ -33,6 +33,14 @@ const populateSavedComponents = arr => {
     if (component.tag.toLowerCase() === 'img') {
       node.src = component.src;
     }
+    if (component.tag.toLowerCase() === 'ul') {
+      let htmlText = component.children
+        .map(child => {
+          return '<li>' + child.content + '</li>';
+        })
+        .join('');
+      node.innerHTML = htmlText;
+    }
     node.id = component.domId;
     let container = grid.querySelector(`#\\3${i}`);
     container.appendChild(node);
