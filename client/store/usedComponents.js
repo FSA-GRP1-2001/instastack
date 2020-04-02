@@ -4,6 +4,7 @@
 const ADD_COMPONENT = 'ADD_COMPONENT';
 const GOT_SAVED_COMPONENTS = 'GOT_SAVED_COMPONENTS';
 const REMOVED_USED_COMPONENTS = 'REMOVED_USED_COMPONENTS';
+const UPDATED_COMPONENT = 'UPDATED_COMPONENT';
 /**
  * ACTION CREATORS
  */
@@ -20,6 +21,11 @@ export const gotSavedComponents = components => ({
 export const removedUsedComponents = containerId => ({
   type: REMOVED_USED_COMPONENTS,
   containerId,
+});
+
+export const updatedComponent = updateObj => ({
+  type: UPDATED_COMPONENT,
+  updateObj,
 });
 
 /**
@@ -50,6 +56,17 @@ export default function usedComponents(components = [], action) {
       return action.components;
     case REMOVED_USED_COMPONENTS:
       return [...components.filter(obj => obj.i !== action.containerId)];
+    case UPDATED_COMPONENT: {
+      let updatedComponents = components.filter(c => {
+        return c.component.domId !== action.updateObj.domId;
+      });
+      let currentComponent = components.filter(
+        c => c.component.domId === action.updateObj.domId
+      )[0];
+      currentComponent.component.content = action.updateObj.content;
+      updatedComponents.push(currentComponent);
+      return updatedComponents;
+    }
     default:
       return components;
   }

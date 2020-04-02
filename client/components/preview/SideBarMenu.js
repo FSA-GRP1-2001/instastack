@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { closedSideBar, updateCode, saveStyles } from '../../store';
+import {
+  closedSideBar,
+  updateCode,
+  saveStyles,
+  updatedComponent,
+} from '../../store';
 import { InputText } from 'primereact/inputtext';
 import { ColorPicker } from 'primereact/colorpicker';
 import { Fieldset } from 'primereact/fieldset';
@@ -182,6 +187,11 @@ class SideBarMenu extends Component {
     };
     console.log('saving styles ', styleObj);
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
+    let updateObj = {
+      domId: this.state.domId,
+      content: this.state.textContent,
+    };
+    this.props.updatedComponent(updateObj);
   }
 
   handleCancel() {
@@ -340,6 +350,7 @@ const mapDispatchToProps = dispatch => {
     closedSideBar: () => dispatch(closedSideBar()),
     updateCode: code => dispatch(updateCode(code)),
     saveStyles: (styles, domId, i) => dispatch(saveStyles(styles, domId, i)),
+    updatedComponent: updateObj => dispatch(updatedComponent(updateObj)),
   };
 };
 
