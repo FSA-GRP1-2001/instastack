@@ -29,7 +29,6 @@ export const updateCode = code => {
     const prettyCode = beautify.html(fullCode);
     try {
       dispatch(updatedCode(prettyCode));
-      console.log('new code is ', prettyCode);
     } catch (error) {
       console.error(error);
     }
