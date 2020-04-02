@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
 
-export const Templates = () => {
+const Templates = () => {
   return (
     <>
       <div className="center-text">
@@ -59,3 +59,5 @@ export const Templates = () => {
     </>
   );
 };
+
+export default Templates;
