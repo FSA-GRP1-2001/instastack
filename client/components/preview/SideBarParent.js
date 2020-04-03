@@ -71,7 +71,6 @@ class SideBarParent extends Component {
         className="ui-sidebar-sm"
         visible={this.props.sidebar.length > 0}
         onHide={this.handleClose}
-        style={{ overflow: 'scroll' }}
       >
         <div style={styles.navContainer}>
           <Button

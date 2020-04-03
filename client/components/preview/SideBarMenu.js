@@ -61,6 +61,7 @@ class SideBarMenu extends Component {
       alignSelf: '',
       listItems: {},
       prevStyles: {},
+      panelCollapsed: false,
     };
     this.handleTextContent = this.handleTextContent.bind(this);
     this.handleFontSize = this.handleFontSize.bind(this);
@@ -209,6 +210,7 @@ class SideBarMenu extends Component {
       borderRadius: this.state.borderRadius,
       padding: this.state.padding,
       backgroundColor: this.state.backgroundColor,
+      alignSelf: this.state.alignSelf,
     };
     console.log('saving styles ', styleObj);
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
@@ -283,7 +285,12 @@ class SideBarMenu extends Component {
           </Fieldset>
         )}
         {this.state.tagName === 'UL' && (
-          <Fieldset legend="List Properites">
+          <Fieldset
+            legend="List Properites"
+            toggleable={true}
+            collapsed={this.state.panelCollapsed}
+            onToggle={e => this.setState({ panelCollapsed: e.value })}
+          >
             <label htmlFor="List Items">List Items</label>
             {Object.keys(this.state.listItems).map((item, i) => {
               let itemName = `Item ${i + 1}`;
