@@ -358,7 +358,13 @@ form div {
 
 .color {
   color: white;
-  margin-left: 47px;
+  margin-left: 54px;
+}
+
+.color-link {
+  color: white;
+  margin-left: 54px;
+  text-decoration: underline;
 }
 
 .footer {

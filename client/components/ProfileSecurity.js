@@ -15,7 +15,7 @@ class ProfileSecurity extends Component {
 
     return (
       <div className="profile-background">
-        <h2 className="color"> Login and Security </h2>
+        <h3 className="color"> Login and Security </h3>
         <div className="RGL-container2">
           <ul key={user.id}>
             <Accordion multiple={true}>
@@ -93,8 +93,8 @@ class ProfileSecurity extends Component {
             </Accordion>
           </ul>
         </div>
-        <Link to={`/users/${user.id}/security`}>
-          <h2 className="color">Back to your settings</h2>
+        <Link to={`/users/${user.id}/projects`}>
+          <h4 className="color-link">Your Projects</h4>
         </Link>
       </div>
       // ) : (
