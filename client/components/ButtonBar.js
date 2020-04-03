@@ -54,6 +54,11 @@ class ButtonBar extends Component {
     const styles = this.props.usedStyles;
     const id = this.props.currentProject.id;
     await this.props.saveProject(components, containers, styles, id);
+    this.growl.show({
+      severity: 'success',
+      summary: 'Project saved!',
+      detail: 'Your project has been saved.',
+    });
   }
 
   handleAddTitle(e) {
@@ -63,6 +68,11 @@ class ButtonBar extends Component {
   handleKeyDown(e) {
     if (e.key === 'Enter') {
       this.props.createProject(this.state.title, this.props.userId);
+      this.growl.show({
+        severity: 'success',
+        summary: 'Project created!',
+        detail: 'You made a new project!',
+      });
     }
   }
 
@@ -89,7 +99,7 @@ class ButtonBar extends Component {
       <div className="content-section implementation">
         <Toolbar style={styling.toolBarOverride}>
           <div>
-            {/* <Growl ref={el => (this.growl = el)} position="topright" /> */}
+            <Growl ref={el => (this.growl = el)} position="topright" />
             <span className="p-float-label">
               <InputText
                 value={this.state.title}
