@@ -209,6 +209,7 @@ class SideBarMenu extends Component {
       borderRadius: this.state.borderRadius,
       padding: this.state.padding,
       backgroundColor: this.state.backgroundColor,
+      alignSelf: this.state.alignSelf,
     };
     console.log('saving styles ', styleObj);
     this.props.saveStyles(styleObj, this.state.domId, this.state.i);
