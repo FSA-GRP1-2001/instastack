@@ -99,7 +99,8 @@ class Preview extends Component {
         if (styleObj.styles.backgroundColor)
           node.style.backgroundColor = styles.backgroundColor;
         if (styleObj.styles.src) node.src = styles.src;
-        if (styleObj.styles.imageWidth) node.style.width = styles.imageWidth;
+        if (styleObj.styles.imageWidth)
+          node.style.width = styles.imageWidth + '%';
         if (styleObj.styles.alignSelf) node.style.alignSelf = styles.alignSelf;
         console.log('styled node is ', node);
       });
