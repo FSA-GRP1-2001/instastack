@@ -8,7 +8,7 @@
 
 #### Check out our deployed web app:
 
-[InstaStack: Drag and Drop HTML Generation e](https://instastack.herokuapp.com/ 'InstaStack Website on Heroku)
+[InstaStack: Drag and Drop HTML Generation](https://instastack.herokuapp.com/ 'InstaStack Website on Heroku)
 
 #### Marketing copy:
 
@@ -32,7 +32,7 @@ We deployed to Heroku, but the same DevOps principles would have allowed us to d
 
 
 ### Continuous Deployment
-Our app is continuously deployed from the `master` branch on GitHub, Embracing a DevOps philosophy from the beginning allowed us to focus on the user experience of using our website, rather than thinking about the app in terms of how it behaves on localhost:8080.
+Our app is continuously deployed from the `master` branch on GitHub, Embracing a DevOps philosophy from the beginning allowed us to focus on the user experience of using our website, rather than thinking about the app in terms of how it behaves on localhost:8080
 
 ### Development and Scripts
 
