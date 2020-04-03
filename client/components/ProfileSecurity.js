@@ -22,10 +22,20 @@ class ProfileSecurity extends Component {
               <AccordionTab header="Name">
                 {user.displayName}
                 <br></br>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Add
                 </button>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Edit
                 </button>
               </AccordionTab>
@@ -34,7 +44,12 @@ class ProfileSecurity extends Component {
                 {user.email}
 
                 <br></br>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Edit
                 </button>
               </AccordionTab>
@@ -42,10 +57,20 @@ class ProfileSecurity extends Component {
               <AccordionTab header="GitHub">
                 {user.githubId}
                 <br></br>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Add
                 </button>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Edit
                 </button>
               </AccordionTab>
@@ -53,17 +78,32 @@ class ProfileSecurity extends Component {
               <AccordionTab header="Google">
                 {user.googleId}
                 <br></br>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Add
                 </button>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Edit
                 </button>
               </AccordionTab>
 
               <AccordionTab header="Password">
                 <h4>*********</h4>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Edit
                 </button>
               </AccordionTab>
@@ -71,10 +111,20 @@ class ProfileSecurity extends Component {
                 <h4>
                   Manage your Two Step Vericification (2SV) Authenticators
                 </h4>
-                <button type="button" size="small" color="primary">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="primary"
+                >
                   Add
                 </button>
-                <button type="button" size="small" color="yellow">
+                <button
+                  className="project-btn"
+                  type="button"
+                  size="small"
+                  color="yellow"
+                >
                   Done
                 </button>
               </AccordionTab>

@@ -28,8 +28,8 @@ class ProfileProjects extends Component {
     return (
       <div className="profile-background">
         <div className="RGL-container2">
-          <h3 className="color"> Your Projects </h3>
-          <h4 className="color">{user.displayName}</h4>
+          <h2 className="color"> Your Projects </h2>
+          <h4 className="name">{user.displayName}</h4>
           {userProjects.length &&
             userProjects.map(p => {
               return (
@@ -38,6 +38,7 @@ class ProfileProjects extends Component {
                     <Accordion multiple={true}>
                       <AccordionTab header={p.title}>
                         <button
+                          className="project-btn"
                           type="button"
                           size="small"
                           color="primary"
@@ -46,6 +47,7 @@ class ProfileProjects extends Component {
                           Open
                         </button>
                         <button
+                          className="project-btn"
                           type="button"
                           size="small"
                           color="primary"
@@ -54,14 +56,16 @@ class ProfileProjects extends Component {
                           Edit
                         </button>
                         <button
+                          className="project-btn"
                           type="button"
                           size="small"
                           color="primary"
                           // onClick={}
                         >
-                          Delete
+                          x Delete
                         </button>
                         <button
+                          className="project-btn"
                           type="button"
                           size="small"
                           color="primary"
