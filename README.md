@@ -1,20 +1,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Build Status](https://travis-ci.org/FSA-GRP1-2001/instastack.svg?branch=master)](https://travis-ci.org/FSA-GRP1-2001/instastack)
 
-# InstaStack
+# InstaStack ([Live](https://instastack.herokuapp.com/))
 
 ## (c) The InstaStack Team, 2020
 
 ### Tina Sosa, Joshua Skootsky, Maxwell Han, and Mercedes Madanire
-
-#### Check out our deployed web app:
-
-[InstaStack: Drag and Drop HTML Generation](https://instastack.herokuapp.com/ 'InstaStack Website on Heroku)
 
 #### Marketing copy:
 
 Designers and web developers often wish they could translate their vision into real HTML and CSS.
 
 InstaStack makes it possible to quickly create, for real, a static website whose HTML and CSS is the same as the preview image. This HTML is suitable on its own, or for combining with an external style sheet and handwritten HTML. It may be made by a machine, but that machine was made by humans for humans.
+
+#### Tech Stack
 
 
 ### Built with Express, Sequelize, Postgres, React, and Redux
@@ -33,6 +31,16 @@ We deployed to Heroku, but the same DevOps principles would have allowed us to d
 
 ### Continuous Deployment
 Our app is continuously deployed from the `master` branch on GitHub, Embracing a DevOps philosophy from the beginning allowed us to focus on the user experience of using our website, rather than thinking about the app in terms of how it behaves on localhost:8080
+=======
+- [Node.js](https://nodejs.org/en/)
+- [Express](http://expressjs.com/)
+- [Sequelize](https://sequelize.org/)
+- [React](https://facebook.github.io/react/)
+- [Redux](https://redux.js.org/)
+- [HTML Drag-and-Drop](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
+- [Webpack](https://webpack.js.org/)
+- [PrimeReact (UI)](https://primefaces.org/primereact/showcase/#/)
+
 
 ### Development and Scripts
 
@@ -43,9 +51,7 @@ npm install
 ```
 
 to install the project and its dependencies.
-
 You will also want to install postgres locally, and provision postgres when you deploy remotely.
-
 To seed the database, run
 
 ```
@@ -55,9 +61,7 @@ npm run seed
 Note that the predefined HTML elements are defined in the seed file.
 
 The source code comes with several scripts defined in `package.json`.
-
 The high level scripts are:
-
 to start dev mode, serving up on localhost:8080 with webpack watching for changes:
 
 ```
@@ -66,33 +70,56 @@ npm run start-dev
 
 To run tests while watching the code:
 
-
 If you want to run the server and/or `webpack` separately, you can also
 `npm run start-server` and `npm run build-client`.
-
 To manually deploy to Heroku, `npm run deploy`. See below for more details on setting up the deploy script.
 
+# Features
 
-## Linting and Style
+## Drag and Drop Interface
 
-We used Prettier with reasonable defaults, and automated ESLint running on commit to git, using Husky for pre-commit hooks.
+- Select your web components and drag them into the preview area to add items to your project
+- add, resize, and rearrange containers to create the layout of your liking
 
+## Styling Menu for Customization of Web Components
 
-# Highlighting Features
+- Once you have added items to your project, customize the text, look and feel with the styling menu
+- Customize different types of components (lists, paragraphs, simple text, images... )
 
-## Drag and Drop
+## Preview Design + Access Live HTML Code
 
+- View a live rendering of your project with one click
+- HTML code is available for export with every change your make
 
 ## Logged-in User Experience
 
-Users have the option of creating an account, via email signup or Google OAuth GitHub OAuth. Users with an account can return at at any time to their projects, which are persisted in our Postgres database.
+- Users have the option of creating an account, via email signup or Google OAuth GitHub OAuth
+- Users with an account can return at at any time to their projects, which are persisted in our Postgres database
 
 ## Database Schema
 
 Database interactions were handled via an ORM, [Sequelize]([https://sequelize.org/]). We stored the HTML default components in the database, and dynamically read them from the database. This allows users to create and save their own default components.
 
 ## FILLME IN MORE FEATURES
+
 Pictures of the APP PLEASE!
+
+## Linting and Style
+
+We used Prettier with reasonable defaults, and automated ESLint running on commit to git, using Husky for pre-commit hooks.
+
+### Twelve Factor Design
+
+This project uses the [Twelve Factor App](https://12factor.net/ 'Twelve Factor App') design principles. To quote the author, [Adam Wiggins](https://news.ycombinator.com/item?id=21416881 'Comment on Hacker News'):
+
+> I'm the author of 12factor (although really it is an aggregation of the work and insights from many people at Heroku). It continues to surprise and please me that this piece continues to be relevant eight years later—a virtual eternity in software/internet time.
+> Fun fact: I debated whether to call it "the Heroku way" or somesuch. Glad I went with a standalone name, feel like that allowed it to take on a life beyond that product. For example I doubt Google would have wanted a page about "Heroku Way app development on GCP" in their documentation. :-)
+
+We deployed to Heroku, but the same DevOps principles would have allowed us to deploy to AWS, Google Cloud, Microsoft Azure, or another cloud computing service.
+
+### Continuous Deployment
+
+Our app is continuously deployed from the `master` branch on GitHub, Embracing a DevOps philosophy from the beginning allowed us to focus on the user experience of using our website, rather than thinking about the app in terms of how it behaves on localhost:8080.
 
 ### Heroku Deployment
 
@@ -123,7 +150,6 @@ When you deploy your application to Heroku you need to set these values as confi
 - Don’t forget to add your callback URI for both your development environment (localhost:...) and well as for your deployed environment (heroku.<app-name>...) as authorized URLs in the application dashboard for your google project
 
 [google-apis]: https://console.developers.google.com/apis/credentials
-
 
 ### Heroku
 
@@ -181,12 +207,11 @@ git push -u origin f/travis-deploy
 
 4.  Make a Pull Request for the new branch, get it approved, and merge it into
     the master branch.
-
-_**NOTE**_ that this script depends on your local `origin` Git remote matching
-your GitHub URL, and your local `heroku` remote matching the name of your
-Heroku app. This is only an issue if you rename your GitHub organization,
-repository name or Heroku app name. You can update these values using
-`git remote` and its related commands.
+    _**NOTE**_ that this script depends on your local `origin` Git remote matching
+    your GitHub URL, and your local `heroku` remote matching the name of your
+    Heroku app. This is only an issue if you rename your GitHub organization,
+    repository name or Heroku app name. You can update these values using
+    `git remote` and its related commands.
 
 #### Travis CLI
 
@@ -235,5 +260,3 @@ production server to be cluttered up with dev dependencies like
 git-tracking to be cluttered with production build files like
 `bundle.js`! By doing these steps, we make sure our development and
 production environments both stay nice and clean!
-
-
