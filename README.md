@@ -14,6 +14,24 @@ InstaStack makes it possible to quickly create, for real, a static website whose
 
 #### Tech Stack
 
+
+### Built with Express, Sequelize, Postgres, React, and Redux
+
+This project uses Node.js and Express for the server, Sequelize as an ORM to talk to a Postgres database, React for display components, and Redux for managing state on the front end.
+
+### Twelve Factor Design
+
+This project uses the [Twelve Factor App](https://12factor.net/ 'Twelve Factor App') design principles. To quote the author, [Adam Wiggins](https://news.ycombinator.com/item?id=21416881 'Comment on Hacker News'):
+
+> I'm the author of 12factor (although really it is an aggregation of the work and insights from many people at Heroku). It continues to surprise and please me that this piece continues to be relevant eight years later—a virtual eternity in software/internet time.
+> Fun fact: I debated whether to call it "the Heroku way" or somesuch. Glad I went with a standalone name, feel like that allowed it to take on a life beyond that product. For example I doubt Google would have wanted a page about "Heroku Way app development on GCP" in their documentation. :-)
+
+We deployed to Heroku, but the same DevOps principles would have allowed us to deploy to AWS, Google Cloud, Microsoft Azure, or another cloud computing service.
+
+
+### Continuous Deployment
+Our app is continuously deployed from the `master` branch on GitHub, Embracing a DevOps philosophy from the beginning allowed us to focus on the user experience of using our website, rather than thinking about the app in terms of how it behaves on localhost:8080
+=======
 - [Node.js](https://nodejs.org/en/)
 - [Express](http://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
@@ -22,6 +40,7 @@ InstaStack makes it possible to quickly create, for real, a static website whose
 - [HTML Drag-and-Drop](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
 - [Webpack](https://webpack.js.org/)
 - [PrimeReact (UI)](https://primefaces.org/primereact/showcase/#/)
+
 
 ### Development and Scripts
 
