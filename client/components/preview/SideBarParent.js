@@ -66,8 +66,7 @@ class SideBarParent extends Component {
         cancelHelper={this.handleCloseIconHelper}
       />
     ));
-    console.log('selectIdx is ', selectIdx);
-    console.log(this.props.sidebar, this.props.sidebar[selectIdx]);
+
     return (
       Object.keys(this.props.sidebar).length && (
         <Sidebar
