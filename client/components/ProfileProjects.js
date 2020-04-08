@@ -25,10 +25,9 @@ class ProfileProjects extends Component {
     const { user, userProjects } = this.props;
     return (
       <div className="profile-background">
-        {/* <div className="align-container"> */}
         <div className="RGL-container2">
           <h2 className="color"> Your Projects </h2>
-          <h3 className="color">{user.displayName}</h3>
+          <h4 className="name">{user.displayName}</h4>
           {userProjects !== undefined
             ? userProjects.map(p => {
                 return (
@@ -78,12 +77,10 @@ class ProfileProjects extends Component {
               })
             : null}
         </div>
-
         <Link to={`/users/${user.id}/security`}>
-          <h2 className="color">Back to your settings</h2>
+          <h4 className="color-link">Your Profile</h4>
         </Link>
       </div>
-      // </div>
     );
   }
 }

@@ -357,9 +357,45 @@ form div {
   width: 920px;
 }
 
+.name {
+  color: white;
+  margin-left: 54px;
+  font-weight: 400;
+}
+
 .color {
   color: white;
-  margin-left: 47px;
+  margin-left: 54px;
+  margin-top: 50px;
+  font-weight: 400;
+}
+
+.color-link {
+  color: white;
+  margin-left: 54px;
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.project-btn {
+  margin: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 12px;
+  padding-left: 12px;
+  color: #333055;
+  border-color: #333055;
+  border-radius: 3px;
+}
+
+.project-btn:hover {
+  color: #56be96;
+  background-color: #ffffff;
+  border-color: #56be96;
+}
+
+.project-btn:focus {
+  box-shadow: none !important;
 }
 
 .footer {
