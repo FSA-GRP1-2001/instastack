@@ -37,16 +37,6 @@ class DragWrapper extends Component {
     e.stopPropagation();
   };
 
-  dragEnd = e => {
-    console.log('drag ended');
-    if (e.dataTransfer.dropEffect === 'none') {
-      // if drag unsuccessful, delete the extra node
-      const recent = document.body.lastChild;
-      const parent = recent.parentNode; // get its ID
-      parent.removeChild(recent); // delete by ID
-    }
-  };
-
   render() {
     return (
       <div

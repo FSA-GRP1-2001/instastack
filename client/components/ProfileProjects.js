@@ -18,69 +18,64 @@ class ProfileProjects extends Component {
   }
 
   async handleOpenProject(projId) {
-    console.log('handle open proj id is ', projId);
     await this.props.getSavedProject(projId);
   }
 
   render() {
     const { user, userProjects } = this.props;
-    console.log('state1', this.props);
     return (
       <div className="profile-background">
         <div className="RGL-container2">
           <h2 className="color"> Your Projects </h2>
           <h4 className="name">{user.displayName}</h4>
-          {userProjects.length &&
-            userProjects.map(p => {
-              return (
-                <ul key={p.id}>
-                  <div className="profile-bar-color">
-                    <Accordion multiple={true}>
-                      <AccordionTab header={p.title}>
-                        <button
-                          className="project-btn"
-                          type="button"
-                          size="small"
-                          color="primary"
-                          onClick={() => this.handleOpenProject(p.id)}
-                        >
-                          Open
-                        </button>
-                        <button
-                          className="project-btn"
-                          type="button"
-                          size="small"
-                          color="primary"
-                          // onClick={}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="project-btn"
-                          type="button"
-                          size="small"
-                          color="primary"
-                          // onClick={}
-                        >
-                          x Delete
-                        </button>
-                        <button
-                          className="project-btn"
-                          type="button"
-                          size="small"
-                          color="primary"
-                          // onClick={}
-                        >
-                          Save
-                        </button>
-                        <br></br>
-                        <img src="/img/blog2.png" width="400" height="400" />
-                      </AccordionTab>
-                    </Accordion>
-                  </div>
-                </ul>
-              );
-            })}
+          {userProjects !== undefined
+            ? userProjects.map(p => {
+                return (
+                  <ul key={p.id}>
+                    <div className="profile-bar-color">
+                      <Accordion multiple={true}>
+                        <AccordionTab header={p.title}>
+                          <button
+                            type="button"
+                            size="small"
+                            color="primary"
+                            onClick={() => this.handleOpenProject(p.id)}
+                          >
+                            Open
+                          </button>
+                          <button
+                            type="button"
+                            size="small"
+                            color="primary"
+                            // onClick={}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            size="small"
+                            color="primary"
+                            // onClick={}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            type="button"
+                            size="small"
+                            color="primary"
+                            // onClick={}
+                          >
+                            Save
+                          </button>
+                          <br></br>
+                          <img src="/img/blog2.png" width="400" height="400" />
+                        </AccordionTab>
+                      </Accordion>
+                    </div>
+                  </ul>
+                );
+              })
+            : null}
         </div>
         <Link to={`/users/${user.id}/security`}>
           <h4 className="color-link">Your Profile</h4>
@@ -103,24 +98,5 @@ const mapDispatchToProps = dispatch => {
     getSavedProject: projId => dispatch(getSavedProject(projId)),
   };
 };
-
-// const mapStateToProps = state => {
-//   return {
-//     // projects: state.projects.allProjects,
-//     // project: state.projects.singleProject,
-//     // users: state.users.allUsers,
-//     user: state.user,
-//     // user: state.singleUserReducer
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     // getAllProjects: () => dispatch(getAllProjects()),
-//     // getSingleProject: id => dispatch(getSingleProject(id)),
-//     // getAllUsers: () => dispatch(getAllUsers()),
-//     getSingleUser: id => dispatch(getSingleUser(id)),
-//   };
-// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileProjects);

@@ -43,7 +43,7 @@ const populateSavedComponents = arr => {
     }
     node.id = component.domId;
     let container = grid.querySelector(`#\\3${i}`);
-    container.appendChild(node);
+    if (container) container.appendChild(node);
   });
 };
 
@@ -86,7 +86,6 @@ class Preview extends Component {
       this.props.usedStyles.forEach(styleObj => {
         let node = document.getElementById(styleObj.domId);
         const styles = styleObj.styles;
-        console.log(styleObj.styles, styleObj.styles.fontSize);
         if (styleObj.styles.fontSize)
           node.style.fontSize = styles.fontSize + 'px';
         if (styleObj.styles.color) node.style.color = styles.color;
@@ -100,7 +99,9 @@ class Preview extends Component {
         if (styleObj.styles.backgroundColor)
           node.style.backgroundColor = styles.backgroundColor;
         if (styleObj.styles.src) node.src = styles.src;
-        if (styleObj.styles.imageWidth) node.style.width = styles.imageWidth;
+        if (styleObj.styles.imageWidth)
+          node.style.width = styles.imageWidth + '%';
+        if (styleObj.styles.alignSelf) node.style.alignSelf = styles.alignSelf;
         console.log('styled node is ', node);
       });
     }

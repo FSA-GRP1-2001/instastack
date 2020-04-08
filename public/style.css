@@ -332,7 +332,8 @@ form div {
 .RGL-container {
   border: 2px solid lightgray;
   border-radius: 6px;
-  margin: 0.8rem;
+  margin: 0.8rem auto;
+  max-width: 1240px;
 }
 
 /* Top Menu User Button */

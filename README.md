@@ -1,227 +1,118 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Build Status](https://travis-ci.org/FSA-GRP1-2001/instastack.svg?branch=master)](https://travis-ci.org/FSA-GRP1-2001/instastack)
 
-# InstaStack
+### Developer Quick Start
 
-_Good things come with React_
+Clone this repo. run `npm i` or `npm install` to install the project and its dependencies. Set up a postgres database named `instastack` and `instastack-test` (You will also want to install postgres locally, and provision postgres when you deploy remotely)
 
-Looking to mix up a backend with `express`/`sequelize` and a frontend with
-`react`/`redux`? That's `boilermaker`!
+To seed the database, run `npm run seed`, after that, the tests should pass when you run `npm test`.
 
-Follow along with the boilerplate workshop to make your own! This canonical
-version can serve as a reference, or a starting point. For an in depth
-discussion into the code that makes up this repository, see the
-[Boilermaker Guided Tour][boilermaker-yt]
+Then `npm run start-dev` to start dev mode, serving up on localhost:8080 with webpack watching for changes.
 
-[boilermaker-yt]: https://www.youtube.com/playlist?list=PLx0iOsdUOUmn7D5XL4mRUftn8hvAJGs8H
+# InstaStack ([Live](https://instastack.herokuapp.com/))
+## (c) The InstaStack Team, 2020
+### Tina Sosa, Joshua Skootsky, Maxwell Han, and Mercedes Madanire
 
-## Setup
+#### Marketing copy:
 
-To use this as boilerplate, you'll need to take the following steps:
+Designers and web developers often wish they could translate their vision into real HTML and CSS.
 
-* Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine)
-* Run the following commands:
+InstaStack makes it possible to quickly create, for real, a static website whose HTML and CSS is the same as the preview image. This HTML is suitable on its own, or for combining with an external style sheet and handwritten HTML. It may be made by a machine, but that machine was made by humans for humans.
 
-```
-git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
-git fetch boilermaker
-git merge boilermaker/master
-```
+#### Tech Stack & Features
 
-Why did we do that? Because every once in a while, `boilermaker` may
-be updated with additional features or bug fixes, and you can easily
-get those changes from now on by entering:
+## Drag and Drop Interface
 
-```
-git fetch boilermaker
-git merge boilermaker/master
-```
+- Select your web components and drag them into the preview area to add items to your project
+- add, resize, and rearrange containers to create the layout of your liking
 
-## Customize
+We use the [Browser API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) for drag and drop to move DOM nodes from one place to another. We have to make a copy of the original to get moved, and wrote our own cleanup routine in JavaScript that deletes the extra node (DOM manipulation) if the drop is not successful.
 
-Now that you've got the code, follow these steps to get acclimated:
+## Styling Menu for Customization of Web Components
 
-* Update project name and description in `package.json` and
-  `.travis.yml` files
-* `npm install`
-* Create two postgres databases (`MY_APP_NAME` should match the `name`
-  parameter in `package.json`):
+- Once you have added items to your project, customize the text, look and feel with the styling menu
+- Customize different types of components (lists, paragraphs, simple text, images... )
 
-```
-export MY_APP_NAME=boilermaker
-createdb $MY_APP_NAME
-createdb $MY_APP_NAME-test
-```
+## Preview Design + Access Live HTML Code
 
-* By default, running `npm test` will use `boilermaker-test`, while
-  regular development uses `boilermaker`
-* Create a file called `secrets.js` in the project root
-  * This file is listed in `.gitignore`, and will _only_ be required
-    in your _development_ environment
-  * Its purpose is to attach the secret environment variables that you
-    will use while developing
-  * However, it's **very** important that you **not** push it to
-    Github! Otherwise, _prying eyes_ will find your secret API keys!
-  * It might look like this:
+- View a live rendering of your project with one click
+- HTML code is available for export with every change your make
 
-```
-process.env.GOOGLE_CLIENT_ID = 'hush hush'
-process.env.GOOGLE_CLIENT_SECRET = 'pretty secret'
-process.env.GOOGLE_CALLBACK = '/auth/google/callback'
-```
+## Logged-in User Experience
 
-### OAuth
+- Users have the option of creating an account, via email signup or Google OAuth GitHub OAuth
+- Users with an account can return at at any time to their projects, which are persisted in our Postgres database
 
-* To use OAuth with Google, complete the steps above with a real client
-  ID and client secret supplied from Google
-  * You can get them from the [Google APIs dashboard][google-apis].
+## Database Schema
 
-[google-apis]: https://console.developers.google.com/apis/credentials
+Database interactions were handled via an ORM, [Sequelize]([https://sequelize.org/]). We stored the HTML default components in the database, and dynamically read them from the database. This allows users to create and save their own default components.
 
-## Linting
+## Code Mirror
 
-Linters are fundamental to any project. They ensure that your code
-has a consistent style, which is critical to writing readable code.
+![Code Mirror](https://i.imgur.com/lpnoVqQ.png)
+Code goes from React to the Redux Store. En route it gets formatted by a beautifier, then from the Redux Store, a Code Mirror React component displays it. The code mirror is displayed by a Prime React sliding window when the user clicks on it.
 
-Boilermaker comes with a working linter (ESLint, with
-`eslint-config-fullstack`) "out of the box." However, everyone has
-their own style, so we recommend that you and your team work out yours
-and stick to it. Any linter rule that you object to can be "turned
-off" in `.eslintrc.json`. You may also choose an entirely different
-config if you don't like ours:
 
-* [Standard style guide](https://standardjs.com/)
-* [Airbnb style guide](https://github.com/airbnb/javascript)
-* [Google style guide](https://google.github.io/styleguide/jsguide.html)
+## Prime React Component Library
 
-## Start
+## React Grid 
+Canvas built with react grid layout
+We needed additional logic so that it was smart enough to accept drop events and resize depending on the items.
 
-Running `npm run start-dev` will make great things happen!
+## Prime React
+The [React component libary of the Prime Faces UI library](https://primefaces.org/primereact/showcase/#/), this library gave us toast notifications, forms, buttons and a unified, modern look and feel. To get this to work, we had to make special configurations to WebPack.
 
-If you want to run the server and/or `webpack` separately, you can also
-`npm run start-server` and `npm run build-client`.
+## OAuth
+We used GitHub and Google OAuth to allow users to authenticate themselves using their GitHub and Google credentials - without needing to know the passwords to their accounts!
 
-From there, just follow your bliss.
+## Postgres
+Our database was Postgres, an SQL standard compliant relational database. We chose Postgres because it is very well supported by Cloud providers like Heroku, AWS RDS, Google Cloud, and Microsoft Azure.
 
-## Deployment
+## Sequelize:
+We used Sequelize, an object relational mapper (ORM), to translate the data on our server as JavaScript objects into SQL, and to read from the database and translate its SQL data into JavaScript objects.
 
-Ready to go world wide? Here's a guide to deployment! There are two
-supported ways to deploy in Boilermaker:
+## Node.js
+Our server's runtime is Node.js, an open-source, asynchronous runtime for JavaScript outside of the browser, allowing for the "JavaScript everywhere" paradigm.
 
-* automatically, via continuous deployment with Travis.
-* "manually", from your local machine via the `deploy` script.
+## Express
+Our API, server routes, and static assets are all served up by Express and its routing.
 
-Either way, you'll need to set up your deployment server to start.
-The steps below are also covered in the CI/CD workshop.
+## React
+A JavaScript library for building User  interfaces,  it allows for modular components to be used in a declarative style, allowing for both object oriented and functional programming paradigms on the front end.
 
-### Heroku
+## Redux
+We used Redux as a way of managing application level state, allowing different components to update and read from the Redux store, without us needing to worry about where those components were.
 
-1.  Set up the [Heroku command line tools][heroku-cli]
-2.  `heroku login`
-3.  Add a git remote for heroku:
 
-[heroku-cli]: https://devcenter.heroku.com/articles/heroku-cli
+## Webpack
+All our React and Redux code is bundled together into one production ready file with [Webpack](https://webpack.js.org/). Some special configuration was necessary to use the Prime styles with Webpack.
 
-* **If you are creating a new app...**
+## Linting and Style
 
-  1.  `heroku create` or `heroku create your-app-name` if you have a
-      name in mind.
-  2.  `heroku addons:create heroku-postgresql:hobby-dev` to add
-      ("provision") a postgres database to your heroku dyno
+We used Prettier with reasonable defaults, and automated ESLint running on commit to git, using Husky for pre-commit hooks.
 
-* **If you already have a Heroku app...**
 
-  1.  `heroku git:remote your-app-name` You'll need to be a
-      collaborator on the app.
 
-### Travis
+### Twelve Factor Design
 
-_**NOTE**_ that this step assumes that Travis-CI is already testing your code.
-Continuous Integration is not about testing per se – it's about _continuously
-integrating_ your changes into the live application, instead of periodically
-_releasing_ new versions. CI tools can not only test your code, but then
-automatically deploy your app. This is known as Continuous Deployment.
-Boilermaker comes with a `.travis.yml` configuration almost ready for
-continuous deployment; follow these steps to the job.
+This project uses the [Twelve Factor App](https://12factor.net/ 'Twelve Factor App') design principles. To quote the author, [Adam Wiggins](https://news.ycombinator.com/item?id=21416881 'Comment on Hacker News'):
 
-1.  Run the following commands to create a new branch:
+> I'm the author of 12factor (although really it is an aggregation of the work and insights from many people at Heroku). It continues to surprise and please me that this piece continues to be relevant eight years later—a virtual eternity in software/internet time.
+> Fun fact: I debated whether to call it "the Heroku way" or somesuch. Glad I went with a standalone name, feel like that allowed it to take on a life beyond that product. For example I doubt Google would have wanted a page about "Heroku Way app development on GCP" in their documentation. :-)
 
-```
-git checkout master
-git pull
-git checkout -b f/travis-deploy
-```
+We deployed to Heroku, but the same DevOps principles would have allowed us to deploy to AWS, Google Cloud, Microsoft Azure, or another cloud computing service.
 
-2.  Run the following script to finish configuring `travis.yml` :
-    `npm run heroku-token`
-    This will use your `heroku` CLI (that you configured previously, if
-    not then see [above](#Heroku)) to generate an authentication token. It
-    will then use `openssl` to encrypt this token using a public key that
-    Travis has generated for you. It will then update your `.travis.yml`
-    file with the encrypted value to be sent with the `secure` key under
-    the `api_key`.
-3.  Run the following commands to commit these changes
 
-```
-git add .travis.yml
-git commit -m 'travis: activate deployment'
-git push -u origin f/travis-deploy
-```
+### Continuous Deployment
 
-4.  Make a Pull Request for the new branch, get it approved, and merge it into
-    the master branch.
+Our app is continuously deployed from the `master` branch on GitHub, Embracing a DevOps philosophy from the beginning allowed us to focus on the user experience of using our website, rather than thinking about the app in terms of how it behaves on localhost:8080
 
-_**NOTE**_ that this script depends on your local `origin` Git remote matching
-your GitHub URL, and your local `heroku` remote matching the name of your
-Heroku app. This is only an issue if you rename your GitHub organization,
-repository name or Heroku app name. You can update these values using
-`git remote` and its related commands.
+### Tech Stack
+- [Node.js](https://nodejs.org/en/)
+- [Express](http://expressjs.com/)
+- [Sequelize](https://sequelize.org/)
+- [React](https://facebook.github.io/react/)
+- [Redux](https://redux.js.org/)
+- [HTML Drag-and-Drop](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
+- [Webpack](https://webpack.js.org/)
+- [PrimeReact (UI)](https://primefaces.org/primereact/showcase/#/)
 
-#### Travis CLI
-
-There is a procedure to complete the above steps by installing the official
-[Travis CLI tools][travis-cli]. This requires a recent Ruby, but this step
-should not be, strictly speaking, necessary. Only explore this option when the
-above has failed.
-
-[travis-cli]: https://github.com/travis-ci/travis.rb#installation
-
-That's it! From now on, whenever `master` is updated on GitHub, Travis
-will automatically push the app to Heroku for you.
-
-### Cody's own deploy script
-
-Your local copy of the application can be pushed up to Heroku at will,
-using Boilermaker's handy deployment script:
-
-1.  Make sure that all your work is fully committed and merged into your
-    master branch on Github.
-2.  If you currently have an existing branch called "deploy", delete
-    it now (`git branch -d deploy`). We will use a dummy branch
-    with the name `deploy` (see below), so and the script below will error if a
-    branch with that name already exists.
-3.  `npm run deploy`
-    _ this will cause the following commands to happen in order:
-    _ `git checkout -b deploy`: checks out a new branch called
-    `deploy`. Note that the name `deploy` here is not magical, but it needs
-    to match the name of the branch we specify when we push to our `heroku`
-    remote.
-    _ `webpack -p`: webpack will run in "production mode"
-    _ `git add -f public/bundle.js public/bundle.js.map`: "force" add
-    these files which are listed in `.gitignore`.
-    _ `git commit --allow-empty -m 'Deploying'`: create a commit, even
-    if nothing changed
-    _ `git push --force heroku deploy:master`: push your local
-    `deploy` branch to the `master` branch on `heroku`
-    _ `git checkout master`: return to your master branch
-    _ `git branch -D deploy`: remove the deploy branch
-
-Now, you should be deployed!
-
-Why do all of these steps? The big reason is because we don't want our
-production server to be cluttered up with dev dependencies like
-`webpack`, but at the same time we don't want our development
-git-tracking to be cluttered with production build files like
-`bundle.js`! By doing these steps, we make sure our development and
-production environments both stay nice and clean!
