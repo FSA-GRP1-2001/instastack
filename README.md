@@ -18,6 +18,8 @@ Designers and web developers often wish they could translate their vision into r
 
 InstaStack makes it possible to quickly create, for real, a static website whose HTML and CSS is the same as the preview image. This HTML is suitable on its own, or for combining with an external style sheet and handwritten HTML. It may be made by a machine, but that machine was made by humans for humans.
 
+![](https://user-images.githubusercontent.com/32972737/78846598-4ecb5000-79da-11ea-849d-9e3c2436d929.gif)
+
 #### Tech Stack & Features
 
 ## Drag and Drop Interface
