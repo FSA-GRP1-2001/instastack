@@ -48,7 +48,7 @@
     "antd": "^4.0.4",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
-    "codemirror": "^5.52.2",
+    "codemirror": "^5.58.2",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",
     "express": "^4.16.4",
